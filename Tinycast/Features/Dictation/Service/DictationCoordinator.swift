@@ -334,6 +334,10 @@ final class DictationCoordinator {
                 apiKey: SonioxTranscriber.apiKey(),
                 languageCode: settings.dictationLanguage.flatMap(DictationLanguage.init(rawValue:))?.code,
                 onWords: { [weak self] words in self?.deliverStreamed(words, token: current) },
+                onPreview: { [weak self] final, tentative in
+                    guard let self, token == current else { return }
+                    panel.state.appendPreview(final: final, tentative: tentative)
+                },
                 onFailure: { [weak self] error in
                     guard let self, token == current else { return }
                     cancel()

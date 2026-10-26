@@ -468,6 +468,7 @@ final class DictationPanelController {
     final class State {
         var phase = Phase.listening
         var levels: [Float] = []
+        func appendPreview(final: String, tentative: String) {}
     }
     static weak var latest: DictationPanelController?
     let state = State()

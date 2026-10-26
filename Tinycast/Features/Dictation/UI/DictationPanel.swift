@@ -8,6 +8,49 @@ final class DictationDisplayState {
     enum Phase { case listening, transcribing }
     var phase: Phase = .listening
     var levels = [Float](repeating: 0, count: DictationSpectrum.barCount)
+    /// Soniox's running transcript: settled words, then its still-changing guess.
+    private(set) var previewFinal = ""
+    private(set) var previewTentative = ""
+
+    func appendPreview(final: String, tentative: String) {
+        previewFinal = String((previewFinal + final).suffix(DictationPreview.characterLimit))
+        previewTentative = tentative
+    }
+
+    func clearPreview() {
+        previewFinal = ""
+        previewTentative = ""
+    }
+}
+
+private enum DictationPreview {
+    static let characterLimit = 400
+    static let width: CGFloat = 520
+    static let height: CGFloat = 64
+    static let gap: CGFloat = 8
+}
+
+private struct DictationPreviewBubble: View {
+    let state: DictationDisplayState
+
+    var body: some View {
+        let final = String(state.previewFinal.trimmingPrefix(while: \.isWhitespace))
+        let tentative = final.isEmpty
+            ? String(state.previewTentative.trimmingPrefix(while: \.isWhitespace))
+            : state.previewTentative
+        let settled = Text(verbatim: final).foregroundStyle(Theme.Colors.textPrimary)
+        let guess = Text(verbatim: tentative).foregroundStyle(Theme.Colors.textPrimary.opacity(0.45))
+        Text("\(settled)\(guess)")
+            .font(.body)
+            .lineLimit(2)
+            .truncationMode(.head)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, Theme.Spacing.lg)
+            .padding(.vertical, Theme.Spacing.sm)
+            .glassEffect(.regular, in: .rect(cornerRadius: Theme.Radius.formField))
+            .frame(maxWidth: DictationPreview.width)
+            .accessibilityLabel("Dictation preview")
+    }
 }
 
 private struct DictationWaveform: View {
@@ -54,6 +97,18 @@ private struct DictationPanelView: View {
     let state: DictationDisplayState
 
     var body: some View {
+        VStack(spacing: DictationPreview.gap) {
+            if !state.previewFinal.isEmpty || !state.previewTentative.isEmpty {
+                DictationPreviewBubble(state: state)
+            }
+            capsule
+        }
+        .frame(
+            width: DictationPanelController.panelSize.width,
+            height: DictationPanelController.panelSize.height, alignment: .bottom)
+    }
+
+    private var capsule: some View {
         Group {
             if state.phase == .listening {
                 DictationWaveform(
@@ -80,7 +135,7 @@ private final class DictationPanel: NSPanel, AnimatedPanel {
 
     init(content: NSView) {
         super.init(
-            contentRect: NSRect(origin: .zero, size: Theme.Size.dictationPanel),
+            contentRect: NSRect(origin: .zero, size: DictationPanelController.panelSize),
             styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
         contentView = content
         isOpaque = false
@@ -110,6 +165,9 @@ private final class DictationPanel: NSPanel, AnimatedPanel {
 
 @MainActor
 final class DictationPanelController {
+    static let panelSize = CGSize(
+        width: max(Theme.Size.dictationPanel.width, DictationPreview.width),
+        height: Theme.Size.dictationPanel.height + DictationPreview.gap + DictationPreview.height)
     let state = DictationDisplayState()
     private var panel: DictationPanel?
     var onAccept: (() -> Void)?
@@ -128,9 +186,10 @@ final class DictationPanelController {
         let size = Theme.Size.dictationPanel
         panel.setFrameOrigin(
             NSPoint(
-                x: frame.midX - size.width / 2,
+                x: frame.midX - Self.panelSize.width / 2,
                 y: frame.minY + frame.height * 0.1 - size.height / 2))
         state.phase = .listening
+        state.clearPreview()
         state.levels = [Float](repeating: 0, count: DictationSpectrum.barCount)
         panel.makeKeyAndOrderFront(nil)
     }

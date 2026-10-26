@@ -14,9 +14,12 @@ enum SonioxTranscriber {
         }
     }
 
-    /// One server message: the finalized text it carried and whether the stream is over.
+    /// One server message: newly finalized text, the current guess after it, and stream state.
     struct Update: Sendable {
         let finalText: String
+        let tentativeText: String
+        /// A pause ended the utterance, so everything final so far is complete words.
+        let endpoint: Bool
         let finished: Bool
     }
 
@@ -70,7 +73,8 @@ enum SonioxTranscriber {
             "model": model,
             "audio_format": "pcm_s16le",
             "sample_rate": DictationWire.sampleRate,
-            "num_channels": 1
+            "num_channels": 1,
+            "enable_endpoint_detection": true
         ]
         if let languageCode { config["language_hints"] = [languageCode] }
         let data = try JSONSerialization.data(withJSONObject: config)
@@ -92,12 +96,16 @@ enum SonioxTranscriber {
         switch message {
         case .string(let string): data = Data(string.utf8)
         case .data(let bytes): data = bytes
-        @unknown default: return Update(finalText: "", finished: false)
+        @unknown default: return Update(finalText: "", tentativeText: "", endpoint: false, finished: false)
         }
         let response = try JSONDecoder().decode(Response.self, from: data)
         if let message = response.errorMessage { throw Failure.server(message) }
-        let text = (response.tokens ?? []).filter { $0.isFinal && !$0.isMarker }.map(\.text).joined()
-        return Update(finalText: text, finished: response.finished == true)
+        let tokens = response.tokens ?? []
+        return Update(
+            finalText: tokens.filter { $0.isFinal && !$0.isMarker }.map(\.text).joined(),
+            tentativeText: tokens.filter { !$0.isFinal && !$0.isMarker }.map(\.text).joined(),
+            endpoint: tokens.contains { $0.isFinal && $0.text == "<end>" },
+            finished: response.finished == true)
     }
 
     @concurrent

@@ -1,11 +1,13 @@
 import Foundation
 
 /// One Soniox connection for a whole recording: audio goes up as it is captured, and whole
-/// finalized words come back through `onWords` while the user is still speaking.
+/// finalized words come back through `onWords` while the user is still speaking, and every
+/// message's final and tentative text goes to `onPreview` for display only.
 @MainActor
 final class SonioxStream {
     private let socket: URLSessionWebSocketTask
     private let onWords: (String) -> Void
+    private let onPreview: (_ final: String, _ tentative: String) -> Void
     private let onFailure: (Error) -> Void
     private var sentSamples = 0
     private var sendChain: Task<Void, Never>?
@@ -19,10 +21,12 @@ final class SonioxStream {
     init(
         apiKey: String, languageCode: String?,
         onWords: @escaping (String) -> Void,
+        onPreview: @escaping (_ final: String, _ tentative: String) -> Void,
         onFailure: @escaping (Error) -> Void
     ) throws {
         socket = SonioxTranscriber.openSocket(apiKey: apiKey)
         self.onWords = onWords
+        self.onPreview = onPreview
         self.onFailure = onFailure
         enqueue([try SonioxTranscriber.configMessage(languageCode: languageCode)])
         receiver = Task { [weak self] in await self?.receive() }
@@ -75,7 +79,8 @@ final class SonioxStream {
             while !isOver {
                 let update = try SonioxTranscriber.parse(try await socket.receive())
                 pending += update.finalText
-                if !finishing { emitWholeWords() }
+                onPreview(update.finalText, update.tentativeText)
+                if !finishing { update.endpoint ? emitAll() : emitWholeWords() }
                 if update.finished { break }
             }
         } catch {
@@ -92,6 +97,13 @@ final class SonioxStream {
         guard let cut = pending.lastIndex(where: \.isWhitespace), cut > pending.startIndex else { return }
         let words = String(pending[..<cut])
         pending = String(pending[cut...])
+        guard !words.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+        onWords(words)
+    }
+
+    private func emitAll() {
+        let words = pending
+        pending = ""
         guard !words.trimmingCharacters(in: .whitespaces).isEmpty else { return }
         onWords(words)
     }
