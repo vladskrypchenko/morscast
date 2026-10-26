@@ -365,6 +365,11 @@ run dictation-field-test   Tinycast/Features/Dictation/Model/DictationModel.swif
                            Tinycast/Features/Dictation/Model/DictationTextFormatter.swift \
                            Tinycast/Features/Dictation/Service/DictationCoordinator.swift \
                            Tinycast/Features/Dictation/Service/DictationInsertionContext.swift \
+                           Tinycast/Features/Dictation/Service/SonioxStream.swift \
+                           Tinycast/Features/Dictation/Service/SonioxTranscriber.swift \
+                           Tinycast/Features/Dictation/Service/DictationWire.swift \
+                           Tinycast/Features/Dictation/Model/DictationLanguage.swift \
+                           Tinycast/Platform/KeychainSecretStore.swift \
                            Tinycast/Features/AI/UI/ChatComposerTextView.swift \
                            Tinycast/Features/TextInjection/Service/*.swift \
                            Tinycast/Features/Snippets/Model/*.swift \

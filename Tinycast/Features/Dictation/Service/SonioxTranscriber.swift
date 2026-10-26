@@ -14,6 +14,12 @@ enum SonioxTranscriber {
         }
     }
 
+    /// One server message: the finalized text it carried and whether the stream is over.
+    struct Update: Sendable {
+        let finalText: String
+        let finished: Bool
+    }
+
     static let enabledKey = "dictationSonioxEnabled"
     static let keychain = KeychainSecretStore(scope: "soniox")
     private static let keyAccount = UUID(uuidString: "6D1E2A5C-0B7F-4E3A-9C61-50A10C5D1C7A")!
@@ -51,26 +57,15 @@ enum SonioxTranscriber {
         }
     }
 
-    @concurrent
-    static func transcribe(
-        _ samples: [Float], languageCode: String?, apiKey: String
-    ) async throws -> String {
+    static func openSocket(apiKey: String) -> URLSessionWebSocketTask {
         var request = URLRequest(url: endpoint)
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         let socket = session.webSocketTask(with: request)
         socket.resume()
-        defer { socket.cancel(with: .normalClosure, reason: nil) }
-        return try await withTaskCancellationHandler {
-            try await send(samples, languageCode: languageCode, over: socket)
-            return try await receiveTranscript(from: socket)
-        } onCancel: {
-            socket.cancel(with: .goingAway, reason: nil)
-        }
+        return socket
     }
 
-    private static func send(
-        _ samples: [Float], languageCode: String?, over socket: URLSessionWebSocketTask
-    ) async throws {
+    static func configMessage(languageCode: String?) throws -> URLSessionWebSocketTask.Message {
         var config: [String: Any] = [
             "model": model,
             "audio_format": "pcm_s16le",
@@ -78,40 +73,59 @@ enum SonioxTranscriber {
             "num_channels": 1
         ]
         if let languageCode { config["language_hints"] = [languageCode] }
-        let configData = try JSONSerialization.data(withJSONObject: config)
-        try await socket.send(.string(String(decoding: configData, as: UTF8.self)))
+        let data = try JSONSerialization.data(withJSONObject: config)
+        return .string(String(decoding: data, as: UTF8.self))
+    }
+
+    /// An empty text frame ends the stream; an empty binary frame would not.
+    static let endOfAudio = URLSessionWebSocketTask.Message.string("")
+
+    static func audioFrames(_ samples: ArraySlice<Float>) -> [URLSessionWebSocketTask.Message] {
         let pcm = pcm16(samples)
-        var offset = 0
-        while offset < pcm.count {
-            try Task.checkCancellation()
-            let end = min(offset + frameBytes, pcm.count)
-            try await socket.send(.data(pcm.subdata(in: offset..<end)))
-            offset = end
-        }
-        // An empty text frame ends the stream; an empty binary frame would not.
-        try await socket.send(.string(""))
-    }
-
-    private static func receiveTranscript(from socket: URLSessionWebSocketTask) async throws -> String {
-        var text = ""
-        while true {
-            try Task.checkCancellation()
-            let data: Data
-            switch try await socket.receive() {
-            case .string(let string): data = Data(string.utf8)
-            case .data(let bytes): data = bytes
-            @unknown default: continue
-            }
-            let response = try JSONDecoder().decode(Response.self, from: data)
-            if let message = response.errorMessage { throw Failure.server(message) }
-            for token in response.tokens ?? [] where token.isFinal && !token.isMarker {
-                text += token.text
-            }
-            if response.finished == true { return text }
+        return stride(from: 0, to: pcm.count, by: frameBytes).map {
+            .data(pcm.subdata(in: $0..<min($0 + frameBytes, pcm.count)))
         }
     }
 
-    private static func pcm16(_ samples: [Float]) -> Data {
+    static func parse(_ message: URLSessionWebSocketTask.Message) throws -> Update {
+        let data: Data
+        switch message {
+        case .string(let string): data = Data(string.utf8)
+        case .data(let bytes): data = bytes
+        @unknown default: return Update(finalText: "", finished: false)
+        }
+        let response = try JSONDecoder().decode(Response.self, from: data)
+        if let message = response.errorMessage { throw Failure.server(message) }
+        let text = (response.tokens ?? []).filter { $0.isFinal && !$0.isMarker }.map(\.text).joined()
+        return Update(finalText: text, finished: response.finished == true)
+    }
+
+    @concurrent
+    static func transcribe(
+        _ samples: [Float], languageCode: String?, apiKey: String
+    ) async throws -> String {
+        let socket = openSocket(apiKey: apiKey)
+        defer { socket.cancel(with: .normalClosure, reason: nil) }
+        return try await withTaskCancellationHandler {
+            try await socket.send(configMessage(languageCode: languageCode))
+            for frame in audioFrames(samples[...]) {
+                try Task.checkCancellation()
+                try await socket.send(frame)
+            }
+            try await socket.send(endOfAudio)
+            var text = ""
+            while true {
+                try Task.checkCancellation()
+                let update = try parse(try await socket.receive())
+                text += update.finalText
+                if update.finished { return text }
+            }
+        } onCancel: {
+            socket.cancel(with: .goingAway, reason: nil)
+        }
+    }
+
+    private static func pcm16(_ samples: ArraySlice<Float>) -> Data {
         var data = Data(capacity: samples.count * 2)
         for sample in samples {
             let value = Int16(max(-1, min(1, sample)) * Float(Int16.max))

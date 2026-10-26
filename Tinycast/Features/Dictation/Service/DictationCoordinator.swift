@@ -25,6 +25,7 @@ final class DictationCoordinator {
     @ObservationIgnored private var liveOffset = 0
     @ObservationIgnored private var liveText = ""
     @ObservationIgnored private var liveDeliveryFailed = false
+    @ObservationIgnored private var sonioxStream: SonioxStream?
     @ObservationIgnored private var stopTask: Task<Void, Never>?
     @ObservationIgnored private var cueTask: Task<Void, Never>?
     @ObservationIgnored private var pendingStartCue: UUID?
@@ -226,7 +227,9 @@ final class DictationCoordinator {
             guard token == current else { return }
             let tail = liveOffset < samples.count ? Array(samples[liveOffset...]) : []
             let destination = field == nil ? settings.dictationDestination : .paste
-            if tail.count < 1_600 {
+            let stream = sonioxStream
+            sonioxStream = nil
+            if stream == nil, tail.count < 1_600 {
                 if liveText.isEmpty {
                     reset(cancelTranscription: false)
                     showMessage(String(localized: "No speech was recorded"), .danger)
@@ -236,9 +239,14 @@ final class DictationCoordinator {
                 return
             }
             do {
-                let transcript = try await models.transcribe(
-                    tail, model: model,
-                    language: language)
+                let transcript =
+                    if let stream {
+                        try await stream.finish(with: samples)
+                    } else {
+                        try await models.transcribe(tail, model: model, language: language)
+                    }
+                guard token == current else { return }
+                if stream != nil, !liveText.isEmpty { await injector.drain() }
                 guard token == current else { return }
                 // A mic belongs to its field: the text goes in there, never to the clipboard.
                 let context = destination.pastes ? insertionContext() : nil
@@ -306,6 +314,7 @@ final class DictationCoordinator {
     }
 
     private func startLiveInsertion(token current: UUID) {
+        if SonioxTranscriber.isEnabled, insertionPastes { return startSonioxStream(token: current) }
         guard insertionPastes, settings.dictationLiveInsertion else { return }
         liveTask = Task { [weak self] in
             guard let self else { return }
@@ -316,6 +325,51 @@ final class DictationCoordinator {
                 await flushLiveChunk(token: current)
             }
         }
+    }
+
+    private func startSonioxStream(token current: UUID) {
+        let stream: SonioxStream
+        do {
+            stream = try SonioxStream(
+                apiKey: SonioxTranscriber.apiKey(),
+                languageCode: settings.dictationLanguage.flatMap(DictationLanguage.init(rawValue:))?.code,
+                onWords: { [weak self] words in self?.deliverStreamed(words, token: current) },
+                onFailure: { [weak self] error in
+                    guard let self, token == current else { return }
+                    cancel()
+                    showMessage(error.localizedDescription, .danger)
+                })
+        } catch {
+            cancel()
+            showMessage(error.localizedDescription, .danger)
+            return
+        }
+        sonioxStream = stream
+        liveTask = Task { [weak self] in
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .milliseconds(200))
+                guard let self, !Task.isCancelled, token == current, phase == .listening else { return }
+                stream.send(capture.snapshot())
+            }
+        }
+    }
+
+    private func deliverStreamed(_ words: String, token current: UUID) {
+        guard token == current else { return }
+        let text = DictationTextFormatter.format(
+            words, context: insertionContext(),
+            adaptCapitalization: settings.dictationAdaptsCapitalization)
+        guard !text.isEmpty else { return }
+        liveText += text
+        injector.deliver(
+            InjectedText(text), target: target, expectedKeyword: nil,
+            keywordLength: 0, automaticGeneration: nil,
+            isValid: { [weak self] in self?.token == current },
+            onDelivered: {},
+            onFailed: { [weak self] in
+                guard let self, token == current else { return }
+                liveDeliveryFailed = true
+            })
     }
 
     private func flushLiveChunk(token current: UUID) async {
@@ -396,6 +450,8 @@ final class DictationCoordinator {
         if cancelTranscription { transcriptionTask?.cancel() }
         liveTask?.cancel()
         liveTask = nil
+        sonioxStream?.cancel()
+        sonioxStream = nil
         liveOffset = 0
         liveText = ""
         liveDeliveryFailed = false
