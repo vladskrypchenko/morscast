@@ -83,6 +83,8 @@ struct DictationSettingsView: View {
                     SettingsSectionHeader(.dictationCommands)
                 }
 
+                SonioxSettingsSection()
+
                 Section {
                     Picker(selection: familyBinding) {
                         ForEach(DictationModel.Family.allCases) { family in

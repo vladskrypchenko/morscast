@@ -443,6 +443,7 @@ final class DictationModelStore {
     var finished = false
 
     func isInstalled(_ model: DictationModel) -> Bool { true }
+    func isReady(_ model: DictationModel) -> Bool { true }
     func download(_ model: DictationModel) async throws {}
     func delete(_ model: DictationModel) async throws {}
     func stop() async {}

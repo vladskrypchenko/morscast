@@ -44,6 +44,10 @@ final class DictationModelStore {
         installedModels.contains(model)
     }
 
+    func isReady(_ model: DictationModel) -> Bool {
+        SonioxTranscriber.isEnabled || isInstalled(model)
+    }
+
     func refreshInstalledModels() {
         installedModels = Set(
             DictationModel.allCases.filter { model in
@@ -129,6 +133,12 @@ final class DictationModelStore {
         _ samples: [Float], model: DictationModel, language: String? = nil
     ) async throws -> String {
         try Task.checkCancellation()
+        if SonioxTranscriber.isEnabled {
+            let code = language.flatMap(DictationLanguage.init(rawValue:))?.code
+            let text = try await SonioxTranscriber.transcribe(
+                samples, languageCode: code, apiKey: SonioxTranscriber.apiKey())
+            return text.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
         guard !transcribing, removing != model else { throw Failure.busy }
         guard isInstalled(model) else { throw Failure.notInstalled }
         releaseTask?.cancel()

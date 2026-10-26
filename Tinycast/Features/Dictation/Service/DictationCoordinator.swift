@@ -122,7 +122,7 @@ final class DictationCoordinator {
     }
 
     var isEnabled: Bool { settings.dictationEnabled }
-    var hasModel: Bool { models.isInstalled(settings.dictationModel) }
+    var hasModel: Bool { models.isReady(settings.dictationModel) }
 
     /// A field's own mic: click to start and click to finish, whatever the shortcut's mode or focus.
     func toggle(into editor: any InjectableTextView) {
@@ -144,7 +144,7 @@ final class DictationCoordinator {
     }
 
     private func begin(target: InjectionTarget?) {
-        guard models.isInstalled(settings.dictationModel) else {
+        guard models.isReady(settings.dictationModel) else {
             field = nil
             showMessage(String(localized: "Download the dictation model in Settings first"), .danger)
             return
