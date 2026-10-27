@@ -54,10 +54,10 @@ enum AppPaths {
     }
 
     private static func configFolderName(bundleID: String) -> String {
-        let stable = "com.tinycast.app"
-        if bundleID == stable { return "tinycast" }
+        let stable = "com.morscast.app"
+        if bundleID == stable { return "morscast" }
         guard bundleID.hasPrefix(stable + ".") else { return bundleID }
-        return "tinycast-" + bundleID.dropFirst(stable.count + 1)
+        return "morscast-" + bundleID.dropFirst(stable.count + 1)
     }
 
     private static func root(

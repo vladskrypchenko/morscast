@@ -3922,19 +3922,19 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					0832DCD58DEA01602328CCE7 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = BV8636DZJY;
 						ProvisioningStyle = Manual;
 					};
 					39C44220D93869F0130226A2 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = BV8636DZJY;
 						ProvisioningStyle = Manual;
 					};
 					3B118E1B50944BA60113B8CF = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = BV8636DZJY;
 						ProvisioningStyle = Manual;
 					};
 					51DBA6947AFD8275A0DF8DA0 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = BV8636DZJY;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -4900,7 +4900,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(TINYCAST_BUNDLE_IDENTIFIER)";
-				PRODUCT_NAME = "Tinycast Dev";
+				PRODUCT_NAME = "MorsCast Dev";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
@@ -4965,6 +4965,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(TINYCAST_BUNDLE_IDENTIFIER)";
+				PRODUCT_NAME = MorsCast;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
@@ -5003,13 +5004,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Tinycast Self-Signed";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
-				DICTATION_EXECUTABLE_NAME = "Tinycast Dev Dictation";
+				DEVELOPMENT_TEAM = BV8636DZJY;
+				DICTATION_EXECUTABLE_NAME = "MorsCast Dev Dictation";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -5037,7 +5038,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 6.0;
-				TINYCAST_BUNDLE_IDENTIFIER = com.tinycast.app.dev;
+				TINYCAST_BUNDLE_IDENTIFIER = com.morscast.app.dev;
 			};
 			name = Debug;
 		};
@@ -5050,7 +5051,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tinycast.ClipboardTextHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.morscast.ClipboardTextHelper;
 				PRODUCT_MODULE_NAME = ClipboardTextHelper;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -5066,7 +5067,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tinycast.FileIndexHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.morscast.FileIndexHelper;
 				PRODUCT_MODULE_NAME = FileIndexHelper;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -5083,7 +5084,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tinycast.FileIndexHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.morscast.FileIndexHelper;
 				PRODUCT_MODULE_NAME = FileIndexHelper;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -5124,15 +5125,15 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Tinycast Self-Signed";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = YES;
-				DEVELOPMENT_TEAM = "";
-				DICTATION_EXECUTABLE_NAME = "Tinycast Dictation";
+				DEVELOPMENT_TEAM = BV8636DZJY;
+				DICTATION_EXECUTABLE_NAME = "MorsCast Dictation";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -5156,7 +5157,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 6.0;
-				TINYCAST_BUNDLE_IDENTIFIER = com.tinycast.app;
+				TINYCAST_BUNDLE_IDENTIFIER = com.morscast.app;
 			};
 			name = Release;
 		};
@@ -5169,7 +5170,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tinycast.ClipboardTextHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.morscast.ClipboardTextHelper;
 				PRODUCT_MODULE_NAME = ClipboardTextHelper;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
