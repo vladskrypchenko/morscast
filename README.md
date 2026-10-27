@@ -1,12 +1,12 @@
-# Tinycast
+# MorsCast
 
 **A tiny, fully native macOS launcher. One hotkey, everything you reach for all day, under 100 MB of
 RAM.**
 
 <p align="center">
-  <a href="https://github.com/abue-ammar/tinycast/releases/latest">
+  <a href="https://github.com/vladskrypchenko/morscast/releases/latest">
     <img alt="Latest release"
-         src="https://img.shields.io/github/v/release/abue-ammar/tinycast?sort=semver&style=flat&label=release&color=1F6FEB"></a>
+         src="https://img.shields.io/github/v/release/vladskrypchenko/morscast?sort=semver&style=flat&label=release&color=1F6FEB"></a>
   <img alt="Swift 6.0"
        src="https://img.shields.io/badge/Swift-6.0-F05138?style=flat&logo=swift&logoColor=white">
   <img alt="macOS 26 or later"
@@ -14,18 +14,15 @@ RAM.**
   <a href="LICENSE">
     <img alt="License: AGPL-3.0"
          src="https://img.shields.io/badge/License-AGPL--3.0-3DA639?style=flat"></a>
-  <a href="https://discord.gg/v2Eeb4QQy3">
-    <img alt="Join the Tinycast Discord"
-         src="https://img.shields.io/badge/Discord-Join-5865F2?style=flat&logo=discord&logoColor=white"></a>
 </p>
 
 SwiftUI and AppKit, **zero third-party dependencies**, no Electron and no telemetry. It also **runs
-real Raycast extensions**, rendered as native SwiftUI. Free, open source, and staying that way.
+real Raycast extensions**, rendered as native SwiftUI.
 
-For anything private, email [iabueammar@gmail.com](mailto:iabueammar@gmail.com).
+MorsCast is based on [Tinycast](https://github.com/abue-ammar/tinycast) by Abue Ammar.
 
 <p align="center">
-  <img src="docs/screenshot.png" alt="Tinycast command palette" width="720">
+  <img src="docs/screenshot.png" alt="MorsCast command palette" width="720">
 </p>
 
 ## Features
@@ -38,6 +35,8 @@ For anything private, email [iabueammar@gmail.com](mailto:iabueammar@gmail.com).
   index of our own.
 - **Dictionary** — look a word up with the Define Word command, or define whatever you typed from the
   launcher's fallbacks, read from the Mac's own dictionaries.
+- **Dictation** — hold a key and talk: streams to Soniox and types each word as it is recognized,
+  with a live preview in one small capsule. Local on-device models work too.
 - **Clipboard history** — text and images, searchable, pasted back into the app you were using.
 - **Calculator** — do math, unit, live currency and crypto conversions inline, right in the palette.
 - **Quicklinks** — turn a URL, search, file or deeplink into a command, with placeholders for typed
@@ -65,80 +64,20 @@ For anything private, email [iabueammar@gmail.com](mailto:iabueammar@gmail.com).
 
 ## Install
 
-First, add the tap:
-
-```sh
-brew trust --tap abue-ammar/tinycast   # required for third-party taps
-brew tap abue-ammar/tinycast
-```
-
-Then run the one line that matches your Mac:
-
-| Your Mac                         | Install                                  |
-| -------------------------------- | ---------------------------------------- |
-| Apple silicon, macOS 26 or newer | `brew install --cask tinycast`           |
-| Intel, macOS 26                  | `brew install --cask tinycast-universal` |
-
-Not sure which Mac you have? **Apple menu → About This Mac.**
-
-- **Early builds:** `brew install --cask tinycast@beta` installs `Tinycast Beta.app` beside the stable app.
-- **DMG from [Releases](https://github.com/abue-ammar/tinycast/releases)?** It's self-signed, so run
-  `xattr -dr com.apple.quarantine "/Applications/Tinycast.app"` once.
-
-## Building from source
-
-See **[docs/development.md](docs/development.md)** for the toolchain, build, packaging, release and
-website workflows. **[docs/](docs/README.md)** indexes everything else — architecture, engineering
-standards, the design system and one document per feature.
-
-## Support
-
-Tinycast is **free, and it stays that way**. If you enjoy it, you can support it with crypto: scan a
-code with your wallet, or copy an address. Send only on the network named for that address. If yours
-isn't listed, [email me](mailto:iabueammar@gmail.com?subject=Supporting%20Tinycast).
-
-<table>
-  <tr>
-    <td align="center">
-      <img width="160" alt="Bitcoin address QR code" src="website/public/wallets/bitcoin-qr.svg"><br>
-      <b>Bitcoin</b>
-    </td>
-    <td align="center">
-      <img width="160" alt="Ethereum, Base and BNB Smart Chain address QR code" src="website/public/wallets/ethereum-qr.svg"><br>
-      <b>Ethereum, Base, BNB Smart Chain</b>
-    </td>
-    <td align="center">
-      <img width="160" alt="Solana address QR code" src="website/public/wallets/solana-qr.svg"><br>
-      <b>Solana</b>
-    </td>
-  </tr>
-</table>
-
-**Bitcoin**
-
-```text
-bc1qpfxtjpuhm2cm8kg4lqgu3ffjch7vcjf678arwn
-```
-
-**Ethereum, Base and BNB Smart Chain** (one address for all three)
-
-```text
-0x22A00612bc0bf1Dc73AAC75e8De1BA4e81fF0810
-```
-
-**Solana**
-
-```text
-4EH7JDXZxkJiahas1xgPyC1iBW9pfCVUXxVtpqvwAz6T
-```
-
-Prefer a card? Buy the wallpaper pack and get a Discord role.
-
 <p align="center">
-  <a href="https://tinycast.dev/support">
-    <img alt="Support Tinycast" width="188" height="44" src="docs/support-button.svg"></a><br>
-  <sub>Card payments are handled securely by <a href="https://polar.sh">Polar.sh</a>.</sub>
+  <a href="https://github.com/vladskrypchenko/morscast/releases/latest">
+    <img alt="Download MorsCast"
+         src="https://img.shields.io/badge/Download-MorsCast-1F6FEB?style=for-the-badge&logo=apple&logoColor=white"></a>
 </p>
+
+1. Download `MorsCast-<version>.zip` from the
+   [latest release](https://github.com/vladskrypchenko/morscast/releases/latest) and unzip it.
+2. Move `MorsCast.app` to **Applications**.
+3. Open it. MorsCast is signed but not notarized, so on first launch macOS blocks it: go to
+   **System Settings → Privacy & Security** and click **Open Anyway** next to MorsCast. Once is enough.
+
+Requires an Apple silicon Mac with macOS 26 or newer. MorsCast checks for new releases on its own and
+installs them after you confirm.
 
 ## License
 
