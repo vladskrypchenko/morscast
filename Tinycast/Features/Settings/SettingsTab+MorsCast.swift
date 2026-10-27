@@ -3,7 +3,7 @@ extension SettingsTab {
     static let tucked: [SettingsTab] = [
         .systemSettings, .systemActions, .commands, .quicklinks, .appleShortcuts, .fallbacks,
         .fileSearch, .windowManagement, .navigation, .notes, .calendar, .emoji, .ai,
-        .quickActions, .extensions
+        .quickActions, .extensions, .snippets, .backup
     ]
 
     var isTucked: Bool { Self.tucked.contains(self) }

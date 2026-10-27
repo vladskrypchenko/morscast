@@ -8,6 +8,8 @@ struct CalendarSettingsView: View {
     var body: some View {
         @Bindable var settings = settings
         Form {
+            CalendarPermissionSection()
+
             FeatureSwitchSection(
                 anchor: .calendarCalendar,
                 enableTitle: "Join meetings from Tinycast",
@@ -27,28 +29,6 @@ struct CalendarSettingsView: View {
                 }
             }
             .settingsEnabled(settings.calendarEnabled && settings.calendarShowInLauncher)
-
-            if settings.calendarEnabled, store.access == .notDetermined {
-                Section {
-                    SettingsRow(
-                        title: String(localized: "Calendar access is needed"),
-                        subtitle: String(localized: "Needed to read events and find join links.")
-                    ) {
-                        Button("Allow Calendar Access…") {
-                            core.calendarCoordinator.setCalendarEnabled(true)
-                        }
-                    }
-                }
-            } else if store.access == .denied {
-                Section {
-                    SettingsRow(
-                        title: String(localized: "Calendar access is off"),
-                        subtitle: String(localized: "Allow it in Privacy & Security ▸ Calendars.")
-                    ) {
-                        Button("Open System Settings…") { Permissions.openCalendarSettings() }
-                    }
-                }
-            }
 
             Section {
                 Picker(selection: $settings.joinWindowMinutes) {
@@ -249,5 +229,44 @@ private struct CalendarRow: View {
             get: { store.isEnabled(calendar) },
             set: { store.setEnabled($0, for: calendar) }
         )
+    }
+}
+
+/// MorsCast keeps the calendar grant beside the feature that needs it, not on Permissions.
+private struct CalendarPermissionSection: View {
+    @Environment(AppCore.self) private var core
+    @Environment(CalendarStore.self) private var store
+
+    var body: some View {
+        Section {
+            SettingsRow(
+                title: String(localized: "Calendar access"),
+                subtitle: String(localized: "Needed to read events and find join links.")
+            ) {
+                HStack(spacing: Theme.Spacing.lg) {
+                    HStack(spacing: Theme.Spacing.xs) {
+                        Image(systemName: status.symbol).accessibilityHidden(true)
+                        Text(status.title)
+                    }
+                    .foregroundStyle(status.tint)
+                    Button(store.access == .notDetermined ? "Grant Access…" : "Open…") {
+                        // Settings lists no app TCC was never asked about, so asking is the way in.
+                        if store.access == .notDetermined {
+                            core.calendarCoordinator.setCalendarEnabled(true)
+                        } else {
+                            Permissions.openCalendarSettings()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private var status: (title: String, symbol: String, tint: Color) {
+        switch store.access {
+        case .granted: (String(localized: "Granted"), "checkmark.circle.fill", .green)
+        case .notDetermined: (String(localized: "Not asked yet"), "questionmark.circle.fill", .secondary)
+        case .denied: (String(localized: "Not granted"), "exclamationmark.triangle.fill", .orange)
+        }
     }
 }

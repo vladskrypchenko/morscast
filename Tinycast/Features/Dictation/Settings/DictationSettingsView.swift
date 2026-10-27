@@ -201,17 +201,18 @@ struct DictationSettingsView: View {
         .settingsScrollTarget(.dictation)
         .onAppear {
             microphoneAccess = Permissions.microphoneAccess()
-            if settings.dictationEnabled { microphones = DictationCapture.microphones }
         }
-        .onChange(of: settings.dictationEnabled) { _, enabled in
-            if enabled { microphones = DictationCapture.microphones }
+        // Device discovery takes ~350 ms cold, so it never runs on the pane's first frame.
+        .task(id: settings.dictationEnabled) {
+            guard settings.dictationEnabled else { return }
+            microphones = await DictationCapture.discoverMicrophones()
         }
         .task {
             for await _ in NotificationCenter.default.notifications(
                 named: NSApplication.didBecomeActiveNotification)
             {
                 microphoneAccess = Permissions.microphoneAccess()
-                if settings.dictationEnabled { microphones = DictationCapture.microphones }
+                if settings.dictationEnabled { microphones = await DictationCapture.discoverMicrophones() }
             }
         }
         .task(id: settings.dictationEnabled ? settings.dictationModel : nil) {

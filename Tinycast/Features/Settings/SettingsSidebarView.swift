@@ -25,20 +25,15 @@ struct SettingsSidebarView: View {
 
     private var browse: some View {
         List(selection: selection) {
-            ForEach(SettingsSection.allCases) { section in
-                Section(section.title) {
-                    ForEach(section.tabs.filter { !$0.isTucked }) { tab in
-                        row(tab)
-                    }
+            ForEach(SettingsSection.allCases.flatMap(\.tabs).filter { !$0.isTucked }) { tab in
+                row(tab)
+            }
+            if showsMore {
+                ForEach(SettingsTab.tucked) { tab in
+                    row(tab)
                 }
             }
-            Section {
-                DisclosureGroup("Show More", isExpanded: $showsMore) {
-                    ForEach(SettingsTab.tucked) { tab in
-                        row(tab)
-                    }
-                }
-            }
+            ShowMoreRow(showsMore: $showsMore)
         }
         .onAppear { if navigation.tab.isTucked { showsMore = true } }
         .listStyle(.sidebar)
@@ -97,6 +92,37 @@ struct SettingsSidebarView: View {
             get: { navigation.tab },
             set: { if let tab = $0 { navigation.select(tab) } }
         )
+    }
+}
+
+/// A whole-row toggle styled like the tabs above it, so the hit area is the row, not the words.
+private struct ShowMoreRow: View {
+    @Binding var showsMore: Bool
+    @State private var hovered = false
+
+    var body: some View {
+        Button {
+            withAnimation(.easeOut(duration: 0.2)) { showsMore.toggle() }
+        } label: {
+            Label {
+                Text(showsMore ? "Show Less" : "Show More")
+            } icon: {
+                SettingsTabIcon(
+                    systemImage: showsMore ? "chevron.up" : "chevron.down", tint: .secondary)
+            }
+            .labelStyle(.titleAndIcon)
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical, Theme.Spacing.xxs)
+            .padding(.horizontal, Theme.Spacing.xs)
+            .background(
+                RoundedRectangle(cornerRadius: Theme.Radius.row, style: .continuous)
+                    .fill(Color.primary.opacity(hovered ? 0.07 : 0)))
+            .contentShape(.rect(cornerRadius: Theme.Radius.row))
+        }
+        .buttonStyle(.plain)
+        .onHover { hovered = $0 }
+        .listRowInsets(EdgeInsets(top: 0, leading: Theme.Spacing.xs, bottom: 0, trailing: Theme.Spacing.xs))
     }
 }
 

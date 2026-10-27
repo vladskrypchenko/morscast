@@ -25,6 +25,19 @@ final class DictationCapture {
         ).devices
     }
 
+    /// The first discovery is slow and later ones are cached, so the cold one runs off-main.
+    static func discoverMicrophones() async -> [AVCaptureDevice] {
+        await warmUpDiscovery()
+        return microphones
+    }
+
+    @concurrent
+    private static func warmUpDiscovery() async {
+        _ = AVCaptureDevice.DiscoverySession(
+            deviceTypes: [.microphone, .external], mediaType: .audio, position: .unspecified
+        ).devices.count
+    }
+
     var onLevels: (([Float]) -> Void)?
     var onLimit: (() -> Void)?
 
