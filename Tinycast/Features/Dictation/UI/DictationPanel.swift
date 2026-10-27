@@ -25,30 +25,44 @@ final class DictationDisplayState {
 
 private enum DictationPreview {
     static let characterLimit = 400
-    static let width: CGFloat = 520
-    static let height: CGFloat = 64
-    static let gap: CGFloat = 8
+    /// Enough words that the oldest ones can fade out on the left while the newest stay readable.
+    static let visibleWords = 12
+    static let expandedWidth: CGFloat = 360
+    static let compactBars = 7
+    static let fadeWidth: CGFloat = 56
 }
 
-private struct DictationPreviewBubble: View {
+/// The newest words on one line, right-aligned, so older ones slide left into a fade.
+private struct DictationPreviewLine: View {
     let state: DictationDisplayState
 
     var body: some View {
-        let final = String(state.previewFinal.trimmingPrefix(while: \.isWhitespace))
-        let tentative = final.isEmpty
-            ? String(state.previewTentative.trimmingPrefix(while: \.isWhitespace))
-            : state.previewTentative
-        let settled = Text(verbatim: final).foregroundStyle(Color.white)
-        let guess = Text(verbatim: tentative).foregroundStyle(Color.white.opacity(0.45))
-        Text("\(settled)\(guess)")
-            .font(.body)
-            .lineLimit(2)
-            .truncationMode(.head)
-            .multilineTextAlignment(.center)
-            .padding(.horizontal, Theme.Spacing.lg)
-            .padding(.vertical, Theme.Spacing.sm)
-            .background(DictationFlatSurface(shape: .rect(cornerRadius: Theme.Radius.formField)))
-            .frame(maxWidth: DictationPreview.width)
+        let finalWords = state.previewFinal.split(whereSeparator: \.isWhitespace)
+        let guessWords = state.previewTentative.split(whereSeparator: \.isWhitespace)
+        let guessShown = Array(guessWords.suffix(DictationPreview.visibleWords))
+        let finalShown = finalWords.suffix(DictationPreview.visibleWords - guessShown.count)
+        let settled = Text(verbatim: finalShown.joined(separator: " ")).foregroundStyle(Color.white)
+        let separator = finalShown.isEmpty || guessShown.isEmpty ? "" : " "
+        let guess = Text(verbatim: separator + guessShown.joined(separator: " "))
+            .foregroundStyle(Color.white.opacity(0.45))
+        Color.clear
+            .overlay(alignment: .trailing) {
+                Text("\(settled)\(guess)")
+                    .font(.body)
+                    .lineLimit(1)
+                    .fixedSize()
+            }
+            .clipped()
+            .mask {
+                HStack(spacing: 0) {
+                    LinearGradient(
+                        colors: [.clear, .black], startPoint: .leading, endPoint: .trailing
+                    )
+                    .frame(width: DictationPreview.fadeWidth)
+                    Color.black
+                }
+            }
+            .animation(.easeOut(duration: 0.12), value: state.previewFinal + state.previewTentative)
             .accessibilityLabel("Dictation preview")
     }
 }
@@ -96,36 +110,53 @@ private struct DictationProcessingWave: View {
 private struct DictationPanelView: View {
     let state: DictationDisplayState
 
+    private var showsText: Bool { !state.previewFinal.isEmpty || !state.previewTentative.isEmpty }
+
     var body: some View {
-        VStack(spacing: DictationPreview.gap) {
-            if !state.previewFinal.isEmpty || !state.previewTentative.isEmpty {
-                DictationPreviewBubble(state: state)
+        let height = Theme.Size.dictationPanel.height
+        HStack(spacing: 0) {
+            waveform
+                .frame(width: showsText ? height : Theme.Size.dictationPanel.width, height: height)
+            if showsText {
+                DictationPreviewLine(state: state)
+                    .padding(.trailing, Theme.Spacing.lg)
+                    .transition(.opacity)
             }
-            capsule
         }
         .frame(
+            width: showsText ? DictationPreview.expandedWidth : Theme.Size.dictationPanel.width,
+            height: height)
+        .background(DictationFlatSurface(shape: .capsule))
+        .animation(.spring(duration: 0.3, bounce: 0.1), value: showsText)
+        .frame(
             width: DictationPanelController.panelSize.width,
-            height: DictationPanelController.panelSize.height, alignment: .bottom)
+            height: DictationPanelController.panelSize.height)
     }
 
-    private var capsule: some View {
-        Group {
-            if state.phase == .listening {
-                DictationWaveform(
-                    levels: state.levels.enumerated().map { index, level in
-                        let edge = min(1, Float(min(index, state.levels.count - 1 - index)) / 4)
-                        let taper = edge * edge * (3 - 2 * edge)
-                        return level * (0.2 + 0.8 * taper)
-                    }, processing: false
-                )
-                .accessibilityLabel("Dictation listening")
-            } else {
-                DictationProcessingWave()
-                    .accessibilityLabel("Transcribing dictation")
-            }
+    /// Every third band while text shows, so the wave fits a square beside it.
+    private func shown(_ levels: [Float]) -> [Float] {
+        guard showsText else { return levels }
+        let step = max(1, levels.count / DictationPreview.compactBars)
+        return stride(from: step / 2, to: levels.count, by: step).map { levels[$0] }
+    }
+
+    @ViewBuilder
+    private var waveform: some View {
+        if state.phase == .listening {
+            let levels = shown(state.levels)
+            DictationWaveform(
+                levels: levels.enumerated().map { index, level in
+                    let edge = min(1, Float(min(index, levels.count - 1 - index)) / 4)
+                    let taper = showsText ? 1 : edge * edge * (3 - 2 * edge)
+                    return level * (0.2 + 0.8 * taper)
+                }, processing: false
+            )
+            .accessibilityLabel("Dictation listening")
+        } else {
+            DictationProcessingWave()
+                .scaleEffect(showsText ? 0.4 : 1)
+                .accessibilityLabel("Transcribing dictation")
         }
-        .frame(width: Theme.Size.dictationPanel.width, height: Theme.Size.dictationPanel.height)
-        .background(DictationFlatSurface(shape: .capsule))
     }
 }
 
@@ -177,8 +208,8 @@ private final class DictationPanel: NSPanel, AnimatedPanel {
 @MainActor
 final class DictationPanelController {
     static let panelSize = CGSize(
-        width: max(Theme.Size.dictationPanel.width, DictationPreview.width),
-        height: Theme.Size.dictationPanel.height + DictationPreview.gap + DictationPreview.height)
+        width: max(Theme.Size.dictationPanel.width, DictationPreview.expandedWidth),
+        height: Theme.Size.dictationPanel.height)
     let state = DictationDisplayState()
     private var panel: DictationPanel?
     var onAccept: (() -> Void)?
