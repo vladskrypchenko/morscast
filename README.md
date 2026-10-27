@@ -25,6 +25,23 @@ MorsCast is based on [Tinycast](https://github.com/abue-ammar/tinycast) by Abue 
   <img src="docs/screenshot.png" alt="MorsCast command palette" width="720">
 </p>
 
+## Install
+
+<p align="center">
+  <a href="https://github.com/vladskrypchenko/morscast/releases/latest">
+    <img alt="Download MorsCast"
+         src="https://img.shields.io/badge/Download-MorsCast-1F6FEB?style=for-the-badge&logo=apple&logoColor=white"></a>
+</p>
+
+1. Download `MorsCast-<version>.zip` from the
+   [latest release](https://github.com/vladskrypchenko/morscast/releases/latest) and unzip it.
+2. Move `MorsCast.app` to **Applications**.
+3. Open it. MorsCast is signed but not notarized, so on first launch macOS blocks it: go to
+   **System Settings → Privacy & Security** and click **Open Anyway** next to MorsCast. Once is enough.
+
+Requires an Apple silicon Mac with macOS 26 or newer. MorsCast checks for new releases on its own and
+installs them after you confirm.
+
 ## Features
 
 - **App launcher** — fuzzy-search and launch anything, pin favorites, see what's running, quit an app
@@ -61,23 +78,6 @@ MorsCast is based on [Tinycast](https://github.com/abue-ammar/tinycast) by Abue 
 - **Quick Actions** — fix grammar, rewrite, translate or summarize the selected text in any app.
 - **Raycast extensions** — run the ones you already have natively, rendered as SwiftUI.
 - **Backup and import** — export your settings to a file, or import your setup from Raycast.
-
-## Install
-
-<p align="center">
-  <a href="https://github.com/vladskrypchenko/morscast/releases/latest">
-    <img alt="Download MorsCast"
-         src="https://img.shields.io/badge/Download-MorsCast-1F6FEB?style=for-the-badge&logo=apple&logoColor=white"></a>
-</p>
-
-1. Download `MorsCast-<version>.zip` from the
-   [latest release](https://github.com/vladskrypchenko/morscast/releases/latest) and unzip it.
-2. Move `MorsCast.app` to **Applications**.
-3. Open it. MorsCast is signed but not notarized, so on first launch macOS blocks it: go to
-   **System Settings → Privacy & Security** and click **Open Anyway** next to MorsCast. Once is enough.
-
-Requires an Apple silicon Mac with macOS 26 or newer. MorsCast checks for new releases on its own and
-installs them after you confirm.
 
 ## License
 
