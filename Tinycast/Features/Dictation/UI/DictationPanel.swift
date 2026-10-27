@@ -32,6 +32,9 @@ private enum DictationPreview {
     static let expandedWidth: CGFloat = 360
     static let compactBars = 7
     static let fadeWidth: CGFloat = 56
+    static let trailingFadeWidth: CGFloat = 28
+    /// How far the newest end rests from the edge, so it sits in the fade's clear half.
+    static let trailingRest: CGFloat = 14
     /// A shrink this large is a trim, not a revised guess, so it moves without animation.
     static let trimJump: CGFloat = 120
     static let scroll = Animation.smooth(duration: 0.45)
@@ -71,18 +74,26 @@ private struct DictationPreviewLine: View {
             .clipped()
             .mask {
                 HStack(spacing: 0) {
-                    LinearGradient(
-                        colors: [.clear, .black], startPoint: .leading, endPoint: .trailing
-                    )
+                    ZStack {
+                        LinearGradient(
+                            colors: [.clear, .black], startPoint: .leading, endPoint: .trailing)
+                        // Opaque until the line scrolls, so the phrase's first words stay readable.
+                        Color.black.opacity(offset < 0 ? 0 : 1)
+                    }
                     .frame(width: DictationPreview.fadeWidth)
                     Color.black
+                    LinearGradient(
+                        colors: [.black, .clear], startPoint: .leading, endPoint: .trailing
+                    )
+                    .frame(width: DictationPreview.trailingFadeWidth)
                 }
+                .animation(.easeOut(duration: 0.3), value: offset < 0)
             }
             .accessibilityLabel("Dictation preview")
     }
 
     private func settle(animated: Bool) {
-        let target = min(0, boxWidth - lineWidth)
+        let target = min(0, boxWidth - DictationPreview.trailingRest - lineWidth)
         guard target != offset else { return }
         if animated {
             withAnimation(DictationPreview.scroll) { offset = target }
