@@ -18,5 +18,12 @@ If a rebase conflicts in `Localizable.xcstrings` or `InfoPlist.xcstrings`, take 
 (`git checkout --theirs <file>` during the rebase), run `python3 Scripts/morscast-rebrand.py`,
 then `git add` and `git rebase --continue`. Then `xcodegen generate` and rebuild.
 
-The app never offers upstream releases: `ReleaseChannel` treats any non-Tinycast bundle id as a
-development build, which does not update.
+## Updates
+
+`com.morscast.app` is the stable channel. It checks
+[vladskrypchenko/morscast](https://github.com/vladskrypchenko/morscast) releases 30 s after launch
+and then every 6 hours, and installs only a zip signed by team `BV8636DZJY`. Debug builds never update.
+
+To release: bump `MARKETING_VERSION` in `project.yml`, `xcodegen generate`, build Release, then
+`ditto -c -k --keepParent MorsCast.app MorsCast-<version>.zip` and
+`gh release create v<version> MorsCast-<version>.zip`.

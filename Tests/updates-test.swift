@@ -100,9 +100,9 @@ struct UpdatesTests {
     // MARK: - ReleaseChannel
 
     static func derivesChannels() {
-        let stable = ReleaseChannel(bundleID: "com.tinycast.app")
-        let beta = ReleaseChannel(bundleID: "com.tinycast.app.beta")
-        let dev = ReleaseChannel(bundleID: "com.tinycast.app.dev")
+        let stable = ReleaseChannel(bundleID: "com.morscast.app")
+        let beta = ReleaseChannel(bundleID: "com.morscast.app.beta")
+        let dev = ReleaseChannel(bundleID: "com.morscast.app.dev")
 
         expect(stable == .stable, "the stable bundle id is the stable channel")
         expect(beta == .beta, "the beta bundle id is the beta channel")
@@ -306,8 +306,8 @@ struct UpdatesTests {
             BundleSignature.developerID.hasPrefix("anchor apple generic and "),
             "the requirement is anchored to Apple's chain, not just to a team string")
         expect(
-            BundleSignature.developerID.contains("field.1.2.840.113635.100.6.1.13"),
-            "the requirement demands a Developer ID Application certificate specifically")
+            BundleSignature.developerID.contains("leaf[subject.OU] = \"BV8636DZJY\""),
+            "the requirement names MorsCast's own signing team")
     }
 
     static func keepsOnlyTheChangelog() {
