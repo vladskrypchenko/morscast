@@ -34,6 +34,7 @@ struct SystemAction: Identifiable, Hashable, Sendable {
         case quitAllApps = "quit-all-apps"
         case dismissNotifications = "dismiss-notifications"
         case toggleBluetooth = "toggle-bluetooth"
+        case toggleCaffeine = "toggle-caffeine"
     }
 
     /// Whether it confirms first, and the copy; every such action is destructive.
@@ -110,6 +111,7 @@ enum SystemActionCatalog {
         case .quitAllApps: return "Quit All Applications"
         case .dismissNotifications: return "Dismiss Notifications"
         case .toggleBluetooth: return "Toggle Bluetooth"
+        case .toggleCaffeine: return "Toggle Caffeine"
         }
     }
 
@@ -144,6 +146,7 @@ enum SystemActionCatalog {
         case .dismissNotifications: return "bell.slash"
         // Not an SF Symbol: the logo is a trademark, so this is a bundled asset.
         case .toggleBluetooth: return "bluetooth"
+        case .toggleCaffeine: return "cup.and.saucer"
         }
     }
 

@@ -5,7 +5,7 @@ struct MenuBarLabel: View {
     let appName: String
 
     var body: some View {
-        Image("MenuBarIcon")
+        Image(AppCore.shared.caffeine.isActive ? "MenuBarIconActive" : "MenuBarIcon")
             .accessibilityLabel(appName)
     }
 }
@@ -23,6 +23,8 @@ struct MenuBarMenu: View {
                 AppCore.shared.paletteCoordinator.showPalette(mode: .clipboard)
             }
         }
+        Divider()
+        CaffeineMenu(caffeine: AppCore.shared.caffeine)
         Divider()
         Button("Check for Updates…") { AppCore.shared.updateCoordinator.checkForUpdates() }
         Button("Support \(appName)…") { AppCore.shared.supportCoordinator.showSupport() }

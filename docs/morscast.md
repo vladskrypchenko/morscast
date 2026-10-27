@@ -1,7 +1,8 @@
 # MorsCast fork
 
 MorsCast is a personal fork of [Tinycast](https://github.com/abue-ammar/tinycast) by Abue Ammar,
-distributed under the same AGPL-3.0 licence. It adds Soniox cloud dictation and ships under its own
+distributed under the same AGPL-3.0 licence. It adds Soniox cloud dictation and Caffeine (keep
+awake from the menu-bar menu or the Toggle Caffeine action, `Features/Caffeine/`), and ships under its own
 name, bundle id (`com.morscast.app`, Debug `com.morscast.app.dev`) and Apple Development signature.
 
 Internal source names (`Tinycast/` folder, type names) stay unchanged so upstream rebases stay small.

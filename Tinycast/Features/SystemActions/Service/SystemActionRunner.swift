@@ -77,8 +77,8 @@ enum SystemActionRunner {
             try stepVolume(up: true)
         case .volumeDown:
             try stepVolume(up: false)
-        case .setVolume:
-            break  // AppCore owns the value-picking dialog and calls setVolume directly.
+        case .setVolume, .toggleCaffeine:
+            break  // The coordinator owns both: the volume dialog and Caffeine's state.
         case .volume0:
             try setVolume(0)
         case .volume25:

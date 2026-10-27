@@ -50,6 +50,10 @@ final class SystemActionCoordinator {
                 let current = try SystemActionRunner.currentVolume()
                 guard let selected = await core.pickVolume(current: current) else { return }
                 try SystemActionRunner.setVolume(selected)
+            } else if action.id == .toggleCaffeine {
+                feedback = SystemActionFeedback(
+                    core.caffeine.toggle()
+                        ? String(localized: "Caffeine On") : String(localized: "Caffeine Off"))
             } else {
                 feedback = try await SystemActionRunner.run(action.id, previousApp: previousApp)
             }
