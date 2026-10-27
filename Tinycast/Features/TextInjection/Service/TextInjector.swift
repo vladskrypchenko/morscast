@@ -664,17 +664,16 @@ final class TextInjector {
         guard setSelectedRange(target.replacementRange, in: target.element) else {
             return .unavailable
         }
-        guard
-            AXUIElementSetAttributeValue(
-                target.element,
-                kAXSelectedTextAttribute as CFString,
-                injected.text as CFString) == .success
-        else {
+        // Telegram reports failure for an edit it applied, so the value, not the status, decides.
+        let status = AXUIElementSetAttributeValue(
+            target.element,
+            kAXSelectedTextAttribute as CFString,
+            injected.text as CFString)
+        let observed = stringValue(in: target.element)
+        if status != .success, observed == target.value {
             _ = setSelectedRange(target.originalRange, in: target.element)
             return .unavailable
         }
-
-        let observed = stringValue(in: target.element)
         guard
             TextReplacementPolicy.confirmsReplacement(
                 originalValue: target.value,
