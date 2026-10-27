@@ -4,8 +4,8 @@
     {
       "layers": [
         {
-          "image-name": "thunder.svg",
-          "name": "thunder"
+          "image-name": "morse.svg",
+          "name": "morse"
         }
       ],
       "shadow": {
@@ -19,7 +19,9 @@
     }
   ],
   "supported-platforms": {
-    "circles": ["watchOS"],
+    "circles": [
+      "watchOS"
+    ],
     "squares": "shared"
   }
 }

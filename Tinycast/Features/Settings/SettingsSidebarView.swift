@@ -6,6 +6,7 @@ struct SettingsSidebarView: View {
     @State private var query = ""
     @State private var highlighted: SettingsSearchEntry.ID?
     @State private var searching = false
+    @AppStorage("settingsShowsMore") private var showsMore = false
 
     private var results: [SettingsSearchEntry] { SettingsSearchCatalog.results(for: query) }
 
@@ -26,24 +27,36 @@ struct SettingsSidebarView: View {
         List(selection: selection) {
             ForEach(SettingsSection.allCases) { section in
                 Section(section.title) {
-                    ForEach(section.tabs) { tab in
-                        Label {
-                            Text(tab.title)
-                        } icon: {
-                            SettingsTabIcon(
-                                systemImage: tab.systemImage,
-                                tint: appearsActive
-                                    ? (navigation.tab == tab ? Color.primary : Color.accentColor)
-                                    : Color.secondary)
-                        }
-                        .tag(tab)
+                    ForEach(section.tabs.filter { !$0.isTucked }) { tab in
+                        row(tab)
+                    }
+                }
+            }
+            Section {
+                DisclosureGroup("Show More", isExpanded: $showsMore) {
+                    ForEach(SettingsTab.tucked) { tab in
+                        row(tab)
                     }
                 }
             }
         }
+        .onAppear { if navigation.tab.isTucked { showsMore = true } }
         .listStyle(.sidebar)
         // Pin the style before mounting; the implicit sidebar style paints icons a frame late.
         .labelStyle(.titleAndIcon)
+    }
+
+    private func row(_ tab: SettingsTab) -> some View {
+        Label {
+            Text(tab.title)
+        } icon: {
+            SettingsTabIcon(
+                systemImage: tab.systemImage,
+                tint: appearsActive
+                    ? (navigation.tab == tab ? Color.primary : Color.accentColor)
+                    : Color.secondary)
+        }
+        .tag(tab)
     }
 
     @ViewBuilder private var found: some View {

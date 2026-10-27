@@ -33,7 +33,6 @@ struct AboutView: View {
                         .padding(.vertical, Theme.Spacing.lg)
                 }
                 .settingsAnchor(.aboutAbout)
-                links
                 support
             }
             .formStyle(.grouped)
@@ -114,16 +113,18 @@ struct AboutView: View {
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 Spacer(minLength: Theme.Spacing.lg)
-                Button("Support…") { core.supportCoordinator.showSupport() }
+                // MorsCast has nowhere to send support yet, so the button stays inert.
+                Button("Support…") {}
                     .buttonStyle(.borderedProminent)
                     .tint(Theme.Colors.brand)
+                    .disabled(true)
             }
             .padding(.vertical, Theme.Spacing.xs)
         }
     }
 
     private var footer: some View {
-        Text("© 2026 Abue Ammar · Released under AGPL-3.0")
+        Text(verbatim: "© 2026 MorsCast · Based on Tinycast · Released under AGPL-3.0")
             .font(.caption2)
             .foregroundStyle(.tertiary)
     }

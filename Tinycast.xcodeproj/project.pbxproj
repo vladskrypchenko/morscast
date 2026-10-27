@@ -505,6 +505,7 @@
 		93364B5BCC0933108AADA0B6 /* NoteMarkdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC1FDF99BFB0FB10FECEDAF /* NoteMarkdown.swift */; };
 		935F7433BB0C0ECDE6FA3BF3 /* ClipboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548C83C4086CD9FB8E85B222 /* ClipboardScreen.swift */; };
 		939F3944AE8D36A8C337D46F /* Signposts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9044F107ADD5896746DBC35 /* Signposts.swift */; };
+		93FDA5B8AF26D833E84CA742 /* SettingsTab+MorsCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBE8F06267EA7EB24D4B7B7 /* SettingsTab+MorsCast.swift */; };
 		943B767858B07EE75B1C8915 /* ExtensionGitHubSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B583DC6E33E1BF3AC1E22B5 /* ExtensionGitHubSource.swift */; };
 		944E1D95690A062853F12CCE /* RelaunchRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084EB69F451BA7386AC6499F /* RelaunchRunner.swift */; };
 		94887F8E18AB2C08A8273897 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B3EB88881CEEFCE71448D /* Permissions.swift */; };
@@ -1436,6 +1437,7 @@
 		9ADAA05D695590C4B654E5BF /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		9B107F5E532C8DE74430723B /* PaletteTabAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteTabAction.swift; sourceTree = "<group>"; };
 		9B64D32132633024A8798E80 /* RoomsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsSection.swift; sourceTree = "<group>"; };
+		9BBE8F06267EA7EB24D4B7B7 /* SettingsTab+MorsCast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsTab+MorsCast.swift"; sourceTree = "<group>"; };
 		9BD81541882CBCC5B06F718F /* UpdateDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDownloader.swift; sourceTree = "<group>"; };
 		9C37CCD024267EB21876C7E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D0A2005448E6F88C3F78489 /* CalendarStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarStore.swift; sourceTree = "<group>"; };
@@ -3612,6 +3614,7 @@
 				B580FD584B516AB666F1C81E /* SettingsSearchCatalog.swift */,
 				03D29ADBBE565419B1E98281 /* SettingsSidebarView.swift */,
 				4AA61A2FAF4E49E466DA8F37 /* SettingsTab.swift */,
+				9BBE8F06267EA7EB24D4B7B7 /* SettingsTab+MorsCast.swift */,
 				F3CE1A1626264322E8A1192E /* SettingsWindowChrome.swift */,
 			);
 			path = Settings;
@@ -4716,6 +4719,7 @@
 				3D00EF47CECC95BAEDD372FA /* SettingsScrollTarget.swift in Sources */,
 				B83D909972DFFC37E2FB1304 /* SettingsSearchCatalog.swift in Sources */,
 				1CA10DE219BAB97BFC29E54A /* SettingsSidebarView.swift in Sources */,
+				93FDA5B8AF26D833E84CA742 /* SettingsTab+MorsCast.swift in Sources */,
 				26DB736F18280E1BE6C6B8BE /* SettingsTab.swift in Sources */,
 				23F808ECC9100FFCBE5DA0F7 /* SettingsWindowChrome.swift in Sources */,
 				4109B5CF37DCA4BCDAE46412 /* ShellCommandRunner.swift in Sources */,
