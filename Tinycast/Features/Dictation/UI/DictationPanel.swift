@@ -38,8 +38,8 @@ private struct DictationPreviewBubble: View {
         let tentative = final.isEmpty
             ? String(state.previewTentative.trimmingPrefix(while: \.isWhitespace))
             : state.previewTentative
-        let settled = Text(verbatim: final).foregroundStyle(Theme.Colors.textPrimary)
-        let guess = Text(verbatim: tentative).foregroundStyle(Theme.Colors.textPrimary.opacity(0.45))
+        let settled = Text(verbatim: final).foregroundStyle(Color.white)
+        let guess = Text(verbatim: tentative).foregroundStyle(Color.white.opacity(0.45))
         Text("\(settled)\(guess)")
             .font(.body)
             .lineLimit(2)
@@ -47,7 +47,7 @@ private struct DictationPreviewBubble: View {
             .multilineTextAlignment(.center)
             .padding(.horizontal, Theme.Spacing.lg)
             .padding(.vertical, Theme.Spacing.sm)
-            .glassEffect(.regular, in: .rect(cornerRadius: Theme.Radius.formField))
+            .background(DictationFlatSurface(shape: .rect(cornerRadius: Theme.Radius.formField)))
             .frame(maxWidth: DictationPreview.width)
             .accessibilityLabel("Dictation preview")
     }
@@ -65,7 +65,7 @@ private struct DictationWaveform: View {
                     ? Double(levels[index])
                     : min(1, Double(min(index, levels.count - 1 - index)) / 3)
                 Capsule()
-                    .fill(Theme.Colors.textPrimary.opacity(0.4 + 0.6 * emphasis))
+                    .fill(Color.white.opacity(0.4 + 0.6 * emphasis))
                     .frame(
                         width: Theme.Size.dictationWaveBar,
                         height: 3 + (processing ? 9 : 25) * CGFloat(levels[index]))
@@ -125,7 +125,18 @@ private struct DictationPanelView: View {
             }
         }
         .frame(width: Theme.Size.dictationPanel.width, height: Theme.Size.dictationPanel.height)
-        .glassEffect(.regular, in: .capsule)
+        .background(DictationFlatSurface(shape: .capsule))
+    }
+}
+
+/// A flat, solid dark surface: no glass and no shadow, readable over any background.
+private struct DictationFlatSurface<S: InsettableShape>: View {
+    let shape: S
+
+    var body: some View {
+        shape
+            .fill(Color.black.opacity(0.88))
+            .overlay(shape.strokeBorder(Color.white.opacity(0.08), lineWidth: 1))
     }
 }
 
@@ -140,7 +151,7 @@ private final class DictationPanel: NSPanel, AnimatedPanel {
         contentView = content
         isOpaque = false
         backgroundColor = .clear
-        hasShadow = true
+        hasShadow = false
         level = .floating
         collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
         hidesOnDeactivate = false

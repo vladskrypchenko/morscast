@@ -95,8 +95,15 @@ final class PaletteWindowController: NSObject, NSWindowDelegate {
             panel.invalidateShadow()
             // A never-activated login item can drop the first key request, so re-assert.
             DispatchQueue.main.async { [weak panel] in
-                guard let panel, panel.isVisible, !panel.isKeyWindow else { return }
+                guard let panel, panel.isVisible else { return }
+                panel.invalidateShadow()
+                guard !panel.isKeyWindow else { return }
                 panel.makeKeyAndOrderFront(nil)
+            }
+            // The open animation can snapshot the shadow before the rounded corners are drawn.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak panel] in
+                guard let panel, panel.isVisible else { return }
+                panel.invalidateShadow()
             }
         }
     }
