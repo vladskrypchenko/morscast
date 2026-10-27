@@ -13,8 +13,12 @@ final class DictationDisplayState {
     private(set) var previewTentative = ""
 
     func appendPreview(final: String, tentative: String) {
-        previewFinal = String((previewFinal + final).suffix(DictationPreview.characterLimit))
+        previewFinal += final
         previewTentative = tentative
+        // Trimmed rarely and in one big cut, so the line view can absorb it as a single jump.
+        guard previewFinal.count > DictationPreview.characterLimit * 2 else { return }
+        let tail = previewFinal.suffix(DictationPreview.characterLimit)
+        previewFinal = String(tail.drop { !$0.isWhitespace })
     }
 
     func clearPreview() {
@@ -24,33 +28,45 @@ final class DictationDisplayState {
 }
 
 private enum DictationPreview {
-    static let characterLimit = 400
-    /// Enough words that the oldest ones can fade out on the left while the newest stay readable.
-    static let visibleWords = 12
+    static let characterLimit = 300
     static let expandedWidth: CGFloat = 360
     static let compactBars = 7
     static let fadeWidth: CGFloat = 56
+    /// A shrink this large is a trim, not a revised guess, so it moves without animation.
+    static let trimJump: CGFloat = 120
+    static let scroll = Animation.smooth(duration: 0.45)
 }
 
-/// The newest words on one line, right-aligned, so older ones slide left into a fade.
+/// The whole running line, scrolled so its newest end stays in view; a spring keeps its pace.
 private struct DictationPreviewLine: View {
     let state: DictationDisplayState
+    @State private var lineWidth: CGFloat = 0
+    @State private var boxWidth: CGFloat = 0
+    @State private var offset: CGFloat = 0
 
     var body: some View {
-        let finalWords = state.previewFinal.split(whereSeparator: \.isWhitespace)
-        let guessWords = state.previewTentative.split(whereSeparator: \.isWhitespace)
-        let guessShown = Array(guessWords.suffix(DictationPreview.visibleWords))
-        let finalShown = finalWords.suffix(DictationPreview.visibleWords - guessShown.count)
-        let settled = Text(verbatim: finalShown.joined(separator: " ")).foregroundStyle(Color.white)
-        let separator = finalShown.isEmpty || guessShown.isEmpty ? "" : " "
-        let guess = Text(verbatim: separator + guessShown.joined(separator: " "))
-            .foregroundStyle(Color.white.opacity(0.45))
+        let final = String(state.previewFinal.trimmingPrefix(while: \.isWhitespace))
+        let tentative = final.isEmpty
+            ? String(state.previewTentative.trimmingPrefix(while: \.isWhitespace))
+            : state.previewTentative
+        let settled = Text(verbatim: final).foregroundStyle(Color.white)
+        let guess = Text(verbatim: tentative).foregroundStyle(Color.white.opacity(0.45))
         Color.clear
-            .overlay(alignment: .trailing) {
+            .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { width in
+                boxWidth = width
+                settle(animated: false)
+            }
+            .overlay(alignment: .leading) {
                 Text("\(settled)\(guess)")
                     .font(.body)
                     .lineLimit(1)
                     .fixedSize()
+                    .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { width in
+                        let trimmed = width < lineWidth - DictationPreview.trimJump
+                        lineWidth = width
+                        settle(animated: !trimmed)
+                    }
+                    .offset(x: offset)
             }
             .clipped()
             .mask {
@@ -62,8 +78,17 @@ private struct DictationPreviewLine: View {
                     Color.black
                 }
             }
-            .animation(.easeOut(duration: 0.12), value: state.previewFinal + state.previewTentative)
             .accessibilityLabel("Dictation preview")
+    }
+
+    private func settle(animated: Bool) {
+        let target = min(0, boxWidth - lineWidth)
+        guard target != offset else { return }
+        if animated {
+            withAnimation(DictationPreview.scroll) { offset = target }
+        } else {
+            offset = target
+        }
     }
 }
 
