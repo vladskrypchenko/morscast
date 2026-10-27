@@ -464,6 +464,7 @@
 		85734D451C5E8B4E9F1DB8A1 /* RoomGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F749283370AC9B506E6529 /* RoomGrid.swift */; };
 		85B372E9A8F8D00D3A5FA260 /* HyperKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BFA41B0D7F369A8CF1E013 /* HyperKey.swift */; };
 		85FF7D441BD782A29EDD95A8 /* TextTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0371F4748011D45C185444 /* TextTranslator.swift */; };
+		85FF8CA7BFF771AE1C01C0DA /* AppTranslocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE592A49FDDDCF2FEA1BA6 /* AppTranslocation.swift */; };
 		86143F8509B6F9BF155C477C /* SonioxStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443AB48DC2364841FD390A0D /* SonioxStream.swift */; };
 		867B82EDC8A12BBC51592786 /* Tooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD4CE330F75BC5FE5EAD99E /* Tooltip.swift */; };
 		8696DC1B16B6618D22F804D5 /* AIChatState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC662BDA6856590DCF96B94 /* AIChatState.swift */; };
@@ -1428,6 +1429,7 @@
 		98784BF77E97C75859888301 /* QuickLookSurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookSurface.swift; sourceTree = "<group>"; };
 		988EA3698EA86BA53590C24E /* ExtensionFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFetcher.swift; sourceTree = "<group>"; };
 		98C29DA5656628B41C17D42A /* QuickActionSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionSettingsStore.swift; sourceTree = "<group>"; };
+		98DE592A49FDDDCF2FEA1BA6 /* AppTranslocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTranslocation.swift; sourceTree = "<group>"; };
 		9905A21DC8D37323B614F60C /* KeyboardFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFocus.swift; sourceTree = "<group>"; };
 		992A05290190AFEBA0C525CA /* FileSystemWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemWatcher.swift; sourceTree = "<group>"; };
 		996CF61F3B13A573B8D5A11F /* ExtensionRefreshIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionRefreshIndicator.swift; sourceTree = "<group>"; };
@@ -2359,6 +2361,7 @@
 		5642CE0EFEBE52F48D9CD60A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				98DE592A49FDDDCF2FEA1BA6 /* AppTranslocation.swift */,
 				C3E30EFA3197FC5EF1E85C21 /* BundleSignature.swift */,
 				B4984C964DC144E213DF4F63 /* Quarantine.swift */,
 				0DFEBE220187043060F7F286 /* ToolRunner.swift */,
@@ -4113,6 +4116,7 @@
 				FBB826DD73104A76AF114114 /* AppPickerPopover.swift in Sources */,
 				362651FE29DD01EC4D846F5F /* AppSettings.swift in Sources */,
 				3A22313E903883E55046F207 /* AppSettingsKey.swift in Sources */,
+				85FF8CA7BFF771AE1C01C0DA /* AppTranslocation.swift in Sources */,
 				00BA80B95E15859F0FDA6F16 /* AppVersion.swift in Sources */,
 				6527B404C220924885C070B3 /* AppWindowController.swift in Sources */,
 				89B3CC1AB417D04CE39FB70C /* Appearance.swift in Sources */,
@@ -5043,7 +5047,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = BV8636DZJY;
 				DICTATION_EXECUTABLE_NAME = "MorsCast Dev Dictation";
@@ -5064,7 +5068,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.2.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -5164,7 +5168,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = YES;
@@ -5182,7 +5186,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.2.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

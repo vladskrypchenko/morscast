@@ -9,6 +9,7 @@ enum UpdateFailure: LocalizedError, Equatable {
     case identityMismatch
     case versionMismatch(expected: String, found: String)
     case replaceFailed(String)
+    case translocated
 
     var errorDescription: String? {
         switch self {
@@ -30,6 +31,8 @@ enum UpdateFailure: LocalizedError, Equatable {
             return String(localized: "The downloaded app is version \(found), not \(expected).")
         case .replaceFailed(let detail):
             return String(localized: "Tinycast could not be replaced. \(detail)")
+        case .translocated:
+            return String(localized: "\(Bundle.main.appDisplayName) is running from a read-only copy macOS made.")
         }
     }
 
@@ -49,6 +52,12 @@ enum UpdateFailure: LocalizedError, Equatable {
                     """)
         case .quarantined:
             return String(localized: "Nothing was installed.")
+        case .translocated:
+            return String(
+                localized: """
+                    Nothing was installed. Quit \(Bundle.main.appDisplayName), drag it into the \
+                    Applications folder in Finder, open it from there and update again.
+                    """)
         default:
             return nil
         }

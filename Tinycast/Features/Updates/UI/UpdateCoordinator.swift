@@ -174,7 +174,7 @@ final class UpdateCoordinator {
 
     private var installer: UpdateInstaller {
         UpdateInstaller(
-            bundleURL: Bundle.main.bundleURL,
+            bundleURL: AppTranslocation.originalURL(of: Bundle.main.bundleURL),
             stagingDirectory: AppPaths.caches().appendingPathComponent("Updates", isDirectory: true))
     }
 

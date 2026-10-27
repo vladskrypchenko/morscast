@@ -593,7 +593,7 @@ final class AppCore {
         mcpOAuth.stop()
         mcp.stop()
         installedAI.stop()
-        if relaunchRequested { RelaunchRunner.relaunchAfterExit(Bundle.main.bundleURL) }
+        if relaunchRequested { RelaunchRunner.relaunchAfterExit(AppTranslocation.originalURL(of: Bundle.main.bundleURL)) }
     }
 
     /// Only the tool whose own path or variables changed is checked again; the rest keep running.

@@ -36,6 +36,7 @@ struct UpdateInstaller: Sendable {
     func install(
         _ release: AvailableRelease, onProgress: @escaping @Sendable (Phase) -> Void
     ) async throws {
+        guard !AppTranslocation.isTranslocated(bundleURL) else { throw UpdateFailure.translocated }
         try? FileManager.default.createDirectory(
             at: stagingDirectory, withIntermediateDirectories: true)
         let archive = stagingDirectory.appendingPathComponent("\(release.tag).zip")
