@@ -1881,6 +1881,7 @@
         }
       }
     },
+    "%@ is running from a read-only copy macOS made." : {},
     "%@ is too large to download." : {
       "localizations" : {
         "de" : {
@@ -16661,58 +16662,6 @@
         }
       }
     },
-    "A quicklink can’t open another quicklink" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ein Quicklink kann keinen anderen Quicklink öffnen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Un enlace rápido no puede abrir otro enlace rápido"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Un lien rapide ne peut pas ouvrir un autre lien rapide"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "クイックリンクから別のクイックリンクは開けません"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "빠른 링크는 다른 빠른 링크를 열 수 없음"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Um link rápido não pode abrir outro link rápido"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Быстрая ссылка не может открыть другую быструю ссылку"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "快速链接无法打开另一个快速链接"
-          }
-        }
-      }
-    },
     "A quicklink with this name already exists." : {
       "localizations" : {
         "de" : {
@@ -18385,6 +18334,7 @@
         }
       }
     },
+    "Activate at Launch" : {},
     "Active" : {
       "comment" : "Hyper Key status; also a yes-style diagnostics value",
       "localizations" : {
@@ -18747,362 +18697,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "添加 %@"
-          }
-        }
-      }
-    },
-    "Add %lld quicklinks from a link?" : {
-      "localizations" : {
-        "de" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld Quicklink aus einem Link hinzufügen?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld Quicklinks aus einem Link hinzufügen?"
-                }
-              }
-            }
-          }
-        },
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Add %lld quicklink from a link?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Add %lld quicklinks from a link?"
-                }
-              }
-            }
-          }
-        },
-        "es" : {
-          "variations" : {
-            "plural" : {
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "¿Añadir %lld enlaces rápidos desde un enlace?"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "¿Añadir %lld enlace rápido desde un enlace?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "¿Añadir %lld enlaces rápidos desde un enlace?"
-                }
-              }
-            }
-          }
-        },
-        "fr" : {
-          "variations" : {
-            "plural" : {
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Ajouter %lld de liens rapides depuis un lien ?"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Ajouter %lld lien rapide depuis un lien ?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Ajouter %lld liens rapides depuis un lien ?"
-                }
-              }
-            }
-          }
-        },
-        "ja" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "リンクから%lld件のクイックリンクを追加しますか？"
-                }
-              }
-            }
-          }
-        },
-        "ko" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "링크에서 빠른 링크 %lld개를 추가하시겠습니까?"
-                }
-              }
-            }
-          }
-        },
-        "pt" : {
-          "variations" : {
-            "plural" : {
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Adicionar %lld de links rápidos a partir de um link?"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Adicionar %lld link rápido a partir de um link?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Adicionar %lld links rápidos a partir de um link?"
-                }
-              }
-            }
-          }
-        },
-        "ru" : {
-          "variations" : {
-            "plural" : {
-              "few" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Добавить %lld быстрые ссылки по ссылке?"
-                }
-              },
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Добавить %lld быстрых ссылок по ссылке?"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Добавить %lld быструю ссылку по ссылке?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Добавить %lld быстрой ссылки по ссылке?"
-                }
-              }
-            }
-          }
-        },
-        "zh-Hans" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "要从链接添加 %lld 个快速链接吗？"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "Add %lld snippets from a link?" : {
-      "localizations" : {
-        "de" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld Textbaustein aus einem Link hinzufügen?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld Textbausteine aus einem Link hinzufügen?"
-                }
-              }
-            }
-          }
-        },
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Add %lld snippet from a link?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Add %lld snippets from a link?"
-                }
-              }
-            }
-          }
-        },
-        "es" : {
-          "variations" : {
-            "plural" : {
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "¿Añadir %lld fragmentos desde un enlace?"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "¿Añadir %lld fragmento desde un enlace?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "¿Añadir %lld fragmentos desde un enlace?"
-                }
-              }
-            }
-          }
-        },
-        "fr" : {
-          "variations" : {
-            "plural" : {
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Ajouter %lld d’extraits depuis un lien ?"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Ajouter %lld extrait depuis un lien ?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Ajouter %lld extraits depuis un lien ?"
-                }
-              }
-            }
-          }
-        },
-        "ja" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "リンクから%lld件のスニペットを追加しますか？"
-                }
-              }
-            }
-          }
-        },
-        "ko" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "링크에서 스니펫 %lld개를 추가하시겠습니까?"
-                }
-              }
-            }
-          }
-        },
-        "pt" : {
-          "variations" : {
-            "plural" : {
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Adicionar %lld de trechos a partir de um link?"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Adicionar %lld trecho a partir de um link?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Adicionar %lld trechos a partir de um link?"
-                }
-              }
-            }
-          }
-        },
-        "ru" : {
-          "variations" : {
-            "plural" : {
-              "few" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Добавить %lld сниппета по ссылке?"
-                }
-              },
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Добавить %lld сниппетов по ссылке?"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Добавить %lld сниппет по ссылке?"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Добавить %lld сниппета по ссылке?"
-                }
-              }
-            }
-          }
-        },
-        "zh-Hans" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "要从链接添加 %lld 个文本片段吗？"
-                }
-              }
-            }
           }
         }
       }
@@ -21339,6 +20933,7 @@
       }
     },
     "Allow Calendar Access…" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -21791,6 +21386,7 @@
       }
     },
     "Allow it in Privacy & Security ▸ Calendars." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -21843,6 +21439,7 @@
       }
     },
     "Allows File Search and finding protected app leftovers." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -21895,6 +21492,7 @@
       }
     },
     "Allows dictating text." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -21947,6 +21545,7 @@
       }
     },
     "Allows joining your next meeting." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -21999,6 +21598,7 @@
       }
     },
     "Allows pasting and window management." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -22412,110 +22012,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "物质的量"
-          }
-        }
-      }
-    },
-    "An app or web page asked Tinycast to run this with “%@”. Allow only links you trust." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eine App oder Webseite hat Tinycast gebeten, dies mit „%@“ auszuführen. Erlaube nur Links, denen du vertraust."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Una app o página web ha pedido a Tinycast que ejecute esto con “%@”. Permite solo enlaces de confianza."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Une app ou une page web a demandé à Tinycast d’exécuter ceci avec « %@ ». N’autorisez que les liens de confiance."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アプリまたは Web ページが Tinycast に「%@」でこの実行を求めました。信頼できるリンクだけを許可してください。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "앱 또는 웹 페이지가 Tinycast에 “%@”(으)로 이 항목의 실행을 요청했습니다. 신뢰할 수 있는 링크만 허용하십시오."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Um app ou página web pediu ao Tinycast para executar isto com “%@”. Permita apenas links confiáveis."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Приложение или веб-страница попросили Tinycast выполнить это с «%@». Разрешайте только ссылки, которым доверяете."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "某个应用或网页请求 Tinycast 以“%@”运行此项。请只允许你信任的链接。"
-          }
-        }
-      }
-    },
-    "An app or web page asked Tinycast to run this. Allow only links you trust." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eine App oder Webseite hat Tinycast gebeten, dies auszuführen. Erlaube nur Links, denen du vertraust."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Una app o página web ha pedido a Tinycast que ejecute esto. Permite solo enlaces de confianza."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Une app ou une page web a demandé à Tinycast d’exécuter ceci. N’autorisez que les liens de confiance."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アプリまたは Web ページが Tinycast にこの実行を求めました。信頼できるリンクだけを許可してください。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "앱 또는 웹 페이지가 Tinycast에 이 항목의 실행을 요청했습니다. 신뢰할 수 있는 링크만 허용하십시오."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Um app ou página web pediu ao Tinycast para executar isto. Permita apenas links confiáveis."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Приложение или веб-страница попросили Tinycast выполнить это. Разрешайте только ссылки, которым доверяете."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "某个应用或网页请求 Tinycast 运行此项。请只允许你信任的链接。"
           }
         }
       }
@@ -23350,58 +22846,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apple Intelligence 正忙。请稍后重试。"
-          }
-        }
-      }
-    },
-    "Apple Intelligence is currently unavailable. Check its status in System Settings." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Intelligence ist derzeit nicht verfügbar. Prüfe den Status in den Systemeinstellungen."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Intelligence no está disponible actualmente. Consulta su estado en Ajustes del Sistema."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Intelligence est actuellement indisponible. Consultez son état dans Réglages Système."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Intelligenceは現在利用できません。システム設定で状態を確認してください。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "현재 Apple Intelligence를 사용할 수 없습니다. 시스템 설정에서 상태를 확인하십시오."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A Apple Intelligence está indisponível no momento. Verifique o status nos Ajustes do Sistema."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Intelligence сейчас недоступен. Проверьте его статус в Системных настройках."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Intelligence 目前不可用。请在“系统设置”中查看其状态。"
           }
         }
       }
@@ -25403,58 +24847,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "随便问点什么…"
-          }
-        }
-      }
-    },
-    "Ask before a link runs %@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nachfragen, bevor ein Link %@ ausführt"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Preguntar antes de que un enlace ejecute %@"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Demander avant qu’un lien exécute %@"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "リンクが %@ を実行する前に確認"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "링크가 %@을(를) 실행하기 전에 확인"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perguntar antes de um link executar %@"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Спрашивать, прежде чем ссылка выполнит %@"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在链接运行 %@ 前询问"
           }
         }
       }
@@ -29011,6 +28403,8 @@
         }
       }
     },
+    "Caffeine Off" : {},
+    "Caffeine On" : {},
     "Calculator" : {
       "comment" : "Section header above the calculator result; also a settings section",
       "localizations" : {
@@ -29220,7 +28614,9 @@
         }
       }
     },
+    "Calendar access" : {},
     "Calendar access is needed" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -29273,6 +28669,7 @@
       }
     },
     "Calendar access is off" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -37600,58 +36997,6 @@
         }
       }
     },
-    "Commands you chose Always Allow for when a link asked to run them." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Befehle, für die du „Immer erlauben“ gewählt hast, als ein Link sie ausführen wollte."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comandos para los que elegiste “Permitir siempre” cuando un enlace pidió ejecutarlos."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Commandes pour lesquelles vous avez choisi « Toujours autoriser » quand un lien a demandé à les exécuter."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "リンクから実行を求められたときに「常に許可」を選んだコマンド。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "링크가 실행을 요청했을 때 “항상 허용”을 선택한 명령."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comandos para os quais escolheu “Sempre permitir” quando um link pediu para executá-los."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Команды, для которых вы выбрали «Всегда разрешать», когда ссылка просила их выполнить."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "链接请求运行时，你选择了“始终允许”的命令。"
-          }
-        }
-      }
-    },
     "Commerce" : {
       "localizations" : {
         "de" : {
@@ -40369,58 +39714,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "将颜色拷贝为…"
-          }
-        }
-      }
-    },
-    "Copy Deeplink" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deeplink kopieren"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copiar enlace profundo"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copier le lien profond"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ディープリンクをコピー"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "딥 링크 복사"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copiar deeplink"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Скопировать deeplink"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "拷贝深层链接"
           }
         }
       }
@@ -45487,110 +44780,6 @@
         }
       }
     },
-    "Deeplink copied" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deeplink kopiert"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enlace profundo copiado"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lien profond copié"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ディープリンクをコピーしました"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "딥 링크가 복사됨"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deeplink copiado"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deeplink скопирован"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已拷贝深层链接"
-          }
-        }
-      }
-    },
-    "Deeplinks" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deeplinks"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enlaces profundos"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Liens profonds"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ディープリンク"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "딥 링크"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deeplinks"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deeplinks"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "深层链接"
-          }
-        }
-      }
-    },
     "Default" : {
       "comment" : "The standard interface size, not a reset",
       "localizations" : {
@@ -45696,6 +44885,7 @@
         }
       }
     },
+    "Default Duration" : {},
     "Default action" : {
       "localizations" : {
         "de" : {
@@ -46948,58 +46138,6 @@
         }
       }
     },
-    "Details" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Details"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detalles"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Détails"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "詳細"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "세부 사항"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detalhes"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Подробности"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "详细信息"
-          }
-        }
-      }
-    },
     "Detected" : {
       "comment" : "Value after “Karabiner Conflict:”",
       "localizations" : {
@@ -47053,6 +46191,7 @@
         }
       }
     },
+    "Detects the dictation shortcut and pastes dictated or clipboard text into other apps." : {},
     "Devices" : {
       "localizations" : {
         "de" : {
@@ -47261,6 +46400,7 @@
         }
       }
     },
+    "Dictation & Clipboard" : {},
     "Dictation listening" : {
       "localizations" : {
         "de" : {
@@ -47313,6 +46453,7 @@
         }
       }
     },
+    "Dictation preview" : {},
     "Digital Storage" : {
       "localizations" : {
         "de" : {
@@ -54060,58 +53201,6 @@
         }
       }
     },
-    "Expand thinking" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Denken ausklappen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expandir el razonamiento"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Développer la réflexion"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "思考を展開"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "생각 펼치기"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expandir o raciocínio"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Разворачивать размышления"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "展开思考"
-          }
-        }
-      }
-    },
     "Expanded" : {
       "comment" : "Launcher window mode option",
       "localizations" : {
@@ -55601,6 +54690,7 @@
         }
       }
     },
+    "File Search & Uninstall" : {},
     "File Search can’t index without it." : {
       "localizations" : {
         "de" : {
@@ -65423,6 +64513,7 @@
         }
       }
     },
+    "Indefinitely" : {},
     "Index" : {
       "localizations" : {
         "de" : {
@@ -68618,58 +67709,8 @@
         }
       }
     },
-    "Keep aspect ratio" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seitenverhältnis beibehalten"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mantener la proporción"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Conserver les proportions"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "縦横比を維持"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "화면 비율 유지"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manter a proporção"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сохранять пропорции"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "保持比例"
-          }
-        }
-      }
-    },
+    "Keep Awake" : {},
+    "Keep Awake For" : {},
     "Keep conversations" : {
       "localizations" : {
         "de" : {
@@ -76509,110 +75550,6 @@
         }
       }
     },
-    "Move to Bottom Edge" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "An den unteren Rand bewegen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mover al borde inferior"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Déplacer vers le bord inférieur"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "下端へ移動"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "아래쪽 가장자리로 이동"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mover para a borda inferior"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Переместить к нижнему краю"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "移到下边缘"
-          }
-        }
-      }
-    },
-    "Move to Left Edge" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "An den linken Rand bewegen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mover al borde izquierdo"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Déplacer vers le bord gauche"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "左端へ移動"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "왼쪽 가장자리로 이동"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mover para a borda esquerda"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Переместить к левому краю"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "移到左边缘"
-          }
-        }
-      }
-    },
     "Move to Next Display" : {
       "localizations" : {
         "de" : {
@@ -76713,110 +75650,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "移到上一个显示器"
-          }
-        }
-      }
-    },
-    "Move to Right Edge" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "An den rechten Rand bewegen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mover al borde derecho"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Déplacer vers le bord droit"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "右端へ移動"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "오른쪽 가장자리로 이동"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mover para a borda direita"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Переместить к правому краю"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "移到右边缘"
-          }
-        }
-      }
-    },
-    "Move to Top Edge" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "An den oberen Rand bewegen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mover al borde superior"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Déplacer vers le bord supérieur"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "上端へ移動"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "위쪽 가장자리로 이동"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mover para a borda superior"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Переместить к верхнему краю"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "移到上边缘"
           }
         }
       }
@@ -77307,58 +76140,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在移动"
-          }
-        }
-      }
-    },
-    "Moving past the last display returns to the first." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nach dem letzten Display geht es zum ersten zurück."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Al pasar de la última pantalla se vuelve a la primera."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Après le dernier écran, la fenêtre revient au premier."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最後のディスプレイの次は最初のディスプレイに戻ります。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "마지막 디스플레이 다음에는 첫 번째 디스플레이로 돌아갑니다."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Depois da última tela, volta para a primeira."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "После последнего дисплея окно возвращается на первый."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "越过最后一个显示器后回到第一个。"
           }
         }
       }
@@ -84134,58 +82915,6 @@
         }
       }
     },
-    "None. A link from another app or a web page asks before it runs a command." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keine. Ein Link aus einer anderen App oder einer Webseite fragt nach, bevor er einen Befehl ausführt."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ninguno. Un enlace de otra app o de una página web pregunta antes de ejecutar un comando."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aucune. Un lien venant d’une autre app ou d’une page web demande avant d’exécuter une commande."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "なし。他のアプリや Web ページからのリンクは、コマンドを実行する前に確認します。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "없음. 다른 앱이나 웹 페이지의 링크는 명령을 실행하기 전에 확인합니다."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nenhum. Um link de outro app ou de uma página web pergunta antes de executar um comando."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нет. Ссылка из другого приложения или с веб-страницы спрашивает, прежде чем выполнить команду."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "无。来自其他应用或网页的链接会在运行命令前询问。"
-          }
-        }
-      }
-    },
     "Not Now" : {
       "comment" : "Dismisses the auto-join prompt",
       "localizations" : {
@@ -86269,6 +84998,7 @@
         }
       }
     },
+    "Nothing was installed. Quit %@, drag it into the Applications folder in Finder, open it from there and update again." : {},
     "Nothing was installed. This usually means /Applications is not writable by your account." : {
       "localizations" : {
         "de" : {
@@ -86950,58 +85680,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "关闭时也会跳过 MorsCast 自己的提示。"
-          }
-        }
-      }
-    },
-    "Off keeps a window's size when it moves to another display." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wenn aus, behält ein Fenster beim Wechsel auf ein anderes Display seine Größe."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si está desactivado, la ventana conserva su tamaño al moverse a otra pantalla."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Désactivé, une fenêtre garde sa taille quand elle passe sur un autre écran."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "オフにすると、別のディスプレイに移動してもウインドウのサイズを保ちます。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "끄면 다른 디스플레이로 이동해도 윈도우 크기가 유지됩니다."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desativado, a janela mantém o tamanho ao mudar para outra tela."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Если выключено, окно сохраняет размер при переходе на другой дисплей."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "关闭后，窗口移到其他显示器时保持原有大小。"
           }
         }
       }
@@ -89818,6 +88496,7 @@
       }
     },
     "Opens Privacy & Security › Calendars." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -98535,6 +97214,7 @@
         }
       }
     },
+    "Records your voice only while you dictate." : {},
     "Red" : {
       "localizations" : {
         "de" : {
@@ -103319,58 +101999,6 @@
         }
       }
     },
-    "Right-click the icon to create or search notes." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klicke mit der rechten Maustaste auf das Symbol, um Notizen zu erstellen oder zu durchsuchen."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Haz clic derecho en el icono para crear o buscar notas."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Faites un clic droit sur l’icône pour créer ou rechercher des notes."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アイコンを右クリックしてメモを作成または検索します。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "아이콘을 오른쪽 클릭하여 메모를 생성하거나 검색합니다."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clique com o botão direito no ícone para criar ou buscar notas."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нажмите на значок правой кнопкой, чтобы создать или найти заметки."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "右键点按图标以创建或搜索笔记。"
-          }
-        }
-      }
-    },
     "Room" : {
       "comment" : "Shortcut owner name in an “already used by” conflict message",
       "localizations" : {
@@ -104105,58 +102733,6 @@
         }
       }
     },
-    "Run Once" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Einmal ausführen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ejecutar una vez"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exécuter une fois"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1回だけ実行"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "한 번 실행"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Executar uma vez"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Выполнить один раз"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "运行一次"
-          }
-        }
-      }
-    },
     "Run Quick Action" : {
       "localizations" : {
         "de" : {
@@ -104569,58 +103145,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "从启动器运行你的快捷指令。"
-          }
-        }
-      }
-    },
-    "Run “%@” from a link?" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "„%@“ über einen Link ausführen?"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Ejecutar “%@” desde un enlace?"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exécuter « %@ » depuis un lien ?"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "リンクから「%@」を実行しますか？"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "링크에서 “%@”을(를) 실행하시겠습니까?"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Executar “%@” a partir de um link?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Выполнить «%@» по ссылке?"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "要从链接运行“%@”吗？"
           }
         }
       }
@@ -105197,6 +103721,7 @@
         }
       }
     },
+    "Saved" : {},
     "Saved %@." : {
       "localizations" : {
         "de" : {
@@ -107799,6 +106324,7 @@
         }
       }
     },
+    "Searches all your files and finds app leftovers in protected folders." : {},
     "Searching menus reads the front app's menu bar." : {
       "localizations" : {
         "de" : {
@@ -108892,6 +107418,7 @@
         }
       }
     },
+    "Send recordings to Soniox's cloud API instead of a local model." : {},
     "Sent before every message, after Tinycast's own. Both are billed each turn." : {
       "localizations" : {
         "de" : {
@@ -110882,6 +109409,8 @@
         }
       }
     },
+    "Show Less" : {},
+    "Show More" : {},
     "Show Notes" : {
       "localizations" : {
         "de" : {
@@ -111190,58 +109719,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在访达中显示"
-          }
-        }
-      }
-    },
-    "Show in Menu Bar" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In der Menüleiste anzeigen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar en la barra de menús"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Afficher dans la barre des menus"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "メニューバーに表示"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "메뉴 막대에 표시"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar na barra de menus"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Показывать в строке меню"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在菜单栏中显示"
           }
         }
       }
@@ -114162,6 +112639,7 @@
         }
       }
     },
+    "Soniox" : {},
     "Source" : {
       "comment" : "Info row label: the app the item came from",
       "localizations" : {
@@ -115604,64 +114082,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "Stopped because this turn's tool history is too large." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gestoppt, weil der Werkzeugverlauf dieser Gesprächsrunde zu groß ist."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stopped because this turn's tool history is too large."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se detuvo porque el historial de herramientas de este turno es demasiado grande."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Arrêt car l’historique des outils de ce tour est trop volumineux."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "このターンのツール履歴が大きすぎるため停止しました。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이번 턴의 도구 기록이 너무 커서 중지했습니다."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Interrompido porque o histórico de ferramentas deste turno é muito grande."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Остановлено: история вызовов инструментов в этом ходе слишком велика."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已停止，因为本轮的工具调用历史过大。"
           }
         }
       }
@@ -124665,58 +123085,6 @@
         }
       }
     },
-    "Thinking blocks start expanded instead of collapsed." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Denkblöcke beginnen ausgeklappt statt eingeklappt."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los bloques de razonamiento empiezan expandidos en lugar de plegados."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les blocs de réflexion s'affichent dépliés au lieu de repliés."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "思考ブロックは折りたたまれず、最初から展開されます。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "생각 블록이 접힌 상태가 아니라 펼쳐진 상태로 시작합니다."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Os blocos de raciocínio começam expandidos em vez de recolhidos."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Блоки размышлений сразу развёрнуты, а не свёрнуты."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "思考块默认展开而不是折叠。"
-          }
-        }
-      }
-    },
     "Thinking…" : {
       "localizations" : {
         "de" : {
@@ -127448,58 +125816,6 @@
         }
       }
     },
-    "Tinycast %@ could not be installed. Check for updates to try again." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tinycast %@ konnte nicht installiert werden. Suche nach Updates, um es erneut zu versuchen."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No se pudo instalar Tinycast %@. Busca actualizaciones para volver a intentarlo."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tinycast %@ n’a pas pu être installé. Recherchez les mises à jour pour réessayer."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tinycast %@ をインストールできませんでした。もう一度アップデートを確認してください。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tinycast %@을(를) 설치할 수 없습니다. 업데이트를 다시 확인해 보세요."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não foi possível instalar o Tinycast %@. Procure atualizações para tentar novamente."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Не удалось установить Tinycast %@. Проверьте обновления, чтобы повторить попытку."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "无法安装 Tinycast %@。请检查更新后重试。"
-          }
-        }
-      }
-    },
     "Tinycast Needs Accessibility Access" : {
       "localizations" : {
         "de" : {
@@ -127728,58 +126044,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "MorsCast 可以为每个文件夹建立索引。"
-          }
-        }
-      }
-    },
-    "Tinycast can’t open this link" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tinycast kann diesen Link nicht öffnen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tinycast no puede abrir este enlace"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tinycast ne peut pas ouvrir ce lien"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tinycast はこのリンクを開けません"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tinycast에서 이 링크를 열 수 없음"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O Tinycast não consegue abrir este link"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tinycast не может открыть эту ссылку"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tinycast 无法打开此链接"
           }
         }
       }
@@ -129833,6 +128097,7 @@
         }
       }
     },
+    "Toggle Caffeine" : {},
     "Toggle Fullscreen" : {
       "localizations" : {
         "de" : {
@@ -132290,6 +130555,7 @@
       }
     },
     "Turns the calendar on, then asks macOS for access." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -134242,6 +132508,8 @@
         }
       }
     },
+    "Until %@" : {},
+    "Until turned off" : {},
     "Untitled" : {
       "localizations" : {
         "de" : {
@@ -134613,6 +132881,7 @@
       }
     },
     "Update ready" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -135037,6 +133306,7 @@
         }
       }
     },
+    "Use Soniox" : {},
     "Use Tools" : {
       "localizations" : {
         "de" : {
@@ -138178,6 +136448,7 @@
       }
     },
     "Wrap around displays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -143234,6 +141505,7 @@
       }
     },
     "© 2026 Abue Ammar · Released under AGPL-3.0" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -143558,6 +141830,7 @@
       }
     },
     "“%@” is turned off" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
