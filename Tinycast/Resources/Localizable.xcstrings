@@ -35264,6 +35264,58 @@
         }
       }
     },
+    "Cloud" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cloud"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nube"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cloud"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クラウド"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "클라우드"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuvem"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Облако"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "云端"
+          }
+        }
+      }
+    },
     "Code Block" : {
       "localizations" : {
         "de" : {
@@ -50937,58 +50989,6 @@
         }
       }
     },
-    "Engine" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Engine"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Motor"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Moteur"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "エンジン"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "엔진"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mecanismo"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Движок"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "引擎"
-          }
-        }
-      }
-    },
     "English" : {
       "comment" : "Calculator number format: English separators (1,234.5), not a language",
       "localizations" : {
@@ -54308,58 +54308,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "搜索操作"
-          }
-        }
-      }
-    },
-    "Fast and memory-efficient" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schnell und speichereffizient"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rápido y con uso eficiente de memoria"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rapide et économe en mémoire"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "高速でメモリ効率に優れています"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "빠르고 메모리 효율적"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rápido e eficiente em memória"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Быстро и экономно по памяти"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "快速且节省内存"
           }
         }
       }
@@ -74650,58 +74598,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "月供"
-          }
-        }
-      }
-    },
-    "More languages, but slower" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mehr Sprachen, aber langsamer"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Más idiomas, pero más lento"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plus de langues, mais plus lent"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "対応言語は増えますが、速度は遅くなります"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "더 많은 언어를 지원하지만 속도가 느립니다"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mais idiomas, mas mais lento"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Больше языков, но медленнее"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "语言更多，但速度较慢"
           }
         }
       }
@@ -103501,7 +103397,58 @@
         }
       }
     },
-    "Saved" : {},
+    "Saved" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gespeichert"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardada"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrée"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存済み"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장됨"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salva"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранён"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已保存"
+          }
+        }
+      }
+    },
     "Saved %@." : {
       "localizations" : {
         "de" : {
@@ -107198,7 +107145,58 @@
         }
       }
     },
-    "Send recordings to Soniox's cloud API instead of a local model." : {},
+    "Sends your voice to Soniox and types words as you speak." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sendet deine Stimme an Soniox und tippt die Wörter, während du sprichst."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envía tu voz a Soniox y escribe las palabras mientras hablas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoie votre voix à Soniox et saisit les mots pendant que vous parlez."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声をSonioxに送信し、話しながら文字を入力します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "음성을 Soniox로 보내고 말하는 동안 단어를 입력합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envia sua voz para a Soniox e digita as palavras enquanto você fala."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отправляет голос в Soniox и вводит слова по мере речи."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将语音发送到 Soniox，并在你说话时输入文字。"
+          }
+        }
+      }
+    },
     "Sent before every message, after Tinycast's own. Both are billed each turn." : {
       "localizations" : {
         "de" : {
@@ -112315,7 +112313,6 @@
         }
       }
     },
-    "Soniox" : {},
     "Source" : {
       "comment" : "Info row label: the app the item came from",
       "localizations" : {
@@ -128976,54 +128973,54 @@
         }
       }
     },
-    "Transcribe speech on your Mac with a local model." : {
+    "Transcribe speech with a model on your Mac or in the cloud." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sprache auf deinem Mac mit einem lokalen Modell transkribieren."
+            "value" : "Sprache mit einem Modell auf deinem Mac oder in der Cloud transkribieren."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Transcribe voz en tu Mac con un modelo local."
+            "value" : "Transcribe voz con un modelo en tu Mac o en la nube."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dicter du texte avec un modèle exécuté sur ce Mac."
+            "value" : "Dicter du texte avec un modèle sur ce Mac ou dans le cloud."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ローカルモデルを使ってMacで音声を文字に起こします。"
+            "value" : "Mac上またはクラウドのモデルで音声を文字に起こします。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "로컬 모델로 Mac에서 음성을 텍스트로 변환합니다."
+            "value" : "Mac 또는 클라우드의 모델로 음성을 텍스트로 변환합니다."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Transcreva a fala no seu Mac com um modelo local."
+            "value" : "Transcreva a fala com um modelo no seu Mac ou na nuvem."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Преобразуйте речь в текст на Mac с помощью локальной модели."
+            "value" : "Преобразуйте речь в текст с помощью модели на Mac или в облаке."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用本地模型在 Mac 上将语音转写为文本。"
+            "value" : "使用 Mac 上或云端的模型将语音转写为文本。"
           }
         }
       }
@@ -132925,7 +132922,6 @@
         }
       }
     },
-    "Use Soniox" : {},
     "Use Tools" : {
       "localizations" : {
         "de" : {

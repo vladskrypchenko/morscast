@@ -4,6 +4,10 @@ Dictation is off by default. A user-selected global shortcut records from the ch
 transcribes locally and sends the result through `TextInjector`. Parakeet Ultra (quality) and Redux
 (lightweight) support 25 languages. Qwen3-ASR 0.6B and 1.7B support 30 languages and 22 Chinese dialects.
 No model is bundled. The Settings pane downloads a pinned Core ML conversion on request.
+One Model picker chooses between those local models and Soniox, the cloud option. Soniox keeps its
+own `dictationSonioxEnabled` flag and its key in the Keychain; `dictationModel` stays the last local
+choice. With Soniox selected, audio streams to its API, so the local-only rules below do not apply,
+and the idle-release and live-insertion settings are hidden because it has neither.
 
 Recognition uses Apple's Core ML and Accelerate, with no external library. Each model family has
 its own adapter inside the bundled helper; both variants share that family's implementation.
@@ -40,7 +44,9 @@ compilation of its 2-bit weights; Ultra's encoder and both variants' decoder/joi
   its temporary clipboard ownership, focus, secure-input and protected-target checks. Copy-only
   writes the plain transcript without reading the caret; paste-and-copy writes the persistent copy
   after delivery or a failed insertion.
-- The Liquid Glass capsule displays 21 fixed frequency bands driven by the microphone, sampled at
+- On a lone notched built-in display the panel grows out of the notch, black and over the menu bar,
+  and drops a line for the transcript; any connected external display keeps the bottom capsule.
+- The capsule displays 21 fixed frequency bands driven by the microphone, sampled at
   most 20 times per second through a reused 512-point Accelerate transform on the capture queue.
   Logarithmic bands span 32–5000 Hz so speech sits nearer the middle. Smoothed levels taper and
   fade only toward the edges, without a center peak or mirroring.

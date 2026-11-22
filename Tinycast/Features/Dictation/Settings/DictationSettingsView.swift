@@ -5,6 +5,7 @@ import SwiftUI
 struct DictationSettingsView: View {
     @Environment(DictationCoordinator.self) private var coordinator
     @Environment(AppSettings.self) private var settings
+    @AppStorage(SonioxTranscriber.enabledKey) private var usesSoniox = false
     @State private var microphones: [AVCaptureDevice] = []
     @State private var modelSize: Int64?
     @State private var microphoneAccess = Permissions.microphoneAccess()
@@ -15,7 +16,7 @@ struct DictationSettingsView: View {
                 Toggle(isOn: enabledBinding) {
                     SettingsFeatureToggleLabel(
                         anchor: .dictationDictation, title: "Enable Dictation",
-                        subtitle: "Transcribe speech on your Mac with a local model.")
+                        subtitle: "Transcribe speech with a model on your Mac or in the cloud.")
                 }
                 if microphoneAccess != .authorized {
                     HStack(alignment: .center, spacing: Theme.Spacing.lg) {
@@ -83,32 +84,26 @@ struct DictationSettingsView: View {
                     SettingsSectionHeader(.dictationCommands)
                 }
 
-                SonioxSettingsSection()
-
                 Section {
-                    Picker(selection: familyBinding) {
-                        ForEach(DictationModel.Family.allCases) { family in
-                            Text(family.rawValue).tag(family)
+                    Picker(selection: choiceBinding) {
+                        Section("On This Mac") {
+                            ForEach(DictationModel.allCases) { model in
+                                Text(model.title).tag(Choice.local(model))
+                            }
                         }
-                    } label: {
-                        SettingsRowTitle(.dictationModel, "Engine")
-                        Text(
-                            settings.dictationModel.family.summary + " · " + settings.dictationModel.coverage)
-                    }
-                    Picker(selection: $settings.dictationModel) {
-                        ForEach(
-                            DictationModel.allCases.filter { $0.family == settings.dictationModel.family }
-                        ) { model in
-                            Text(model.variantTitle).tag(model)
+                        Section("Cloud") {
+                            Text(verbatim: "Soniox").tag(Choice.soniox)
                         }
                     } label: {
                         SettingsRowTitle(.dictationModel, "Model")
-                        Text(settings.dictationModel.summary)
+                        Text(modelSubtitle)
                     }
 
                     let installed = coordinator.models.isInstalled(settings.dictationModel)
                     let downloading = coordinator.models.downloading == settings.dictationModel
-                    if downloading {
+                    if usesSoniox {
+                        SonioxKeyRow()
+                    } else if downloading {
                         DownloadProgressView(models: coordinator.models)
                     } else {
                         LabeledContent {
@@ -131,7 +126,7 @@ struct DictationSettingsView: View {
                             Text(modelDescription)
                         }
                     }
-                    if settings.dictationModel.isQwen, installed {
+                    if usesSoniox || (settings.dictationModel.isQwen && installed) {
                         Picker(selection: languageBinding) {
                             Text(LocalizedStringResource("dictation-language-auto", defaultValue: "Auto"))
                                 .tag("")
@@ -147,18 +142,20 @@ struct DictationSettingsView: View {
                     SettingsSectionHeader(.dictationModel)
                 }
 
-                Section {
-                    Picker(selection: $settings.dictationIdleRelease) {
-                        ForEach(DictationIdleRelease.allCases) { option in
-                            Text(option.title(locale: .current)).tag(option)
+                if !usesSoniox {
+                    Section {
+                        Picker(selection: $settings.dictationIdleRelease) {
+                            ForEach(DictationIdleRelease.allCases) { option in
+                                Text(option.title(locale: .current)).tag(option)
+                            }
+                        } label: {
+                            SettingsRowTitle(.dictationMemory, "Release model from memory")
                         }
-                    } label: {
-                        SettingsRowTitle(.dictationMemory, "Release model from memory")
+                    } header: {
+                        SettingsSectionHeader(.dictationMemory)
+                    } footer: {
+                        Text("Releasing it when idle frees memory. The next dictation takes a moment longer.")
                     }
-                } header: {
-                    SettingsSectionHeader(.dictationMemory)
-                } footer: {
-                    Text("Releasing it when idle frees memory. The next dictation takes a moment longer.")
                 }
 
                 Section {
@@ -179,9 +176,11 @@ struct DictationSettingsView: View {
                     } label: {
                         SettingsRowTitle(.dictationOutput, "When finished")
                     }
-                    Toggle(isOn: $settings.dictationLiveInsertion) {
-                        SettingsRowTitle(.dictationOutput, "Insert while recording")
-                        Text("Paste each chunk as you speak, instead of only when finished.")
+                    if !usesSoniox {
+                        Toggle(isOn: $settings.dictationLiveInsertion) {
+                            SettingsRowTitle(.dictationOutput, "Insert while recording")
+                            Text("Paste each chunk as you speak, instead of only when finished.")
+                        }
                     }
                     Toggle(isOn: $settings.dictationAdaptsCapitalization) {
                         SettingsRowTitle(.dictationOutput, "Adapt capitalization")
@@ -235,12 +234,30 @@ struct DictationSettingsView: View {
             set: { settings.dictationMicrophone = $0.isEmpty ? nil : $0 })
     }
 
-    private var familyBinding: Binding<DictationModel.Family> {
+    private enum Choice: Hashable {
+        case local(DictationModel)
+        case soniox
+    }
+
+    private var choiceBinding: Binding<Choice> {
         Binding(
-            get: { settings.dictationModel.family },
-            set: {
-                settings.dictationModel = $0 == .parakeet ? .redux : .qwenSmall
+            get: { usesSoniox ? .soniox : .local(settings.dictationModel) },
+            set: { choice in
+                switch choice {
+                case .local(let model):
+                    usesSoniox = false
+                    settings.dictationModel = model
+                case .soniox:
+                    usesSoniox = true
+                }
             })
+    }
+
+    private var modelSubtitle: String {
+        guard !usesSoniox else {
+            return String(localized: "Sends your voice to Soniox and types words as you speak.")
+        }
+        return settings.dictationModel.summary + " · " + settings.dictationModel.coverage
     }
 
     private var languageBinding: Binding<String> {

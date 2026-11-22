@@ -143,15 +143,49 @@ private struct DictationProcessingWave: View {
     }
 }
 
+/// The live waveform, or the processing wave once recording stops; `compact` thins it beside text.
+private struct DictationActivity: View {
+    let state: DictationDisplayState
+    let compact: Bool
+
+    var body: some View {
+        if state.phase == .listening {
+            let levels = shown(state.levels)
+            DictationWaveform(
+                levels: levels.enumerated().map { index, level in
+                    let edge = min(1, Float(min(index, levels.count - 1 - index)) / 4)
+                    let taper = compact ? 1 : edge * edge * (3 - 2 * edge)
+                    return level * (0.2 + 0.8 * taper)
+                }, processing: false
+            )
+            .accessibilityLabel("Dictation listening")
+        } else {
+            DictationProcessingWave()
+                .scaleEffect(compact ? 0.4 : 1)
+                .accessibilityLabel("Transcribing dictation")
+        }
+    }
+
+    /// Every third band when compact, so the wave fits a square.
+    private func shown(_ levels: [Float]) -> [Float] {
+        guard compact else { return levels }
+        let step = max(1, levels.count / DictationPreview.compactBars)
+        return stride(from: step / 2, to: levels.count, by: step).map { levels[$0] }
+    }
+}
+
+private extension DictationDisplayState {
+    var showsText: Bool { !previewFinal.isEmpty || !previewTentative.isEmpty }
+}
+
 private struct DictationPanelView: View {
     let state: DictationDisplayState
 
-    private var showsText: Bool { !state.previewFinal.isEmpty || !state.previewTentative.isEmpty }
-
     var body: some View {
         let height = Theme.Size.dictationPanel.height
+        let showsText = state.showsText
         HStack(spacing: 0) {
-            waveform
+            DictationActivity(state: state, compact: showsText)
                 .frame(width: showsText ? height : Theme.Size.dictationPanel.width, height: height)
             if showsText {
                 DictationPreviewLine(state: state)
@@ -165,34 +199,66 @@ private struct DictationPanelView: View {
         .background(DictationFlatSurface(shape: .capsule))
         .animation(.spring(duration: 0.3, bounce: 0.1), value: showsText)
         .frame(
-            width: DictationPanelController.panelSize.width,
-            height: DictationPanelController.panelSize.height)
+            width: DictationPanelController.pillSize.width,
+            height: DictationPanelController.pillSize.height)
+    }
+}
+
+/// The built-in display's camera housing, which the notch layout grows out of.
+private struct DictationNotch {
+    let width: CGFloat
+    let height: CGFloat
+
+    static let wingWidth: CGFloat = 64
+    static let expandedWidth: CGFloat = 520
+    static let textRowHeight: CGFloat = 44
+    static let cornerRadius: CGFloat = 18
+
+    var panelSize: CGSize {
+        CGSize(width: max(Self.expandedWidth, width + 2 * Self.wingWidth), height: height + Self.textRowHeight)
     }
 
-    /// Every third band while text shows, so the wave fits a square beside it.
-    private func shown(_ levels: [Float]) -> [Float] {
-        guard showsText else { return levels }
-        let step = max(1, levels.count / DictationPreview.compactBars)
-        return stride(from: step / 2, to: levels.count, by: step).map { levels[$0] }
+    /// Only a lone notched built-in display gets it; any external display keeps the pill.
+    init?(screens: [NSScreen]) {
+        guard screens.count == 1, let screen = screens.first,
+            screen.safeAreaInsets.top > 0,
+            let left = screen.auxiliaryTopLeftArea, let right = screen.auxiliaryTopRightArea
+        else { return nil }
+        width = screen.frame.width - left.width - right.width
+        height = screen.safeAreaInsets.top
     }
+}
 
-    @ViewBuilder
-    private var waveform: some View {
-        if state.phase == .listening {
-            let levels = shown(state.levels)
-            DictationWaveform(
-                levels: levels.enumerated().map { index, level in
-                    let edge = min(1, Float(min(index, levels.count - 1 - index)) / 4)
-                    let taper = showsText ? 1 : edge * edge * (3 - 2 * edge)
-                    return level * (0.2 + 0.8 * taper)
-                }, processing: false
-            )
-            .accessibilityLabel("Dictation listening")
-        } else {
-            DictationProcessingWave()
-                .scaleEffect(showsText ? 0.4 : 1)
-                .accessibilityLabel("Transcribing dictation")
+/// Black like the notch, so it reads as the housing growing down to show the transcript.
+private struct DictationNotchView: View {
+    let state: DictationDisplayState
+    let notch: DictationNotch
+
+    var body: some View {
+        let showsText = state.showsText
+        let wing = DictationNotch.wingWidth
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                DictationActivity(state: state, compact: true)
+                    .frame(width: wing, height: notch.height)
+                Spacer(minLength: notch.width)
+            }
+            if showsText {
+                DictationPreviewLine(state: state)
+                    .padding(.horizontal, Theme.Spacing.lg)
+                    .frame(height: DictationNotch.textRowHeight)
+                    .transition(.opacity)
+            }
         }
+        .frame(width: showsText ? notch.panelSize.width : notch.width + 2 * wing)
+        .background(
+            UnevenRoundedRectangle(
+                bottomLeadingRadius: DictationNotch.cornerRadius,
+                bottomTrailingRadius: DictationNotch.cornerRadius
+            )
+            .fill(Color.black))
+        .animation(.spring(duration: 0.3, bounce: 0.1), value: showsText)
+        .frame(width: notch.panelSize.width, height: notch.panelSize.height, alignment: .top)
     }
 }
 
@@ -211,9 +277,9 @@ private final class DictationPanel: NSPanel, AnimatedPanel {
     var onAccept: (() -> Void)?
     var onCancel: (() -> Void)?
 
-    init(content: NSView) {
+    init(content: NSView, size: CGSize) {
         super.init(
-            contentRect: NSRect(origin: .zero, size: DictationPanelController.panelSize),
+            contentRect: NSRect(origin: .zero, size: size),
             styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
         contentView = content
         isOpaque = false
@@ -224,6 +290,11 @@ private final class DictationPanel: NSPanel, AnimatedPanel {
         hidesOnDeactivate = false
         isReleasedWhenClosed = false
         followMotion()
+    }
+
+    /// The notch layout sits over the menu bar, which AppKit would otherwise push it below.
+    override func constrainFrameRect(_ frameRect: NSRect, to screen: NSScreen?) -> NSRect {
+        frameRect
     }
 
     override var canBecomeKey: Bool { true }
@@ -243,7 +314,7 @@ private final class DictationPanel: NSPanel, AnimatedPanel {
 
 @MainActor
 final class DictationPanelController {
-    static let panelSize = CGSize(
+    static let pillSize = CGSize(
         width: max(Theme.Size.dictationPanel.width, DictationPreview.expandedWidth),
         height: Theme.Size.dictationPanel.height)
     let state = DictationDisplayState()
@@ -252,20 +323,11 @@ final class DictationPanelController {
     var onCancel: (() -> Void)?
 
     func show() {
-        let screen = NSScreen.main ?? NSScreen.screens.first
-        guard let frame = screen?.visibleFrame else { return }
-        let panel =
-            panel
-            ?? DictationPanel(
-                content: NSHostingView(rootView: DictationPanelView(state: state).motionScope()))
+        guard let screen = NSScreen.main ?? NSScreen.screens.first else { return }
+        let panel = panel ?? makePanel(on: screen)
         panel.onAccept = onAccept
         panel.onCancel = onCancel
         self.panel = panel
-        let size = Theme.Size.dictationPanel
-        panel.setFrameOrigin(
-            NSPoint(
-                x: frame.midX - Self.panelSize.width / 2,
-                y: frame.minY + frame.height * 0.1 - size.height / 2))
         state.phase = .listening
         state.clearPreview()
         state.levels = [Float](repeating: 0, count: DictationSpectrum.barCount)
@@ -275,5 +337,28 @@ final class DictationPanelController {
     func close() {
         panel?.orderOut(nil)
         panel = nil
+    }
+
+    private func makePanel(on screen: NSScreen) -> DictationPanel {
+        if let notch = DictationNotch(screens: NSScreen.screens) {
+            let size = notch.panelSize
+            let panel = DictationPanel(
+                content: NSHostingView(
+                    rootView: DictationNotchView(state: state, notch: notch).motionScope()),
+                size: size)
+            panel.level = .statusBar
+            panel.setFrameOrigin(
+                NSPoint(x: screen.frame.midX - size.width / 2, y: screen.frame.maxY - size.height))
+            return panel
+        }
+        let frame = screen.visibleFrame
+        let panel = DictationPanel(
+            content: NSHostingView(rootView: DictationPanelView(state: state).motionScope()),
+            size: Self.pillSize)
+        panel.setFrameOrigin(
+            NSPoint(
+                x: frame.midX - Self.pillSize.width / 2,
+                y: frame.minY + frame.height * 0.1 - Theme.Size.dictationPanel.height / 2))
+        return panel
     }
 }

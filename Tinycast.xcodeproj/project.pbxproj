@@ -251,7 +251,6 @@
 		47A443F25878A27DE6DF24AA /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFF79E9897975CAC5EAC0E /* NoteEditorView.swift */; };
 		47C49821CF6CFABB1B7410E1 /* InjectableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CBB4251C94C31DE1BE6937 /* InjectableTextView.swift */; };
 		47E13BC63F8BE11EDF25EA82 /* RootPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A98172AA46F5C0C89C4AB /* RootPaletteView.swift */; };
-		4875CDD3BBF79B95DAA853DD /* SonioxSettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3928E56F2342E734E528B /* SonioxSettingsSection.swift */; };
 		48AE2C9989F8FA2AA99D2D61 /* CalcPercent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B4495E56754B05B5F3551D /* CalcPercent.swift */; };
 		48BB85C5EBF0AFF7783C7CA4 /* DictationCueRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E565D368BAC7F45D510C7326 /* DictationCueRunner.swift */; };
 		48C7D4869365CDA0EB190FFF /* QuicklinkEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A917E31B2573F3DFB527372B /* QuicklinkEditorView.swift */; };
@@ -657,6 +656,7 @@
 		BEA4A58DE854DC330E90B5B9 /* ExtensionAppearanceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA26F487C06DC6F03F78B13 /* ExtensionAppearanceStore.swift */; };
 		BEAAD72E748375E0039AC90F /* CommandID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164CB3E1BB5B7D87AF8E7023 /* CommandID.swift */; };
 		BF04DEAF1B660EE399B43962 /* UninstallScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7F606D7F71B6FC0CC6ABC8 /* UninstallScanner.swift */; };
+		BF788F4A943A6CAF88E2B5B2 /* SonioxKeyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940369D39852439508549186 /* SonioxKeyRow.swift */; };
 		BFA502E8D404DCC231DAF29B /* ExtensionSettingsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9D750F4DB7856959BBA83E /* ExtensionSettingsEditor.swift */; };
 		BFA8B1578664272E7CBFF806 /* ExtensionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0D967615846F9C4EC3E44F /* ExtensionDetailView.swift */; };
 		BFC17B1BD5D239E0CCD56DDF /* QuickActionFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DBA322BA1F117530075F51 /* QuickActionFailure.swift */; };
@@ -1347,7 +1347,6 @@
 		7BFFB1471D30C915BBC5DCBA /* SnippetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetRepository.swift; sourceTree = "<group>"; };
 		7C0D8112DC5513C8331D7DAF /* ParakeetRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParakeetRecognizer.swift; sourceTree = "<group>"; };
 		7C0FB3A9CA762A7A8DB99BA6 /* ExtensionPaletteModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionPaletteModifiers.swift; sourceTree = "<group>"; };
-		7CA3928E56F2342E734E528B /* SonioxSettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonioxSettingsSection.swift; sourceTree = "<group>"; };
 		7CEAC6A9B7AF400E10A2FB3B /* CustomCommandEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCommandEditorView.swift; sourceTree = "<group>"; };
 		7CFFF4B2F2BF476AD9B111B9 /* MCPCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPCoordinator.swift; sourceTree = "<group>"; };
 		7D1BD03E0327890BD4E68988 /* RoomWindowSweep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomWindowSweep.swift; sourceTree = "<group>"; };
@@ -1436,6 +1435,7 @@
 		934DBE501F116131DC1BF5CE /* CalcExpressionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcExpressionParser.swift; sourceTree = "<group>"; };
 		936C0D68CC32D90E590F712C /* ExtensionPickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionPickerField.swift; sourceTree = "<group>"; };
 		93CBB4251C94C31DE1BE6937 /* InjectableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectableTextView.swift; sourceTree = "<group>"; };
+		940369D39852439508549186 /* SonioxKeyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonioxKeyRow.swift; sourceTree = "<group>"; };
 		943495E91C0D09B633746515 /* ChatGPTSubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTSubscriptionManager.swift; sourceTree = "<group>"; };
 		94507F8F095D3EBD1A9B3007 /* DialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogController.swift; sourceTree = "<group>"; };
 		946ABF992DAD60387381968C /* RoomSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSession.swift; sourceTree = "<group>"; };
@@ -3468,7 +3468,7 @@
 			isa = PBXGroup;
 			children = (
 				61C82CFE8F650EAD34CA1CB9 /* DictationSettingsView.swift */,
-				7CA3928E56F2342E734E528B /* SonioxSettingsSection.swift */,
+				940369D39852439508549186 /* SonioxKeyRow.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -4834,7 +4834,7 @@
 				96BC636877D935C5EB20BF7F /* SnippetsScreen.swift in Sources */,
 				3BC6CC35889FFC77D640C7CA /* SnippetsSettingsView.swift in Sources */,
 				7BDB7CF7F1352015F6AC96C3 /* SnippetsStore.swift in Sources */,
-				4875CDD3BBF79B95DAA853DD /* SonioxSettingsSection.swift in Sources */,
+				BF788F4A943A6CAF88E2B5B2 /* SonioxKeyRow.swift in Sources */,
 				86143F8509B6F9BF155C477C /* SonioxStream.swift in Sources */,
 				8383566F6AB4B9922F4AB614 /* SonioxTranscriber.swift in Sources */,
 				9A7BBA93D54AB1638F1EBE6F /* SpaceGesture.swift in Sources */,
