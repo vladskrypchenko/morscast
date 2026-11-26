@@ -93,9 +93,11 @@ final class AppCore {
         windowController: windowController, paletteCoordinator: paletteCoordinator,
         palette: palette,
         showMessage: { [unowned self] in self.showMessage($0, tone: $1) }, core: self)
+    @ObservationIgnored private(set) lazy var dictationTranslator = DictationTranslator(
+        settings: settings)
     @ObservationIgnored private(set) lazy var dictationCoordinator = DictationCoordinator(
         settings: settings, hotKeys: hotKeys, models: dictationModels, injector: textInjector,
-        audioDucker: dictationAudioDucker,
+        audioDucker: dictationAudioDucker, translator: dictationTranslator,
         confirmEnable: { [unowned self] in
             await self.confirm(
                 title: String(localized: "Enable Dictation?"),
@@ -106,6 +108,18 @@ final class AppCore {
                         """),
                 symbol: "waveform", confirmTitle: String(localized: "Continue"), tone: .neutral,
                 confirmRole: .standard)
+        },
+        confirmTranslationEnable: { [unowned self] in
+            await self.confirm(
+                title: String(localized: "Enable Dictate & Translate?"),
+                message: String(
+                    localized: """
+                        Tinycast needs microphone access and Accessibility to paste into other apps. \
+                        Your voice is sent to Soniox to transcribe, and the transcript to Anthropic's \
+                        Claude to translate, using your own API keys.
+                        """),
+                symbol: "character.bubble", confirmTitle: String(localized: "Continue"),
+                tone: .neutral, confirmRole: .standard)
         },
         showMessage: { [unowned self] in self.showMessage($0, tone: $1) })
     @ObservationIgnored private(set) lazy var quicklinkCoordinator = QuicklinkCoordinator(
@@ -364,8 +378,12 @@ final class AppCore {
 
             hotKeys.onTogglePalette = { [weak self] in self?.paletteCoordinator.togglePalette() }
             hotKeys.dictationEnabled = settings.dictationEnabled
+            hotKeys.dictationTranslateEnabled = settings.dictationTranslationEnabled
             hotKeys.dictationHoldToTalk = settings.dictationMode == .pushToTalk
             hotKeys.onDictationPressed = { [weak self] in self?.dictationCoordinator.pressed() }
+            hotKeys.onDictationTranslatePressed = { [weak self] in
+                self?.dictationCoordinator.pressedTranslate()
+            }
             hotKeys.onDictationReleased = { [weak self] in self?.dictationCoordinator.released() }
             hotKeys.onDictationCancelled = { [weak self] in self?.dictationCoordinator.cancel() }
             hotKeys.onRunCommand = { [weak self] id in self?.launcherCoordinator.runCommand(id) }
@@ -417,6 +435,7 @@ final class AppCore {
             hotKeys.allowsAction = { [weak self] action in
                 guard let self, visibility.allowsHotKey(action) else { return false }
                 if action == .dictation { return settings.dictationEnabled }
+                if action == .dictationTranslate { return settings.dictationTranslationEnabled }
                 // A disabled feature drops its commands from the launcher; their shortcuts go too.
                 guard case .command(let id) = action else { return true }
                 return appIndex.isCommandEnabled(id)
@@ -519,7 +538,7 @@ final class AppCore {
             return snippetsStore.record(id: id)?.snippet.name
         case .extensionCommand(let entryID):
             return appIndex.apps.first { $0.kind == .extensionCommand && $0.id == entryID }?.name
-        case .togglePalette, .dictation, .command, .systemAction, .windowCommand:
+        case .togglePalette, .dictation, .dictationTranslate, .command, .systemAction, .windowCommand:
             return nil
         }
     }
@@ -529,7 +548,9 @@ final class AppCore {
     }
 
     func stopDictationForTermination() async {
-        if settings.dictationEnabled { dictationCoordinator.prepareForTermination() }
+        if settings.dictationEnabled || settings.dictationTranslationEnabled {
+            dictationCoordinator.prepareForTermination()
+        }
         dictationAudioDucker.restoreImmediately()
         await dictationAudioDucker.waitForTransition()
         await dictationModels.stop()
@@ -573,7 +594,9 @@ final class AppCore {
     }
 
     func prepareForTermination() {
-        if settings.dictationEnabled { dictationCoordinator.prepareForTermination() }
+        if settings.dictationEnabled || settings.dictationTranslationEnabled {
+            dictationCoordinator.prepareForTermination()
+        }
         settingsFile?.flush()
         clipboardTextIndexer?.stop()
         // HID remaps first: they outlive the process.
@@ -707,11 +730,13 @@ final class AppCore {
         track(
             {
                 _ = $0.dictationEnabled
+                _ = $0.dictationTranslationEnabled
                 _ = $0.dictationMode
             },
             reproject: {
                 $0.hotKeys.dictationHoldToTalk = $0.settings.dictationMode == .pushToTalk
                 $0.hotKeys.dictationEnabled = $0.settings.dictationEnabled
+                $0.hotKeys.dictationTranslateEnabled = $0.settings.dictationTranslationEnabled
             })
         track(
             {

@@ -14,8 +14,10 @@ final class DictationCoordinator {
     private let cues = DictationCueRunner()
     private let panel = DictationPanelController()
     private let injector: TextInjector
+    private let translator: (any DictationTranslating)?
     private let showMessage: (String, DialogTone) -> Void
     private let confirmEnable: () async -> Bool
+    private let confirmTranslationEnable: () async -> Bool
     @ObservationIgnored private var phase: Phase = .idle
     @ObservationIgnored private var token = UUID()
     @ObservationIgnored private var enableTask: Task<Void, Never>?
@@ -31,21 +33,28 @@ final class DictationCoordinator {
     @ObservationIgnored private var pendingStartCue: UUID?
     @ObservationIgnored private var finishWhenStarted = false
     @ObservationIgnored private var target: InjectionTarget?
+    /// Set for a Dictate & Translate session: speech is previewed, collected and never pasted raw.
+    @ObservationIgnored private var translation: DictationTranslationRequest?
+    @ObservationIgnored private var spokenText = ""
     /// The field a mic button is dictating into; nil for a shortcut's session.
     private(set) var field: DictationField?
 
     init(
         settings: AppSettings, hotKeys: HotKeyManager, models: DictationModelStore,
         injector: TextInjector, audioDucker: DictationAudioDucker,
+        translator: (any DictationTranslating)? = nil,
         confirmEnable: @escaping () async -> Bool,
+        confirmTranslationEnable: @escaping () async -> Bool = { false },
         showMessage: @escaping (String, DialogTone) -> Void
     ) {
         self.settings = settings
         self.hotKeys = hotKeys
         self.models = models
         self.injector = injector
+        self.translator = translator
         self.audioDucker = audioDucker
         self.confirmEnable = confirmEnable
+        self.confirmTranslationEnable = confirmTranslationEnable
         self.showMessage = showMessage
         panel.onAccept = { [weak self] in self?.accept() }
         panel.onCancel = { [weak self] in self?.cancel() }
@@ -65,12 +74,37 @@ final class DictationCoordinator {
             cancel()
             return
         }
+        requestCapture(confirm: confirmEnable) { [weak self] in
+            guard let self else { return }
+            settings.dictationEnabled = true
+            if settings.dictationDestination.pastes { Permissions.ensureAccessibility() }
+        }
+    }
+
+    /// Its own consent: Dictate & Translate records and pastes whether or not Dictation is on.
+    func setTranslationEnabled(_ enabled: Bool) {
+        guard enabled != settings.dictationTranslationEnabled else { return }
+        guard enabled else {
+            settings.dictationTranslationEnabled = false
+            enableTask?.cancel()
+            if translation != nil { cancel() }
+            return
+        }
+        requestCapture(confirm: confirmTranslationEnable) { [weak self] in
+            self?.settings.dictationTranslationEnabled = true
+            Permissions.ensureAccessibility()
+        }
+    }
+
+    private func requestCapture(
+        confirm: @escaping () async -> Bool, granted grant: @escaping @MainActor () -> Void
+    ) {
         guard enableTask == nil else { return }
         NSApp.activate()
         enableTask = Task { [weak self] in
             guard let self else { return }
             defer { enableTask = nil }
-            guard await confirmEnable(), !Task.isCancelled else { return }
+            guard await confirm(), !Task.isCancelled else { return }
             let granted = await AVCaptureDevice.requestAccess(for: .audio)
             guard !Task.isCancelled else { return }
             guard granted else {
@@ -78,8 +112,7 @@ final class DictationCoordinator {
                     String(localized: "Allow Tinycast to use the microphone in System Settings"), .danger)
                 return
             }
-            settings.dictationEnabled = true
-            if settings.dictationDestination.pastes { Permissions.ensureAccessibility() }
+            grant()
         }
     }
 
@@ -122,7 +155,40 @@ final class DictationCoordinator {
         begin(target: InjectionTarget.current())
     }
 
+    /// Same gestures as `pressed()`, but the transcript goes through the translator before pasting.
+    func pressedTranslate() {
+        guard settings.dictationTranslationEnabled, let translator, phase != .stopping else { return }
+        if phase != .idle {
+            if settings.dictationMode == .toggle { finish() }
+            return
+        }
+        if let issue = translator.issue() {
+            showMessage(issue, .danger)
+            return
+        }
+        if settings.dictationMode == .pushToTalk,
+            hotKeys.binding(for: .dictationTranslate)?.shortcut == nil
+        {
+            showMessage(
+                String(localized: "Hold to talk needs a key combination for Dictate & Translate"),
+                .danger)
+            return
+        }
+        let target = InjectionTarget.current()
+        let app = target?.externalApp
+        translation = DictationTranslationRequest(
+            transcript: "", appName: app?.localizedName, bundleID: app?.bundleIdentifier,
+            windowTitle: DictationInsertionContext.windowTitle(in: target),
+            textBeforeCaret: DictationInsertionContext.textBeforeCaret(in: target))
+        begin(target: target)
+    }
+
     var isEnabled: Bool { settings.dictationEnabled }
+
+    /// A translate session answers to its own switch, so Dictation may stay off.
+    private var sessionAllowed: Bool {
+        translation != nil ? settings.dictationTranslationEnabled : settings.dictationEnabled
+    }
     var hasModel: Bool { models.isReady(settings.dictationModel) }
 
     /// A field's own mic: click to start and click to finish, whatever the shortcut's mode or focus.
@@ -145,7 +211,7 @@ final class DictationCoordinator {
     }
 
     private func begin(target: InjectionTarget?) {
-        guard models.isReady(settings.dictationModel) else {
+        guard translation != nil || models.isReady(settings.dictationModel) else {
             field = nil
             showMessage(String(localized: "Download the dictation model in Settings first"), .danger)
             return
@@ -163,7 +229,7 @@ final class DictationCoordinator {
             guard let self else { return }
             do {
                 try await capture.start(microphoneID: settings.dictationMicrophone)
-                guard token == current, settings.dictationEnabled else {
+                guard token == current, sessionAllowed else {
                     _ = await capture.stop()
                     return
                 }
@@ -222,6 +288,7 @@ final class DictationCoordinator {
             guard let self else { return }
             await pendingLive?.value
             let samples = await capture.stop()
+            let translation = translation
             // Queued chunks land first: reset would drop them, and the remainder spaces after them.
             if !liveText.isEmpty { await injector.drain() }
             guard token == current else { return }
@@ -246,6 +313,11 @@ final class DictationCoordinator {
                         try await models.transcribe(tail, model: model, language: language)
                     }
                 guard token == current else { return }
+                if let translation {
+                    try await translateAndDeliver(
+                        translation, transcript: spokenText + transcript, token: current)
+                    return
+                }
                 if stream != nil, !liveText.isEmpty { await injector.drain() }
                 guard token == current else { return }
                 // A mic belongs to its field: the text goes in there, never to the clipboard.
@@ -291,6 +363,45 @@ final class DictationCoordinator {
         }
     }
 
+    private func translateAndDeliver(
+        _ context: DictationTranslationRequest, transcript: String, token current: UUID
+    ) async throws {
+        guard let translator else { return reset(cancelTranscription: false) }
+        guard !transcript.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            reset(cancelTranscription: false)
+            showMessage(String(localized: "No speech was recorded"), .danger)
+            return
+        }
+        let request = DictationTranslationRequest(
+            transcript: transcript, appName: context.appName, bundleID: context.bundleID,
+            windowTitle: context.windowTitle, textBeforeCaret: context.textBeforeCaret)
+        let translated = try await translator.translate(request) { [weak self] text in
+            guard let self, token == current else { return }
+            panel.state.showTranslation(text)
+        }
+        guard token == current else { return }
+        // A model capitalizes its own opening, and a greeting must keep its capital.
+        let text = DictationTextFormatter.format(
+            translated, context: DictationInsertionContext.read(in: target), adaptCapitalization: false)
+        panel.close()
+        injector.deliver(
+            InjectedText(text), target: target, expectedKeyword: nil,
+            keywordLength: 0, automaticGeneration: nil,
+            isValid: { [weak self] in self?.token == current },
+            onDelivered: { [weak self] in
+                guard let self, token == current else { return }
+                reset(cancelTranscription: false)
+            },
+            onFailed: { [weak self] in
+                guard let self, token == current else { return }
+                reset(cancelTranscription: false)
+                Paster.copyPlainText(translated)
+                showMessage(
+                    String(localized: "Couldn't paste the translation, so it was copied instead"),
+                    .danger)
+            })
+    }
+
     private func finishWithoutRemainder(_ destination: DictationDestination) {
         let text = liveText
         let lost = liveDeliveryFailed
@@ -314,6 +425,7 @@ final class DictationCoordinator {
     }
 
     private func startLiveInsertion(token current: UUID) {
+        if translation != nil { return startSonioxStream(token: current) }
         if SonioxTranscriber.isEnabled, insertionPastes { return startSonioxStream(token: current) }
         guard insertionPastes, settings.dictationLiveInsertion else { return }
         liveTask = Task { [weak self] in
@@ -332,8 +444,17 @@ final class DictationCoordinator {
         do {
             stream = try SonioxStream(
                 apiKey: SonioxTranscriber.apiKey(),
-                languageCode: settings.dictationLanguage.flatMap(DictationLanguage.init(rawValue:))?.code,
-                onWords: { [weak self] words in self?.deliverStreamed(words, token: current) },
+                languageCode: (translation != nil
+                    ? settings.dictationTranslationSpokenLanguage : settings.dictationLanguage)
+                    .flatMap(DictationLanguage.init(rawValue:))?.code,
+                onWords: { [weak self] words in
+                    guard let self, token == current else { return }
+                    if translation != nil {
+                        spokenText += words
+                    } else {
+                        deliverStreamed(words, token: current)
+                    }
+                },
                 onPreview: { [weak self] final, tentative in
                     guard let self, token == current else { return }
                     panel.state.appendPreview(final: final, tentative: tentative)
@@ -459,6 +580,8 @@ final class DictationCoordinator {
         liveOffset = 0
         liveText = ""
         liveDeliveryFailed = false
+        translation = nil
+        spokenText = ""
         startTask = nil
         transcriptionTask = nil
         phase = .idle

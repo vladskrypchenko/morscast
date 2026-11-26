@@ -6,12 +6,19 @@ import Foundation
 final class HotKeyManager {
     var onTogglePalette: (() -> Void)?
     var onDictationPressed: (() -> Void)?
+    var onDictationTranslatePressed: (() -> Void)?
     var onDictationReleased: (() -> Void)?
     var onDictationCancelled: (() -> Void)?
     var dictationEnabled = false {
         didSet {
             guard dictationEnabled != oldValue else { return }
             if !dictationEnabled { onDictationCancelled?() }
+            syncModifierTaps()
+        }
+    }
+    var dictationTranslateEnabled = false {
+        didSet {
+            guard dictationTranslateEnabled != oldValue else { return }
             syncModifierTaps()
         }
     }
@@ -45,7 +52,9 @@ final class HotKeyManager {
         didSet {
             guard recordingAction != oldValue else { return }
             let recording = recordingAction != nil
-            if recording, dictationEnabled, dictationHoldToTalk { onDictationCancelled?() }
+            if recording, dictationEnabled || dictationTranslateEnabled, dictationHoldToTalk {
+                onDictationCancelled?()
+            }
             if recording { secureInputPressedActions.removeAll(keepingCapacity: true) }
             center.isPaused = recording
             modifierTapMonitor.isPaused = recording
@@ -190,7 +199,7 @@ final class HotKeyManager {
     }
 
     func setBinding(_ binding: HotKeyBinding?, for action: HotKeyAction) {
-        if action == .dictation, binding != self.binding(for: action) { onDictationCancelled?() }
+        if action.recordsDictation, binding != self.binding(for: action) { onDictationCancelled?() }
         let previous = bindings[action]
         clearSecureInputEquivalents()
         if let binding,
@@ -231,7 +240,7 @@ final class HotKeyManager {
             index(id, bound: binding != nil, key: boundSnippetKey)
         case .extensionCommand(let entryID):
             index(entryID, bound: binding != nil, key: boundExtensionCommandKey)
-        case .togglePalette, .dictation, .command, .systemAction, .windowCommand:
+        case .togglePalette, .dictation, .dictationTranslate, .command, .systemAction, .windowCommand:
             break
         }
         candidateActionsCache = nil
@@ -291,7 +300,7 @@ final class HotKeyManager {
                 },
                 onKeyUp: { [weak self] in
                     isPressed = false
-                    if self?.secureInputPressedActions.removeValue(forKey: id) == .dictation {
+                    if self?.secureInputPressedActions.removeValue(forKey: id)?.recordsDictation == true {
                         self?.onDictationReleased?()
                     }
                 })
@@ -300,7 +309,7 @@ final class HotKeyManager {
     }
 
     private func clearSecureInputEquivalents() {
-        if secureInputPressedActions.values.contains(.dictation) { onDictationCancelled?() }
+        if secureInputPressedActions.values.contains(where: \.recordsDictation) { onDictationCancelled?() }
         secureInputPressedActions.removeAll(keepingCapacity: true)
         secureInputEquivalentIDs.forEach { center.unregister(id: $0) }
         secureInputEquivalentIDs.removeAll(keepingCapacity: true)
@@ -363,6 +372,8 @@ final class HotKeyManager {
             return String(localized: "App Launcher")
         case .dictation:
             return String(localized: "Dictation")
+        case .dictationTranslate:
+            return String(localized: "Dictate & Translate")
         case .command(let id):
             return id.name
         case .app(let bundleID), .settingsPane(let bundleID):
@@ -398,7 +409,7 @@ final class HotKeyManager {
         center.register(
             id: action.defaultsKey, shortcut: shortcut,
             onKeyDown: { [weak self] _ in self?.perform(action) },
-            onKeyUp: action == .dictation ? { [weak self] in self?.onDictationReleased?() } : nil)
+            onKeyUp: action.recordsDictation ? { [weak self] in self?.onDictationReleased?() } : nil)
     }
 
     /// Rebuilt wholesale, so the map can't drift from what is on disk.
@@ -409,6 +420,9 @@ final class HotKeyManager {
         for action in candidateActions {
             guard let binding = binding(for: action), binding.usesModifierTapMonitor else { continue }
             if action == .dictation, !dictationEnabled { continue }
+            if action == .dictationTranslate, !dictationTranslateEnabled { continue }
+            // A tap has no release, so in hold mode only a key combination can stop this one.
+            if action == .dictationTranslate, dictationHoldToTalk { continue }
             if action == .dictation, dictationHoldToTalk {
                 guard holdKey != nil, conflictOwner(of: binding, excluding: action) == nil else {
                     continue
@@ -427,6 +441,7 @@ final class HotKeyManager {
         switch action {
         case .togglePalette: onTogglePalette?()
         case .dictation: onDictationPressed?()
+        case .dictationTranslate: onDictationTranslatePressed?()
         case .command(let id): onRunCommand?(id)
         case .app(let bundleID): AppLauncher.toggle(bundleID: bundleID)
         case .settingsPane(let bundleID): AppLauncher.openSettingsPane(bundleID: bundleID)

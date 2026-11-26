@@ -4,6 +4,8 @@ enum HotKeyAction: Hashable, Sendable {
     /// Fixed actions with no command row of their own.
     case togglePalette
     case dictation
+    /// Dictation whose transcript an AI model rewrites into another language before pasting.
+    case dictationTranslate
     /// Parameterised over the catalog, so a new built-in command is bindable with no case here.
     case command(CommandID)
     case app(bundleID: String)
@@ -26,6 +28,7 @@ enum HotKeyAction: Hashable, Sendable {
         switch self {
         case .togglePalette: "hotkey.togglePalette"
         case .dictation: "hotkey.dictation"
+        case .dictationTranslate: "hotkey.dictationTranslate"
         case .command(let id): "hotkey." + id.rawValue
         case .app(let bundleID): "hotkey.app." + bundleID
         case .settingsPane(let bundleID): "hotkey.pane." + bundleID
@@ -44,6 +47,9 @@ enum HotKeyAction: Hashable, Sendable {
         }
     }
 
+    /// The two recording shortcuts, which answer their key's release as well as its press.
+    var recordsDictation: Bool { self == .dictation || self == .dictationTranslate }
+
     static let builtInActions: [HotKeyAction] =
-        [.togglePalette, .dictation] + CommandID.allCases.compactMap(\.hotKeyAction)
+        [.togglePalette, .dictation, .dictationTranslate] + CommandID.allCases.compactMap(\.hotKeyAction)
 }

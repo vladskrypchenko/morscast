@@ -18903,6 +18903,58 @@
         }
       }
     },
+    "Add File…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datei hinzufügen …"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir archivo…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un fichier…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルを追加…"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "파일 추가…"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar arquivo…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить файл…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加文件…"
+          }
+        }
+      }
+    },
     "Add Folder…" : {
       "localizations" : {
         "de" : {
@@ -19263,6 +19315,110 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "添加变量"
+          }
+        }
+      }
+    },
+    "Add a Claude API key in Dictate & Translate settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge in den Einstellungen von „Diktieren & Übersetzen“ einen Claude-API-Schlüssel hinzu"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añade una clave de API de Claude en los ajustes de Dictar y traducir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoutez une clé d’API Claude dans les réglages de Dicter et traduire"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「音声入力と翻訳」の設定で Claude API キーを追加してください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "받아쓰기 및 번역 설정에서 Claude API 키를 추가하세요"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicione uma chave de API do Claude nos ajustes de Ditar e traduzir"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавьте API-ключ Claude в настройках диктовки с переводом"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请在“听写并翻译”设置中添加 Claude API 密钥"
+          }
+        }
+      }
+    },
+    "Add a Soniox API key in Dictate & Translate settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge in den Einstellungen von „Diktieren & Übersetzen“ einen Soniox-API-Schlüssel hinzu"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añade una clave de API de Soniox en los ajustes de Dictar y traducir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoutez une clé d’API Soniox dans les réglages de Dicter et traduire"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「音声入力と翻訳」の設定で Soniox API キーを追加してください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "받아쓰기 및 번역 설정에서 Soniox API 키를 추가하세요"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicione uma chave de API do Soniox nos ajustes de Ditar e traduzir"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавьте API-ключ Soniox в настройках диктовки с переводом"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请在“听写并翻译”设置中添加 Soniox API 密钥"
           }
         }
       }
@@ -33441,6 +33597,110 @@
         }
       }
     },
+    "Claude" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude"
+          }
+        }
+      }
+    },
+    "Claude API key" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude-API-Schlüssel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clave de API de Claude"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clé d’API Claude"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude API キー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude API 키"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chave de API do Claude"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "API-ключ Claude"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claude API 密钥"
+          }
+        }
+      }
+    },
     "Claude could not finish the response." : {
       "localizations" : {
         "de" : {
@@ -41325,6 +41585,58 @@
         }
       }
     },
+    "Couldn't paste the translation, so it was copied instead" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Übersetzung konnte nicht eingefügt werden und wurde stattdessen kopiert"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo pegar la traducción, así que se ha copiado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de coller la traduction, elle a été copiée à la place"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻訳を貼り付けられなかったため、コピーしました"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "번역을 붙여넣을 수 없어 대신 복사했습니다"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível colar a tradução, então ela foi copiada"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось вставить перевод, поэтому он скопирован"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法粘贴译文，已改为复制"
+          }
+        }
+      }
+    },
     "Couldn't read %@." : {
       "localizations" : {
         "de" : {
@@ -46284,6 +46596,58 @@
         }
       }
     },
+    "Dictate & Translate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diktieren & Übersetzen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dictar y traducir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dicter et traduire"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声入力と翻訳"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "받아쓰기 및 번역"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ditar e traduzir"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Диктовка с переводом"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "听写并翻译"
+          }
+        }
+      }
+    },
     "Dictation" : {
       "localizations" : {
         "de" : {
@@ -48801,6 +49165,58 @@
         }
       }
     },
+    "Effort" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufwand"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esfuerzo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effort"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "労力"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "노력 수준"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esforço"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Усилие"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "投入程度"
+          }
+        }
+      }
+    },
     "Eject All Disks" : {
       "localizations" : {
         "de" : {
@@ -49892,6 +50308,110 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "启用命令"
+          }
+        }
+      }
+    },
+    "Enable Dictate & Translate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diktieren & Übersetzen aktivieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar Dictar y traducir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activer Dicter et traduire"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声入力と翻訳を有効にする"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "받아쓰기 및 번역 사용"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativar Ditar e traduzir"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить диктовку с переводом"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用听写并翻译"
+          }
+        }
+      }
+    },
+    "Enable Dictate & Translate?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„Diktieren & Übersetzen“ aktivieren?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Activar Dictar y traducir?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activer Dicter et traduire ?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声入力と翻訳を有効にしますか？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "받아쓰기 및 번역을 사용하시겠습니까?"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativar Ditar e traduzir?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить диктовку с переводом?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用听写并翻译？"
           }
         }
       }
@@ -54260,6 +54780,110 @@
         }
       }
     },
+    "Extra rules for Slack, Telegram and other chats." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zusätzliche Regeln für Slack, Telegram und andere Chats."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reglas extra para Slack, Telegram y otros chats."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Règles supplémentaires pour Slack, Telegram et les autres messageries."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Slack、Telegram などのチャット向けの追加ルール。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Slack, Telegram 등 채팅용 추가 규칙."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regras extras para Slack, Telegram e outros chats."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дополнительные правила для Slack, Telegram и других чатов."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "适用于 Slack、Telegram 等聊天的额外规则。"
+          }
+        }
+      }
+    },
+    "Extra rules for emails: greeting, structure, sign-off." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zusätzliche Regeln für E-Mails: Anrede, Aufbau, Grußformel."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reglas extra para correos: saludo, estructura y despedida."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Règles supplémentaires pour les e-mails : salutation, structure, formule de fin."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メール向けの追加ルール：挨拶、構成、結びの言葉。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이메일용 추가 규칙: 인사말, 구성, 맺음말."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regras extras para e-mails: saudação, estrutura e despedida."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дополнительные правила для писем: приветствие, структура, подпись."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "适用于邮件的额外规则：问候语、结构、结束语。"
+          }
+        }
+      }
+    },
     "Fallbacks" : {
       "localizations" : {
         "de" : {
@@ -54308,6 +54932,110 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "搜索操作"
+          }
+        }
+      }
+    },
+    "Fast and fluent. The best fit for messages." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnell und flüssig. Ideal für Nachrichten."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rápido y fluido. Lo mejor para mensajes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rapide et fluide. Idéal pour les messages."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高速で自然。メッセージに最適です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "빠르고 자연스럽습니다. 메시지에 가장 적합합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rápido e fluente. O ideal para mensagens."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Быстрая и естественная. Лучше всего подходит для сообщений."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快速流畅，最适合消息。"
+          }
+        }
+      }
+    },
+    "Fastest and cheapest, a little plainer." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Am schnellsten und günstigsten, etwas schlichter."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La más rápida y barata, algo más sencilla."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le plus rapide et le moins cher, un peu plus sobre."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最も速く安価ですが、表現はやや素朴です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가장 빠르고 저렴하지만 표현이 조금 단순합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O mais rápido e barato, um pouco mais simples."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Самая быстрая и дешёвая, но чуть проще."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最快、最便宜，但措辞稍显朴素。"
           }
         }
       }
@@ -56464,6 +57192,58 @@
         }
       }
     },
+    "For apps that are neither a known mail client nor a known chat." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für Apps, die weder bekannte Mail-Programme noch bekannte Chats sind."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para apps que no son ni un cliente de correo ni un chat conocidos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour les apps qui ne sont ni un client de messagerie ni une messagerie instantanée connus."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "既知のメールアプリでもチャットアプリでもないアプリ向け。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알려진 메일 앱도 채팅 앱도 아닌 앱에 적용됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para apps que não são um cliente de e-mail nem um chat conhecidos."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для приложений, которые не относятся к известным почтовым клиентам или чатам."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "适用于既不是已知邮件客户端也不是已知聊天应用的应用。"
+          }
+        }
+      }
+    },
     "Force" : {
       "localizations" : {
         "de" : {
@@ -57822,6 +58602,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开始使用"
+          }
+        }
+      }
+    },
+    "Get a key at console.anthropic.com. It is stored in the Keychain on this Mac." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einen Schlüssel gibt es auf console.anthropic.com. Er wird im Schlüsselbund dieses Macs gespeichert."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consigue una clave en console.anthropic.com. Se guarda en el llavero de este Mac."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtenez une clé sur console.anthropic.com. Elle est stockée dans le trousseau de ce Mac."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーは console.anthropic.com で取得できます。この Mac のキーチェーンに保存されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "console.anthropic.com에서 키를 받으세요. 이 Mac의 키체인에 저장됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtenha uma chave em console.anthropic.com. Ela fica guardada nas Chaves deste Mac."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ключ можно получить на console.anthropic.com. Он хранится в связке ключей этого Mac."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可在 console.anthropic.com 获取密钥。密钥储存在这台 Mac 的钥匙串中。"
           }
         }
       }
@@ -60643,6 +61475,110 @@
         }
       }
     },
+    "Hold to talk needs a key combination for Dictate & Translate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Halten und Sprechen braucht „Diktieren & Übersetzen“ eine Tastenkombination"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantener para hablar necesita una combinación de teclas para Dictar y traducir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le maintien pour parler nécessite une combinaison de touches pour Dicter et traduire"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声入力と翻訳で押して話すには、キーの組み合わせが必要です"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "받아쓰기 및 번역에서 눌러서 말하기를 사용하려면 키 조합이 필요합니다"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segurar para falar precisa de uma combinação de teclas para Ditar e traduzir"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для режима «удерживать и говорить» диктовке с переводом нужно сочетание клавиш"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "听写并翻译的按住说话需要组合键"
+          }
+        }
+      }
+    },
+    "Hold to talk needs a key combination here, not a single modifier." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halten und Sprechen braucht hier eine Tastenkombination, keine einzelne Sondertaste."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aquí, mantener para hablar necesita una combinación de teclas, no un solo modificador."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ici, le maintien pour parler nécessite une combinaison de touches, pas une seule touche de modification."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ここでは押して話すために、単独の修飾キーではなくキーの組み合わせが必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "여기서 눌러서 말하기에는 단일 보조 키가 아닌 키 조합이 필요합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aqui, segurar para falar precisa de uma combinação de teclas, não de um único modificador."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Здесь для режима «удерживать и говорить» нужно сочетание клавиш, а не одна клавиша-модификатор."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此处的按住说话需要组合键，而不是单个修饰键。"
+          }
+        }
+      }
+    },
     "Hold to talk needs a key combination or a single modifier" : {
       "localizations" : {
         "de" : {
@@ -60691,6 +61627,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "“按住说话”需要使用组合键或单个修饰键"
+          }
+        }
+      }
+    },
+    "Hold to talk, release to translate. Escape cancels." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Sprechen halten, zum Übersetzen loslassen. Escape bricht ab."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantén para hablar y suelta para traducir. Escape cancela."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenez pour parler, relâchez pour traduire. Échap annule."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "押したまま話し、離すと翻訳します。Esc でキャンセル。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "누른 채로 말하고 떼면 번역합니다. Esc로 취소합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segure para falar e solte para traduzir. Esc cancela."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удерживайте, чтобы говорить, отпустите, чтобы перевести. Escape отменяет."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按住说话，松开即翻译。按 Esc 取消。"
           }
         }
       }
@@ -60900,6 +61888,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "时分秒"
+          }
+        }
+      }
+    },
+    "How you write everywhere: tone, phrases, names, terms." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie du überall schreibst: Ton, Formulierungen, Namen, Begriffe."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cómo escribes en todas partes: tono, frases, nombres y términos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre façon d’écrire partout : ton, tournures, noms, termes."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "どこでも共通の書き方：トーン、言い回し、名前、用語。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "어디서나 적용할 글쓰기 방식: 어조, 표현, 이름, 용어."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como você escreve em qualquer lugar: tom, frases, nomes e termos."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Как вы пишете везде: тон, фразы, имена, термины."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你在各处的写作方式：语气、措辞、名称、术语。"
           }
         }
       }
@@ -71360,6 +72400,58 @@
         }
       }
     },
+    "Low is fastest and is plenty for a message." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niedrig ist am schnellsten und reicht für eine Nachricht."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bajo es lo más rápido y basta para un mensaje."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faible est le plus rapide et suffit pour un message."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「低」が最も速く、メッセージには十分です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "낮음이 가장 빠르며 메시지에는 충분합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baixo é o mais rápido e basta para uma mensagem."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Низкое — самое быстрое, и для сообщения его хватает."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“低”速度最快，足以应对一条消息。"
+          }
+        }
+      }
+    },
     "MCP Servers" : {
       "localizations" : {
         "de" : {
@@ -71618,6 +72710,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "磁通密度"
+          }
+        }
+      }
+    },
+    "Mail apps and webmail get an email; Slack, Telegram and other chats get a short message. Text already in the field is sent along so the reply continues it." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mail-Apps und Webmail erhalten eine E-Mail, Slack, Telegram und andere Chats eine kurze Nachricht. Text, der schon im Feld steht, wird mitgesendet, damit die Antwort daran anknüpft."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las apps de correo y el webmail reciben un correo; Slack, Telegram y otros chats, un mensaje breve. El texto que ya hay en el campo se envía también para que la respuesta lo continúe."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les apps de messagerie et le webmail reçoivent un e-mail ; Slack, Telegram et les autres messageries, un message court. Le texte déjà présent dans le champ est envoyé aussi pour que la réponse le prolonge."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メールアプリや Web メールにはメールを、Slack や Telegram などのチャットには短いメッセージを作成します。入力欄にすでにあるテキストも送信され、その続きとして書かれます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메일 앱과 웹메일에는 이메일을, Slack, Telegram 등 채팅에는 짧은 메시지를 작성합니다. 입력란에 이미 있는 텍스트도 함께 보내 이어서 쓰게 합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apps de e-mail e webmail recebem um e-mail; Slack, Telegram e outros chats recebem uma mensagem curta. O texto que já está no campo também é enviado para que a resposta dê continuidade a ele."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Почтовые приложения и веб-почта получают письмо, а Slack, Telegram и другие чаты — короткое сообщение. Текст, который уже есть в поле, отправляется вместе с диктовкой, чтобы ответ его продолжал."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "邮件应用和网页邮箱会得到一封邮件；Slack、Telegram 等聊天会得到一条简短消息。输入框中已有的文本也会一并发送，以便回复能接续下去。"
           }
         }
       }
@@ -73399,6 +74543,58 @@
         }
       }
     },
+    "Messenger" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Messenger"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensajería"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Messagerie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メッセンジャー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메신저"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensageiro"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мессенджер"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "即时通讯"
+          }
+        }
+      }
+    },
     "Microphone" : {
       "localizations" : {
         "de" : {
@@ -74598,6 +75794,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "月供"
+          }
+        }
+      }
+    },
+    "Most careful, and noticeably slower." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Am sorgfältigsten, aber merklich langsamer."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La más cuidadosa, y notablemente más lenta."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le plus soigné, mais nettement plus lent."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最も丁寧ですが、明らかに遅くなります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가장 신중하지만 눈에 띄게 느립니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O mais cuidadoso, e visivelmente mais lento."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Самая тщательная, но заметно медленнее."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最细致，但明显更慢。"
           }
         }
       }
@@ -85412,6 +86660,58 @@
         }
       }
     },
+    "Off answers faster. Turn it on for long, tangled notes." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus antwortet schneller. Für lange, verworrene Notizen einschalten."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivado responde más rápido. Actívalo para notas largas y enrevesadas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Désactivé répond plus vite. Activez-le pour les notes longues et confuses."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オフの方が速く応答します。長く込み入ったメモではオンにしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "끄면 더 빨리 응답합니다. 길고 복잡한 메모에는 켜세요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativado responde mais rápido. Ative para notas longas e confusas."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Без него ответ быстрее. Включайте для длинных и запутанных заметок."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭时响应更快。冗长复杂的内容可开启。"
+          }
+        }
+      }
+    },
     "Offer %@ as a fallback" : {
       "localizations" : {
         "de" : {
@@ -89212,6 +90512,58 @@
         }
       }
     },
+    "Other apps" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Andere Apps"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otras apps"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autres apps"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "その他のアプリ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기타 앱"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outros apps"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Другие приложения"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他应用"
+          }
+        }
+      }
+    },
     "Other apps that rewrite keystrokes. A slow one delays all typing." : {
       "localizations" : {
         "de" : {
@@ -92717,6 +94069,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "按下以开始或停止"
+          }
+        }
+      }
+    },
+    "Press to start, press again to translate. Escape cancels." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Starten drücken, zum Übersetzen erneut drücken. Escape bricht ab."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulsa para empezar y otra vez para traducir. Escape cancela."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appuyez pour commencer, puis à nouveau pour traduire. Échap annule."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "押して開始し、もう一度押すと翻訳します。Esc でキャンセル。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "눌러서 시작하고 다시 누르면 번역합니다. Esc로 취소합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressione para começar e de novo para traduzir. Esc cancela."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите, чтобы начать, и ещё раз, чтобы перевести. Escape отменяет."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按一下开始，再按一下即翻译。按 Esc 取消。"
           }
         }
       }
@@ -99994,6 +101398,110 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "运行前必填"
+          }
+        }
+      }
+    },
+    "Required to transcribe." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für die Transkription erforderlich."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesaria para transcribir."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nécessaire pour transcrire."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文字起こしに必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "받아쓰기에 필요합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necessária para transcrever."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нужен для распознавания речи."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "转写时需要。"
+          }
+        }
+      }
+    },
+    "Required to translate." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für die Übersetzung erforderlich."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesaria para traducir."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nécessaire pour traduire."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻訳に必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "번역에 필요합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necessária para traduzir."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нужен для перевода."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻译时需要。"
           }
         }
       }
@@ -108302,6 +109810,58 @@
         }
       }
     },
+    "Shared with Dictation." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wird mit dem Diktat geteilt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartido con Dictado."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partagé avec Dictée."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声入力と共通です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "받아쓰기와 공유됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartilhado com o Ditado."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Общая настройка с диктовкой."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "与听写共用。"
+          }
+        }
+      }
+    },
     "Share…" : {
       "localizations" : {
         "de" : {
@@ -112313,6 +113873,110 @@
         }
       }
     },
+    "Soniox API key" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soniox-API-Schlüssel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clave de API de Soniox"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clé d’API Soniox"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soniox API キー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soniox API 키"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chave de API do Soniox"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "API-ключ Soniox"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soniox API 密钥"
+          }
+        }
+      }
+    },
+    "Soniox transcribes as you speak, and the panel shows what it heard." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soniox transkribiert während du sprichst, und das Panel zeigt, was es gehört hat."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soniox transcribe mientras hablas y el panel muestra lo que ha oído."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soniox transcrit pendant que vous parlez, et le panneau affiche ce qu’il a entendu."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soniox が話しながら文字起こしし、パネルに聞き取った内容を表示します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soniox가 말하는 동안 받아쓰고, 패널에 들은 내용을 보여 줍니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Soniox transcreve enquanto você fala, e o painel mostra o que ele ouviu."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soniox распознаёт речь на лету, а панель показывает, что он услышал."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soniox 会在你说话时实时转写，面板会显示它听到的内容。"
+          }
+        }
+      }
+    },
     "Source" : {
       "comment" : "Info row label: the app the item came from",
       "localizations" : {
@@ -112630,6 +114294,110 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "空间"
+          }
+        }
+      }
+    },
+    "Speak in Russian; Claude pastes a polished message in English." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprich Russisch – Claude fügt eine ausgefeilte Nachricht auf Englisch ein."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Habla en ruso; Claude pega un mensaje pulido en inglés."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parlez en russe ; Claude colle un message soigné en anglais."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロシア語で話すと、Claude が整った英語のメッセージを貼り付けます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "러시아어로 말하면 Claude가 다듬어진 영어 메시지를 붙여넣습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fale em russo; o Claude cola uma mensagem caprichada em inglês."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Говорите по-русски — Claude вставит отточенное сообщение на английском."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用俄语说话，Claude 会粘贴一条润色好的英文消息。"
+          }
+        }
+      }
+    },
+    "Speech" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprache"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voz"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parole"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音声"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "음성"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fala"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Речь"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "语音"
           }
         }
       }
@@ -113863,6 +115631,58 @@
         }
       }
     },
+    "Stored in the Keychain." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Schlüsselbund gespeichert."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardada en el llavero."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stockée dans le trousseau."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キーチェーンに保存済み。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "키체인에 저장됨."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardada nas Chaves."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хранится в связке ключей."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已储存在钥匙串中。"
+          }
+        }
+      }
+    },
     "Strikethrough" : {
       "localizations" : {
         "de" : {
@@ -113963,6 +115783,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "字符串值必须使用双引号"
+          }
+        }
+      }
+    },
+    "Style Guides" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stilrichtlinien"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guías de estilo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guides de style"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタイルガイド"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "스타일 가이드"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guias de estilo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Руководства по стилю"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "风格指南"
           }
         }
       }
@@ -122758,6 +124630,58 @@
         }
       }
     },
+    "Thinking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denken"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Razonamiento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réflexion"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "思考"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사고"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raciocínio"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Размышление"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "思考"
+          }
+        }
+      }
+    },
     "Thinking…" : {
       "localizations" : {
         "de" : {
@@ -126649,6 +128573,58 @@
         }
       }
     },
+    "Tinycast needs microphone access and Accessibility to paste into other apps. Your voice is sent to Soniox to transcribe, and the transcript to Anthropic's Claude to translate, using your own API keys." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tinycast braucht Mikrofonzugriff und Bedienungshilfen, um in andere Apps einzufügen. Deine Stimme geht zur Transkription an Soniox und der Text zur Übersetzung an Claude von Anthropic – mit deinen eigenen API-Schlüsseln."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tinycast necesita acceso al micrófono y a Accesibilidad para pegar en otras apps. Tu voz se envía a Soniox para transcribirla y el texto a Claude de Anthropic para traducirlo, con tus propias claves de API."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tinycast a besoin de l’accès au micro et à l’Accessibilité pour coller dans d’autres apps. Votre voix est envoyée à Soniox pour être transcrite, et le texte à Claude d’Anthropic pour être traduit, avec vos propres clés d’API."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tinycast は他のアプリに貼り付けるため、マイクとアクセシビリティへのアクセスが必要です。音声は文字起こしのため Soniox に、文字起こしは翻訳のため Anthropic の Claude に、あなた自身の API キーで送信されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tinycast가 다른 앱에 붙여넣으려면 마이크와 손쉬운 사용 접근 권한이 필요합니다. 음성은 받아쓰기를 위해 Soniox로, 받아쓴 텍스트는 번역을 위해 Anthropic의 Claude로 내 API 키를 사용해 전송됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Tinycast precisa de acesso ao microfone e à Acessibilidade para colar em outros apps. Sua voz é enviada ao Soniox para ser transcrita, e o texto ao Claude da Anthropic para ser traduzido, com suas próprias chaves de API."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tinycast нужен доступ к микрофону и Универсальному доступу, чтобы вставлять текст в другие приложения. Голос отправляется в Soniox для распознавания, а текст — в Claude от Anthropic для перевода, по вашим собственным API-ключам."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tinycast 需要麦克风和辅助功能权限才能粘贴到其他应用。你的语音会发送到 Soniox 进行转写，转写文本会发送到 Anthropic 的 Claude 进行翻译，均使用你自己的 API 密钥。"
+          }
+        }
+      }
+    },
     "Tinycast needs microphone access for dictation and Accessibility to paste into other apps. Audio is processed on this Mac." : {
       "localizations" : {
         "de" : {
@@ -129181,6 +131157,58 @@
         }
       }
     },
+    "Translate into" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übersetzen in"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traducir a"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traduire en"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻訳先"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "번역할 언어"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traduzir para"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переводить на"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻译成"
+          }
+        }
+      }
+    },
     "Translate to" : {
       "localizations" : {
         "de" : {
@@ -130061,6 +132089,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开启 Apple Intelligence，或在上方添加提供商。"
+          }
+        }
+      }
+    },
+    "Turn on Dictate & Translate in Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiviere „Diktieren & Übersetzen“ in den Einstellungen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activa Dictar y traducir en Ajustes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activez Dicter et traduire dans les Réglages"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「設定」で音声入力と翻訳をオンにしてください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정에서 받아쓰기 및 번역을 켜세요"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ative Ditar e traduzir nos Ajustes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включите диктовку с переводом в настройках"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请在设置中开启听写并翻译"
           }
         }
       }
@@ -136119,6 +138199,58 @@
         }
       }
     },
+    "Write in any language, or add Markdown files. Your guides win over the built-in rules." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreibe in einer beliebigen Sprache oder füge Markdown-Dateien hinzu. Deine Richtlinien haben Vorrang vor den eingebauten Regeln."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escribe en cualquier idioma o añade archivos Markdown. Tus guías prevalecen sobre las reglas integradas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Écrivez dans n’importe quelle langue ou ajoutez des fichiers Markdown. Vos guides priment sur les règles intégrées."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "どの言語で書いても、Markdown ファイルを追加しても構いません。あなたのガイドは組み込みのルールより優先されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "어떤 언어로든 쓰거나 Markdown 파일을 추가하세요. 내 가이드가 기본 규칙보다 우선합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escreva em qualquer idioma ou adicione arquivos Markdown. Seus guias prevalecem sobre as regras integradas."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пишите на любом языке или добавляйте файлы Markdown. Ваши руководства важнее встроенных правил."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可以用任何语言编写，也可以添加 Markdown 文件。你的指南优先于内置规则。"
+          }
+        }
+      }
+    },
     "Yellow" : {
       "localizations" : {
         "de" : {
@@ -136585,6 +138717,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "你还没有创建任何快速链接。"
+          }
+        }
+      }
+    },
+    "You speak" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du sprichst"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hablas en"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous parlez"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "話す言語"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "말하는 언어"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você fala"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы говорите на"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你说的语言"
           }
         }
       }

@@ -21,6 +21,15 @@ final class DictationDisplayState {
         previewFinal = String(tail.drop { !$0.isWhitespace })
     }
 
+    /// The translation as it streams in, replacing the spoken line rather than following it.
+    func showTranslation(_ text: String) {
+        let flattened = text.replacing("\n", with: " ")
+        previewFinal =
+            flattened.count > DictationPreview.characterLimit
+            ? String(flattened.suffix(DictationPreview.characterLimit)) : flattened
+        previewTentative = ""
+    }
+
     func clearPreview() {
         previewFinal = ""
         previewTentative = ""

@@ -109,7 +109,47 @@ struct AIProviderTests {
             "a document-only turn still sends, as content parts")
     }
 
+    static func requestReasoningReachesOnlyAnthropic() {
+        func body(_ model: String, _ reasoning: AIReasoning?, provider: AIProviderKind = .anthropic)
+            -> [String: Any]
+        {
+            AIRequestBody.make(
+                AIRequest(messages: [AIMessage(role: .user, text: "hi")], reasoning: reasoning),
+                configuration: AIHTTPConfiguration(
+                    provider: provider, baseURL: URL(string: "https://api.anthropic.com")!,
+                    model: model))
+        }
+        func thinking(_ body: [String: Any]) -> String? {
+            (body["thinking"] as? [String: Any])?["type"] as? String
+        }
+        func effort(_ body: [String: Any]) -> String? {
+            (body["output_config"] as? [String: Any])?["effort"] as? String
+        }
+        let fast = AIReasoning(thinks: false, effort: "low")
+        let sonnet = body("claude-sonnet-5-5", fast)
+        expect(
+            thinking(sonnet) == "between_tools" && effort(sonnet) == "low",
+            "Sonnet 5.5 turns thinking off the one way it accepts, at the asked effort")
+        expect(thinking(body("claude-haiku-5-5", fast)) == "disabled", "other Claude models disable it")
+        let opus = body("claude-opus-5-5", fast)
+        expect(
+            thinking(opus) == nil && effort(opus) == "low",
+            "Opus 5.5 cannot switch thinking off, so it only lowers effort")
+        expect(
+            thinking(body("claude-sonnet-5-5", AIReasoning(thinks: true, effort: "medium")))
+                == "adaptive", "thinking on is adaptive")
+        let untouched = body("claude-sonnet-5-5", nil)
+        expect(
+            untouched["thinking"] == nil && untouched["output_config"] == nil,
+            "a request without its own setting leaves the route's defaults")
+        let openAI = body("gpt-5", fast, provider: .openAI)
+        expect(
+            openAI["thinking"] == nil && openAI["output_config"] == nil,
+            "an OpenAI-shaped body never carries Anthropic's fields")
+    }
+
     static func main() {
+        requestReasoningReachesOnlyAnthropic()
         instructionsFollowTheSetting()
         providerPresetsResolveEndpoints()
         modelCatalogBuildsProviderRequests()

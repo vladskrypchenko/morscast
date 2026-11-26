@@ -113,6 +113,26 @@ enum SettingsFileSchema {
                 guard let language else { return .some(nil) }
                 return DictationLanguage(rawValue: language) == nil ? nil : .some(language)
             }
+        case .dictationTranslationShortcut:
+            return shortcuts.binding(
+                for: key, action: .dictationTranslate, name: String(localized: "Dictate & Translate"))
+        case .dictationTranslationSpokenLanguage:
+            return bind(settings, \.dictationTranslationSpokenLanguage) { language in
+                guard let language else { return .some(nil) }
+                return DictationLanguage(rawValue: language) == nil ? nil : .some(language)
+            }
+        case .dictationTranslationModel: return bind(settings, \.dictationTranslationModel)
+        case .dictationTranslationThinks: return bind(settings, \.dictationTranslationThinks)
+        case .dictationTranslationEffort: return bind(settings, \.dictationTranslationEffort)
+        case .dictationTranslationLanguage:
+            return bind(settings, \.dictationTranslationLanguage) {
+                DictationLanguage(rawValue: $0) == nil ? nil : $0
+            }
+        case .dictationTranslationFallbackChannel:
+            return bind(settings, \.dictationTranslationFallbackChannel)
+        case .dictationTranslationGuide: return bind(settings, \.dictationTranslationGuide)
+        case .dictationTranslationChatGuide: return bind(settings, \.dictationTranslationChatGuide)
+        case .dictationTranslationEmailGuide: return bind(settings, \.dictationTranslationEmailGuide)
         case .snippetsShowInLauncher: return bind(settings, \.snippetsShowInLauncher)
         case .snippetsFolder: return bind(settings, \.snippetsFolder, accept: folder)
         case .snippetsCommands: return launcher.commandsBinding(for: key, owner: .snippets)
@@ -187,6 +207,9 @@ extension DictationModel: SettingsFileRawValue {}
 extension DictationMode: SettingsFileRawValue {}
 extension DictationDestination: SettingsFileRawValue {}
 extension DictationIdleRelease: SettingsFileRawValue {}
+extension DictationTranslationEffort: SettingsFileRawValue {}
+extension DictationTranslationModel: SettingsFileRawValue {}
+extension DictationChannel: SettingsFileRawValue {}
 extension JoinWindow: SettingsFileRawValue {}
 
 extension ClipboardRetention: SettingsFileToken {

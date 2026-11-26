@@ -20,6 +20,7 @@ struct DictationFieldTest {
         try await testCancelSilently()
         try await testCancelDuringStartCue()
         try await testBluetoothStartCue()
+        try await testTranslationIssue()
         print("ALL PASSED")
     }
 
@@ -299,6 +300,37 @@ struct DictationFieldTest {
         }
     }
 
+    private static func testTranslationIssue() async throws {
+        let fixture = Fixture()
+        fixture.translator = StubTranslator(issue: "Add a Claude connection")
+        fixture.coordinator.pressedTranslate()
+        try await Task.sleep(for: .milliseconds(50))
+        expect(fixture.messages == ["Add a Claude connection"], "A translator that can't run says why")
+        expect(DictationCapture.latest?.isRecording != true, "and nothing is recorded in vain")
+
+        let switchedOff = Fixture()
+        switchedOff.translator = StubTranslator(issue: nil)
+        switchedOff.settings.dictationTranslationEnabled = false
+        switchedOff.coordinator.pressedTranslate()
+        try await Task.sleep(for: .milliseconds(50))
+        expect(DictationCapture.latest?.isRecording != true, "Its own switch off means no recording")
+
+        let untranslated = Fixture()
+        untranslated.coordinator.pressedTranslate()
+        try await Task.sleep(for: .milliseconds(50))
+        expect(untranslated.messages.isEmpty, "Without a translator the shortcut does nothing")
+    }
+
+    @MainActor
+    private final class StubTranslator: DictationTranslating {
+        let problem: String?
+        init(issue: String?) { problem = issue }
+        func issue() -> String? { problem }
+        func translate(
+            _ request: DictationTranslationRequest, onText: @escaping @MainActor (String) -> Void
+        ) async throws -> String { request.transcript }
+    }
+
     private static func expect(_ condition: @autoclosure () -> Bool, _ message: String) {
         precondition(condition(), message)
         print("PASS  \(message)")
@@ -310,11 +342,12 @@ struct DictationFieldTest {
         let models = DictationModelStore()
         let queue = DeliveryQueue()
         var messages: [String] = []
+        var translator: (any DictationTranslating)?
         lazy var coordinator = DictationCoordinator(
             settings: settings, hotKeys: HotKeyManager(), models: models,
             injector: TextInjector(
                 clipboardManager: ClipboardManager(), settings: settings, deliveryQueue: queue),
-            audioDucker: DictationAudioDucker(), confirmEnable: { false },
+            audioDucker: DictationAudioDucker(), translator: translator, confirmEnable: { false },
             showMessage: { [weak self] message, _ in self?.messages.append(message) })
 
         var capture: DictationCapture { DictationCapture.latest! }
@@ -403,9 +436,11 @@ final class AppSettings {
     var dictationAdaptsCapitalization = true
     var dictationLiveInsertion = false
     var dictationPlaysSounds = true
+    var dictationTranslationEnabled = true
+    var dictationTranslationSpokenLanguage: String? = "Russian"
 }
 
-enum HotKeyAction { case dictation }
+enum HotKeyAction { case dictation, dictationTranslate }
 
 @MainActor
 final class HotKeyManager {
@@ -469,6 +504,8 @@ final class DictationPanelController {
         var phase = Phase.listening
         var levels: [Float] = []
         func appendPreview(final: String, tentative: String) {}
+        func showTranslation(_ text: String) { translation = text }
+        var translation = ""
     }
     static weak var latest: DictationPanelController?
     let state = State()

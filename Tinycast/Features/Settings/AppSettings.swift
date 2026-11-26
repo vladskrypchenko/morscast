@@ -392,6 +392,75 @@ final class AppSettings {
         didSet { defaults.set(dictationLanguage, forKey: Key.dictationLanguage.rawValue) }
     }
 
+    /// Off by default: it sends every dictation to an AI provider before anything is pasted.
+    var dictationTranslationEnabled: Bool {
+        didSet {
+            defaults.set(dictationTranslationEnabled, forKey: Key.dictationTranslationEnabled.rawValue)
+        }
+    }
+
+    var dictationTranslationModel: DictationTranslationModel {
+        didSet {
+            defaults.set(
+                dictationTranslationModel.rawValue, forKey: Key.dictationTranslationModel.rawValue)
+        }
+    }
+
+    /// A `DictationLanguage` raw value hinted to Soniox and named in the prompt; nil is Auto.
+    var dictationTranslationSpokenLanguage: String? {
+        didSet {
+            defaults.set(
+                dictationTranslationSpokenLanguage ?? "",
+                forKey: Key.dictationTranslationSpokenLanguage.rawValue)
+        }
+    }
+
+    var dictationTranslationThinks: Bool {
+        didSet {
+            defaults.set(dictationTranslationThinks, forKey: Key.dictationTranslationThinks.rawValue)
+        }
+    }
+
+    var dictationTranslationEffort: DictationTranslationEffort {
+        didSet {
+            defaults.set(
+                dictationTranslationEffort.rawValue, forKey: Key.dictationTranslationEffort.rawValue)
+        }
+    }
+
+    /// A `DictationLanguage` raw value, which is also the name the prompt uses.
+    var dictationTranslationLanguage: String {
+        didSet {
+            defaults.set(dictationTranslationLanguage, forKey: Key.dictationTranslationLanguage.rawValue)
+        }
+    }
+
+    /// For an app that is neither a known mail client nor a known chat.
+    var dictationTranslationFallbackChannel: DictationChannel {
+        didSet {
+            defaults.set(
+                dictationTranslationFallbackChannel.rawValue,
+                forKey: Key.dictationTranslationFallbackChannel.rawValue)
+        }
+    }
+
+    var dictationTranslationGuide: String {
+        didSet { defaults.set(dictationTranslationGuide, forKey: Key.dictationTranslationGuide.rawValue) }
+    }
+
+    var dictationTranslationChatGuide: String {
+        didSet {
+            defaults.set(dictationTranslationChatGuide, forKey: Key.dictationTranslationChatGuide.rawValue)
+        }
+    }
+
+    var dictationTranslationEmailGuide: String {
+        didSet {
+            defaults.set(
+                dictationTranslationEmailGuide, forKey: Key.dictationTranslationEmailGuide.rawValue)
+        }
+    }
+
     var notesRendersMarkdown: Bool {
         didSet { defaults.set(notesRendersMarkdown, forKey: Key.notesRendersMarkdown.rawValue) }
     }
@@ -791,6 +860,30 @@ final class AppSettings {
         dictationLanguage =
             defaults.string(forKey: Key.dictationLanguage.rawValue)
             .flatMap(DictationLanguage.init(rawValue:))?.rawValue
+        dictationTranslationEnabled = defaults.bool(forKey: Key.dictationTranslationEnabled.rawValue)
+        dictationTranslationModel =
+            defaults.string(forKey: Key.dictationTranslationModel.rawValue)
+            .flatMap(DictationTranslationModel.init(rawValue:)) ?? .sonnet
+        dictationTranslationSpokenLanguage =
+            defaults.string(forKey: Key.dictationTranslationSpokenLanguage.rawValue)
+            .map { DictationLanguage(rawValue: $0)?.rawValue }
+            ?? DictationLanguage.russian.rawValue
+        dictationTranslationThinks = defaults.bool(forKey: Key.dictationTranslationThinks.rawValue)
+        dictationTranslationEffort =
+            defaults.string(forKey: Key.dictationTranslationEffort.rawValue)
+            .flatMap(DictationTranslationEffort.init(rawValue:)) ?? .low
+        dictationTranslationLanguage =
+            defaults.string(forKey: Key.dictationTranslationLanguage.rawValue)
+            .flatMap(DictationLanguage.init(rawValue:))?.rawValue ?? DictationLanguage.english.rawValue
+        dictationTranslationFallbackChannel =
+            defaults.string(forKey: Key.dictationTranslationFallbackChannel.rawValue)
+            .flatMap(DictationChannel.init(rawValue:)) ?? .chat
+        dictationTranslationGuide =
+            defaults.string(forKey: Key.dictationTranslationGuide.rawValue) ?? ""
+        dictationTranslationChatGuide =
+            defaults.string(forKey: Key.dictationTranslationChatGuide.rawValue) ?? ""
+        dictationTranslationEmailGuide =
+            defaults.string(forKey: Key.dictationTranslationEmailGuide.rawValue) ?? ""
         notesRendersMarkdown =
             defaults.object(forKey: Key.notesRendersMarkdown.rawValue) == nil
             || defaults.bool(forKey: Key.notesRendersMarkdown.rawValue)

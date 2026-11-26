@@ -94,6 +94,26 @@ enum SettingsBackupCoverage {
             "Dictation preferences stay local until backup supports them.",
         AppSettingsKey.dictationIdleRelease.rawValue:
             "Dictation memory use stays a device-local preference.",
+        AppSettingsKey.dictationTranslationEnabled.rawValue:
+            "Sends every translated dictation to an AI provider; an import must not switch that on.",
+        AppSettingsKey.dictationTranslationModel.rawValue:
+            "Chosen beside the Claude key in this Mac's Keychain, which never travels either.",
+        AppSettingsKey.dictationTranslationSpokenLanguage.rawValue:
+            "Dictation preferences stay local until backup supports them.",
+        AppSettingsKey.dictationTranslationThinks.rawValue:
+            "Tuned to the model this Mac chose, which never travels either.",
+        AppSettingsKey.dictationTranslationEffort.rawValue:
+            "Tuned to the model this Mac chose, which never travels either.",
+        AppSettingsKey.dictationTranslationLanguage.rawValue:
+            "Dictation preferences stay local until backup supports them.",
+        AppSettingsKey.dictationTranslationFallbackChannel.rawValue:
+            "Dictation preferences stay local until backup supports them.",
+        AppSettingsKey.dictationTranslationGuide.rawValue:
+            "Style guides change every pasted message and must not move unseen.",
+        AppSettingsKey.dictationTranslationChatGuide.rawValue:
+            "Style guides change every pasted message and must not move unseen.",
+        AppSettingsKey.dictationTranslationEmailGuide.rawValue:
+            "Style guides change every pasted message and must not move unseen.",
         AppSettingsKey.clipboardTextSearchEnabled.rawValue:
             "Background OCR is an opt-in processing choice on this Mac; a backup must not enable it.",
         AppSettingsKey.snippetsEnabled.rawValue:

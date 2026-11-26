@@ -102,7 +102,7 @@ struct DictationSettingsView: View {
                     let installed = coordinator.models.isInstalled(settings.dictationModel)
                     let downloading = coordinator.models.downloading == settings.dictationModel
                     if usesSoniox {
-                        SonioxKeyRow()
+                        APIKeyRow.soniox
                     } else if downloading {
                         DownloadProgressView(models: coordinator.models)
                     } else {

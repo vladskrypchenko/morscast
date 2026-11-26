@@ -118,13 +118,52 @@ compilation of its 2-bit weights; Ultra's encoder and both variants' decoder/joi
   without disabling contextual spaces; if an app does not expose that context through
   Accessibility, the plain transcript is inserted without guessing.
 
+## Dictate & Translate
+
+A second shortcut, `HotKeyAction.dictationTranslate`, records with the same microphone and capture
+path, streams the speech to Soniox, then hands the whole transcript to Claude, which rewrites it as a
+message in another language (English by default) and pastes that once at the caret. It is
+self-contained: its own Settings pane holds every value it needs, so Dictation itself may stay off.
+
+- **Its own switch and its own consent.** `dictationTranslationEnabled` is off by default and gates
+  the shortcut through `AppCore`'s `allowsAction` and `HotKeyManager.dictationTranslateEnabled`.
+  Turning it on asks through `DialogController`, says the voice goes to Soniox and the transcript to
+  Anthropic, then requests the microphone and Accessibility. It is excluded from backups and has no
+  settings.json key.
+- **One pane, shared values duplicated.** The pane shows the shortcut, the shortcut behavior and the
+  microphone, which Dictation shares (`dictationMode`, `dictationMicrophone`), next to its own: the
+  Soniox key (the same Keychain item as Dictation's Soniox key), the spoken language, the Claude key,
+  model, thinking and effort, the target language, the fallback channel and the style guides.
+- **Always Soniox, always its own Claude key.** A translate session never uses a local model and
+  never starts the live loop: Soniox streams with `dictationTranslationSpokenLanguage` as its hint,
+  finalized words are collected while the panel previews them, and finishing sends the whole
+  transcript in one request. `DictationTranslator` calls Anthropic directly through `HTTPAIProvider`
+  with a key in its own Keychain item (`KeychainSecretStore(scope: "dictation-translation")`), not
+  an AI connection, so Settings → AI is never involved. The models are `DictationTranslationModel`'s
+  three; Sonnet 5.5 is the default.
+- **Nothing raw is ever pasted.** The answer streams into the panel line, then `TextInjector`
+  delivers it once. A failed paste copies the translation, never the original speech.
+- **Its own thinking setting.** The request carries `AIReasoning`, which only the Anthropic body
+  writes: `output_config.effort`, and `thinking` as `adaptive`, or off the way each model accepts
+  (`between_tools` on Sonnet 5.5, `disabled` elsewhere, omitted on Opus 5.5, which cannot turn it
+  off).
+- **Messenger or email is decided per press.** `DictationChannel.classify` reads the target's bundle
+  ID, then a browser's window title, then falls back to the pane's choice. Each channel has its own
+  built-in rules and its own user style guide, after a general one; the guides go last so they win.
+- **The field is context, never instructions.** The prompt carries the app, window title and up to
+  4,000 characters before the caret, read through Accessibility at the press, and states that the
+  dictation is material to transform. `DictationTranslationPrompt.clean` strips quotes, fences and
+  wrapper tags a model adds anyway.
+- **Hold to talk needs a key combination.** A modifier-only binding has no release, so in hold mode the
+  modifier monitor skips this action and the press reports why.
+
 ## Validation
 
 `dictation-cue-test` checks system resource paths, playback ordering and missing sounds without audio output.
 `dictation-field-test` checks composer switching and teardown, scoped cancellation, delayed insertion and
 the order of sound cues against ducking
 with synthetic capture and real AppKit editors, without recording audio or touching the shared clipboard.
-`dictation-test` checks formatting and model options; `dictation-inference-test` checks score selection,
+`dictation-test` checks formatting, model options, channel detection and the translation prompt; `dictation-inference-test` checks score selection,
 byte BPE, Fourier/mel features, listening bands and audio partitioning without downloading a model. `dictation-worker-test`
 exercises framed IPC, worker reuse/switching, removal, cancellation and broken pipes with a fixture.
 An in-process URLProtocol fixture checks byte progress before the first file completes, combined

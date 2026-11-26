@@ -18,6 +18,7 @@ struct SettingsDetailView: View {
             case .ai: AISettingsView()
             case .quickActions: QuickActionsSettingsView()
             case .dictation: DictationSettingsView()
+            case .dictationTranslation: DictationTranslationSettingsView()
             case .fileSearch: FileSearchSettingsView()
             case .notes: NotesSettingsView()
             case .snippets: SnippetsSettingsView()

@@ -97,6 +97,72 @@ struct DictationTest {
                 fatalError("Missing Parakeet decoding configuration")
             }
         }
+        testTranslation(check: check)
         print("Dictation text formatting passed")
+    }
+
+    private static func testTranslation(check: (String, String) -> Void) {
+        func channel(_ bundleID: String?, _ title: String?, _ fallback: DictationChannel = .chat)
+            -> DictationChannel
+        {
+            DictationChannel.classify(bundleID: bundleID, windowTitle: title, fallback: fallback)
+        }
+        func expect(_ condition: Bool, _ message: String) {
+            guard condition else { fatalError(message) }
+        }
+        expect(channel("com.apple.mail", "Slack") == .email, "A mail app is email whatever its title")
+        expect(channel("com.tinyspeck.slackmacgap", nil, .email) == .chat, "Slack is a chat")
+        expect(channel("com.google.Chrome", "Inbox (3) - me@example.com - Gmail") == .email, "Gmail tab")
+        expect(channel("com.google.Chrome", "general | Slack", .email) == .chat, "Slack in a browser")
+        expect(channel("com.google.Chrome", "Docs", .email) == .email, "Unknown pages take the fallback")
+        expect(channel(nil, nil) == .chat, "Nothing known takes the fallback")
+        expect(
+            channel("com.microsoft.VSCode", "inbox.md — notes") == .chat,
+            "A native app's document title never picks a channel")
+        expect(channel("com.apple.Safari", "Gmail", .chat) == .email, "Safari reads the site title")
+
+        let request = DictationTranslationRequest(
+            transcript: "  скажи ему что я опоздаю на десять минут \n", appName: "Slack",
+            bundleID: "com.tinyspeck.slackmacgap", windowTitle: "general | Acme",
+            textBeforeCaret: "")
+        let message = DictationTranslationPrompt.message(for: request, channel: .chat)
+        expect(message.contains("<app>Slack — general | Acme</app>"), "The app and window are named")
+        expect(!message.contains("<text_before_cursor>"), "An empty field sends no context block")
+        expect(
+            message.hasSuffix("<dictation>\nскажи ему что я опоздаю на десять минут\n</dictation>"),
+            "The transcript is trimmed and closes the message")
+        let long = DictationTranslationRequest(
+            transcript: "ok", appName: nil, bundleID: nil, windowTitle: nil,
+            textBeforeCaret: String(repeating: "a", count: 9_000) + "END")
+        let bounded = DictationTranslationPrompt.message(for: long, channel: .email)
+        expect(bounded.contains("END\n</text_before_cursor>"), "Context keeps the text nearest the caret")
+        expect(
+            bounded.count < DictationTranslationPrompt.contextLimit + 200, "Context is bounded")
+
+        let plain = DictationTranslationPrompt.instructions(
+            spokenLanguage: "Russian", language: "English", channel: .email, guide: "  ",
+            channelGuide: "")
+        expect(plain.contains("in English"), "The target language is named")
+        expect(plain.contains("mostly in Russian"), "The spoken language is named")
+        expect(
+            DictationTranslationPrompt.instructions(
+                spokenLanguage: nil, language: "English", channel: .chat, guide: "", channelGuide: ""
+            ).contains("spoke it in any language"), "Auto names no spoken language")
+        expect(plain.contains("email body"), "The channel's rules are included")
+        expect(!plain.contains("style guide,"), "Blank guides add nothing")
+        let guided = DictationTranslationPrompt.instructions(
+            spokenLanguage: "Russian", language: "English", channel: .chat, guide: "Sign as Vlad",
+            channelGuide: "No emoji")
+        expect(
+            guided.hasSuffix("chat messages, which wins over everything above:\n\nNo emoji"),
+            "The channel guide comes last")
+        expect(guided.contains("\n\nSign as Vlad\n\n"), "The general guide precedes it")
+
+        check(DictationTranslationPrompt.clean("  \"Sounds good, thanks!\"  "), "Sounds good, thanks!")
+        check(DictationTranslationPrompt.clean("```\nHi Anna,\n\nThanks!\n```"), "Hi Anna,\n\nThanks!")
+        check(DictationTranslationPrompt.clean("<message>On it.</message>"), "On it.")
+        check(
+            DictationTranslationPrompt.clean("\"Ship it\" works, then \"merge\""),
+            "\"Ship it\" works, then \"merge\"")
     }
 }

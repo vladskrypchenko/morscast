@@ -67,6 +67,14 @@ enum AIRequestBody {
             "stream": true
         ]
         if !systemParts.isEmpty { body["system"] = systemParts.joined(separator: "\n\n") }
+        if let reasoning = input.reasoning {
+            body["output_config"] = ["effort": reasoning.effort]
+            if reasoning.thinks {
+                body["thinking"] = ["type": "adaptive"]
+            } else if let off = anthropicThinkingOff(model: configuration.model) {
+                body["thinking"] = ["type": off]
+            }
+        }
         if !input.tools.isEmpty {
             body["tools"] = input.tools.map {
                 [
@@ -76,6 +84,17 @@ enum AIRequestBody {
             }
         }
         return body
+    }
+
+    /// Sonnet 5.5 takes only `between_tools`; Opus 5.5 and Fable cannot switch thinking off.
+    static func anthropicThinkingOff(model: String) -> String? {
+        if model.hasPrefix("claude-sonnet-5-5") { return "between_tools" }
+        if model.hasPrefix("claude-opus-5-5") || model.hasPrefix("claude-fable")
+            || model.hasPrefix("claude-mythos")
+        {
+            return nil
+        }
+        return "disabled"
     }
 
     /// Plain text stays a string; only a message with images takes the content-part array.

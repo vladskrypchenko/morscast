@@ -89,6 +89,13 @@ struct AIMessage: Equatable, Sendable {
     }
 }
 
+/// A feature's own thinking setting, overriding the route's; only Anthropic's body writes it.
+struct AIReasoning: Equatable, Sendable {
+    let thinks: Bool
+    /// One of Anthropic's `output_config.effort` levels: `low`, `medium` or `high`.
+    let effort: String
+}
+
 struct AIRequest: Equatable, Sendable {
     static let defaultMaxOutputTokens = 4_096
 
@@ -100,11 +107,13 @@ struct AIRequest: Equatable, Sendable {
     let webSearch: Bool
     /// Empty for every route that cannot call one, so a transport need not ask whether it may.
     let tools: [AITool]
+    let reasoning: AIReasoning?
 
     init(
         instructions: String? = nil, messages: [AIMessage],
         maxOutputTokens: Int = defaultMaxOutputTokens,
-        webSearch: Bool = false, tools: [AITool] = [], conversationID: UUID? = nil
+        webSearch: Bool = false, tools: [AITool] = [], conversationID: UUID? = nil,
+        reasoning: AIReasoning? = nil
     ) {
         self.conversationID = conversationID
         self.instructions = instructions
@@ -112,13 +121,15 @@ struct AIRequest: Equatable, Sendable {
         self.maxOutputTokens = maxOutputTokens
         self.webSearch = webSearch
         self.tools = tools
+        self.reasoning = reasoning
     }
 
     /// The same turn carried forward, armed with what the loop wrapping it may call.
     func continuing(with messages: [AIMessage], tools: [AITool]) -> AIRequest {
         AIRequest(
             instructions: instructions, messages: messages, maxOutputTokens: maxOutputTokens,
-            webSearch: webSearch, tools: tools, conversationID: conversationID)
+            webSearch: webSearch, tools: tools, conversationID: conversationID,
+            reasoning: reasoning)
     }
 }
 

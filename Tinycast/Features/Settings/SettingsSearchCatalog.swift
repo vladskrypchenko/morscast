@@ -108,7 +108,8 @@ enum SettingsSearchCatalog {
     static let entries: [SettingsSearchEntry] =
         general + applications + systemSettings + systemActions + commands + quicklinks
         + appleShortcuts + fallbacks + clipboard + snippets + fileSearch + windowManagement
-        + navigation + notes + calendar + emoji + ai + quickActions + dictation + extensions + permissions
+        + navigation + notes + calendar + emoji + ai + quickActions + dictation + dictationTranslation + extensions
+        + permissions
         + backup + about
 
     private static let general: [SettingsSearchEntry] = [
@@ -335,6 +336,31 @@ enum SettingsSearchCatalog {
         .init(
             .quickActionsTranslate, "Translate to",
             keywords: ["language", "locale"])
+    ]
+
+    private static let dictationTranslation: [SettingsSearchEntry] = [
+        .init(
+            pane: .dictationTranslation,
+            keywords: ["translate", "translation", "english", "claude", "voice", "speech", "slack", "email"]),
+        .init(.dictationTranslationDictateTranslate, "Enable Dictate & Translate"),
+        .init(.dictationTranslationShortcut, "Shortcut", keywords: ["hotkey"]),
+        .init(.dictationTranslationShortcut, "Shortcut behavior", keywords: ["hold", "toggle", "push"]),
+        .init(group: .dictationTranslationSpeech, "Soniox API key", keywords: ["key", "token", "cloud"]),
+        .init(.dictationTranslationSpeech, "You speak", keywords: ["language", "russian", "spoken"]),
+        .init(.dictationTranslationSpeech, "Microphone", keywords: ["input", "device"]),
+        .init(group: .dictationTranslationModel, "Claude API key", keywords: ["anthropic", "key", "token"]),
+        .init(.dictationTranslationModel, "Model", keywords: ["claude", "sonnet", "haiku", "opus", "llm"]),
+        .init(.dictationTranslationModel, "Thinking", keywords: ["reasoning", "extended thinking"]),
+        .init(.dictationTranslationModel, "Effort", keywords: ["reasoning", "speed", "fast"]),
+        .init(.dictationTranslationMessage, "Translate into", keywords: ["language", "english"]),
+        .init(
+            .dictationTranslationMessage, "Other apps",
+            keywords: ["messenger", "chat", "email", "mail", "browser"]),
+        .init(
+            .dictationTranslationStyle, "General",
+            keywords: ["prompt", "instructions", "markdown", "tone", "style"]),
+        .init(.dictationTranslationStyle, "Messenger", keywords: ["slack", "telegram", "chat", "prompt"]),
+        .init(.dictationTranslationStyle, "Email", keywords: ["mail", "outlook", "gmail", "prompt"])
     ]
 
     private static let dictation: [SettingsSearchEntry] = [

@@ -137,6 +137,9 @@ bottom with the model picker. ⌘J hands a Quick AI conversation to the window.
   them off on purpose: `AIInstructions.compose` leaves `AIPreamble.choices` out, so no turn asks for
   them, and neither surface draws chips. A fence a model writes anyway is still lifted out of the
   prose.
+- **A request may carry its own thinking setting.** `AIRequest.reasoning` (`AIReasoning`) overrides
+  the route's for one request, and only the Anthropic body writes it. Dictate & Translate is its one
+  sender; see [Dictation](dictation.md#dictate--translate).
 - **Token usage belongs to the reply that reported it.** `AIUsage` carries input, output, cached
   prompt and thinking tokens, and the model's window and cost where a route says them — Claude's CLI
   reports all of it, the Anthropic API its cache, OpenAI-shaped routes their reasoning tokens and

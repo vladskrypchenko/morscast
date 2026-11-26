@@ -351,13 +351,14 @@ run fallback-test          Tinycast/Features/Launcher/Model/Fallback.swift \
                            Tinycast/Platform/LocalizedResource.swift
 run dictionary-test        Tinycast/Features/Dictionary/Model/DictionaryEntry.swift \
                            Tinycast/Features/Dictionary/Model/DictionaryMarkup.swift
-run dictation-test         Tinycast/Features/Dictation/Model/DictationModel.swift Tinycast/Features/Dictation/Model/DictationIdleRelease.swift Tinycast/Features/Dictation/Model/DictationLanguage.swift Tinycast/Features/Dictation/Model/DictationTextFormatter.swift
+run dictation-test         Tinycast/Features/Dictation/Model/DictationModel.swift Tinycast/Features/Dictation/Model/DictationIdleRelease.swift Tinycast/Features/Dictation/Model/DictationLanguage.swift Tinycast/Features/Dictation/Model/DictationTextFormatter.swift Tinycast/Features/Dictation/Model/DictationTranslation.swift
 run dictation-cue-test     Tinycast/Features/Dictation/Service/DictationCueRunner.swift
 run dictation-field-test   Tinycast/Features/Dictation/Model/DictationModel.swift \
                            Tinycast/Features/Dictation/Model/DictationAudioChunks.swift \
                            Tinycast/Features/Dictation/Model/DictationMode.swift \
                            Tinycast/Features/Dictation/Model/DictationDestination.swift \
                            Tinycast/Features/Dictation/Model/DictationTextFormatter.swift \
+                           Tinycast/Features/Dictation/Model/DictationTranslation.swift \
                            Tinycast/Features/Dictation/Service/DictationCoordinator.swift \
                            Tinycast/Features/Dictation/Service/DictationInsertionContext.swift \
                            Tinycast/Features/Dictation/Service/SonioxStream.swift \
